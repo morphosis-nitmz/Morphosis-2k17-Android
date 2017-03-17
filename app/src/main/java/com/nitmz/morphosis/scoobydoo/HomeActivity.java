@@ -59,13 +59,8 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
-
         mDialog =new ProgressDialog(this);
-
         mFirebaseAuth = FirebaseAuth.getInstance();
-
-
         status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

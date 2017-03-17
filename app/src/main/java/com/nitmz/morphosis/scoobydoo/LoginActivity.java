@@ -9,13 +9,32 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.os.Build;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.app.LoaderManager.LoaderCallbacks;
+
+import android.content.CursorLoader;
+import android.content.Loader;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.AsyncTask;
+
+import android.os.Build;
+import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -32,8 +51,12 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.Manifest.permission.READ_CONTACTS;
 
 
 // Will Implement LoaderCallbacks<Cursor> if using Default activity code.
@@ -44,17 +67,12 @@ public class LoginActivity extends AppCompatActivity
 
     SharedPreferences status;
 
-
-
     private static final int RC_SIGN_IN = 100;
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-
 
     Intent signInIntent;
 
     private FirebaseAuth mAuth;
-    private FirebaseDatabase mDB;
-    private DatabaseReference mRef;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private View signInHide;
 
@@ -68,9 +86,6 @@ public class LoginActivity extends AppCompatActivity
         // Set up the login form.
         mAuth = FirebaseAuth.getInstance();
         checkPlayServices();
-        mDB = FirebaseDatabase.getInstance();
-        mRef = mDB.getReference("users");
-
         checkLoginStatus();
 
         signInHide = findViewById(R.id.sign_in_hide);
@@ -98,12 +113,9 @@ public class LoginActivity extends AppCompatActivity
 
     private void checkLoginStatus() {
         status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
-
         SharedPreferences.Editor editor = status.edit();
         boolean  logIn = status.getBoolean("in", false);
-
         if (logIn) {
-            editor.putBoolean("in", true).apply();
             Intent intent = new Intent(this, HomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
@@ -228,15 +240,8 @@ public class LoginActivity extends AppCompatActivity
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             showProgress(false);
-                            SharedPreferences m = mContext.getSharedPreferences("FirstLogin", 0);
-                            SharedPreferences.Editor editor = m.edit();
-                            editor.putBoolean("first", false);
                             status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
                             status.edit().putBoolean("in", true).apply();
-                            editor.commit();
-
-                            createUserNode();
-
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();
@@ -251,16 +256,6 @@ public class LoginActivity extends AppCompatActivity
                         }
                     }
                 });
-    }
-
-    private void createUserNode() {
-        String uid=mAuth.getCurrentUser().getUid();
-        String name=mAuth.getCurrentUser().getDisplayName();
-        String email=mAuth.getCurrentUser().getEmail();
-        String init_score="0";
-        mRef.child(uid).child("name").setValue(name);
-        mRef.child(uid).child("email").setValue(email);
-        mRef.child(uid).child("score").setValue(init_score);
     }
 
     /**
