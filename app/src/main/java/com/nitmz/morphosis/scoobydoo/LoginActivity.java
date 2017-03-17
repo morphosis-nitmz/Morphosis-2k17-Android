@@ -242,6 +242,12 @@ public class LoginActivity extends AppCompatActivity
                             showProgress(false);
                             status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
                             status.edit().putBoolean("in", true).apply();
+<<<<<<< HEAD
+=======
+
+                            createUserNode();
+
+>>>>>>> undo
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();
