@@ -42,7 +42,9 @@ public class LoginActivity extends AppCompatActivity
 
     Context mContext = this;
 
-    private static final int REQUEST_READ_CONTACTS = 0;
+    SharedPreferences status;
+
+
 
     private static final int RC_SIGN_IN = 100;
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
@@ -69,6 +71,8 @@ public class LoginActivity extends AppCompatActivity
         mDB = FirebaseDatabase.getInstance();
         mRef = mDB.getReference("users");
 
+        checkLoginStatus();
+
         signInHide = findViewById(R.id.sign_in_hide);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -90,6 +94,21 @@ public class LoginActivity extends AppCompatActivity
             }
         });
         mProgressView = findViewById(R.id.login_progress);
+    }
+
+    private void checkLoginStatus() {
+        status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = status.edit();
+        boolean  logIn = status.getBoolean("in", false);
+
+        if (logIn) {
+            editor.putBoolean("in", true).apply();
+            Intent intent = new Intent(this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        }
     }
 
     /**
@@ -212,6 +231,8 @@ public class LoginActivity extends AppCompatActivity
                             SharedPreferences m = mContext.getSharedPreferences("FirstLogin", 0);
                             SharedPreferences.Editor editor = m.edit();
                             editor.putBoolean("first", false);
+                            status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
+                            status.edit().putBoolean("in", true).apply();
                             editor.commit();
 
                             createUserNode();

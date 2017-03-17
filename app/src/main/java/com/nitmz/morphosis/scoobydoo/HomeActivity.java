@@ -59,20 +59,14 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = status.edit();
-        boolean  logIn = status.getBoolean("in", false);
+
+
         mDialog =new ProgressDialog(this);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        if (!logIn) {
-            editor.putBoolean("in", true).apply();
-            Intent intent = new Intent(this, LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-        }
+
+        status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
