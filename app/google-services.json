@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "468372365102",
+    "firebase_url": "https://scoobydoo-6031b.firebaseio.com",
+    "project_id": "scoobydoo-6031b",
+    "storage_bucket": "scoobydoo-6031b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468372365102:android:bea5b514e9e0f1a5",
+        "android_client_info": {
+          "package_name": "com.nitmz.morphosis.scoobydoo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "468372365102-tn92sn8gieid877jqsn8lrhqsbo07t80.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nitmz.morphosis.scoobydoo",
+            "certificate_hash": "0a51df96e6aa9fb56f452221c77ae3158b6b03cb"
+          }
+        },
+        {
+          "client_id": "468372365102-25v62fo3qtauid2frufhji6bgslmn9a1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWyrtMv1MS604VCT4ktJ5GJM8IcFkxe2g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "468372365102-25v62fo3qtauid2frufhji6bgslmn9a1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
