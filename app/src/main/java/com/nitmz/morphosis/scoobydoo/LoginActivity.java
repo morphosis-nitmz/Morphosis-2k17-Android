@@ -51,6 +51,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
@@ -74,6 +75,8 @@ public class LoginActivity extends AppCompatActivity
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseDatabase mDB;
+    private DatabaseReference mRef;
     private View signInHide;
 
     private View mProgressView;
@@ -86,6 +89,8 @@ public class LoginActivity extends AppCompatActivity
         // Set up the login form.
         mAuth = FirebaseAuth.getInstance();
         checkPlayServices();
+        mDB = FirebaseDatabase.getInstance();
+        mRef = mDB.getReference("users");
         checkLoginStatus();
 
         signInHide = findViewById(R.id.sign_in_hide);
@@ -242,12 +247,7 @@ public class LoginActivity extends AppCompatActivity
                             showProgress(false);
                             status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
                             status.edit().putBoolean("in", true).apply();
-<<<<<<< HEAD
-=======
-
                             createUserNode();
-
->>>>>>> undo
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();
@@ -262,6 +262,16 @@ public class LoginActivity extends AppCompatActivity
                         }
                     }
                 });
+    }
+
+    private void createUserNode() {
+        String uid=mAuth.getCurrentUser().getUid();
+        String name=mAuth.getCurrentUser().getDisplayName();
+        String email=mAuth.getCurrentUser().getEmail();
+        String init_score="0";
+        mRef.child(uid).child("name").setValue(name);
+        mRef.child(uid).child("email").setValue(email);
+        mRef.child(uid).child("score").setValue(init_score);
     }
 
     /**
