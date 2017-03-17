@@ -129,8 +129,13 @@ public class HomeActivity extends AppCompatActivity
     private void checkAnswer() {
         String answer = mAnswerField.getText().toString().toLowerCase();
         if(answer.equals(mData.getAnswer(mQuestionNumber))) {
-            mRef.child(mFirebaseAuth.getCurrentUser().getUid()).child("score").
-                    setValue(mQuestionNumber);
+            if (mQuestionNumber < 10) {
+                mRef.child(mFirebaseAuth.getCurrentUser().getUid()).child("score").
+                        setValue("0" + mQuestionNumber);
+            } else {
+                mRef.child(mFirebaseAuth.getCurrentUser().getUid()).child("score").
+                        setValue(mQuestionNumber);
+            }
             mQuestionNumber++;
             loadQuestion();
         }
