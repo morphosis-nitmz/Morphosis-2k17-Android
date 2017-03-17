@@ -52,6 +52,7 @@ public class HomeActivity extends AppCompatActivity
 
     String mQuestionTitle;
     int mQuestionNumber;
+    Button mAnswerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,13 +86,22 @@ public class HomeActivity extends AppCompatActivity
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(this);
         mNavigationView.setCheckedItem(R.id.nav_home);
+        mAnswerField = (EditText) findViewById(R.id.answer_text);
+        mTitle = (TextView) findViewById(R.id.title_view);
+        mAnswerButton = (Button) findViewById(R.id.answer_button);
+        mAnswerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkAnswer();
+            }
+        });
 
         // Initialize data for question loading
+        mDatabase = FirebaseDatabase.getInstance();
+        mRef = mDatabase.getReference("users");
         mData = new Data();
         mQuestionNumber = 1;
-        mTitle = (TextView) findViewById(R.id.title_view);
         loadQuestion();
-        checkAnswer();
     }
 
     private void loadQuestion() {
@@ -128,22 +138,16 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void checkAnswer() {
-        mAnswerField = (EditText) findViewById(R.id.answer_text);
-
-        Button answerButton = (Button) findViewById(R.id.answer_button);
-        answerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String answer = mAnswerField.getText().toString().toLowerCase();
-                if(answer.equals(mData.getAnswer(mQuestionNumber))) {
-                    mQuestionNumber++;
-                    loadQuestion();
-                }
-                else {
-                    Toast.makeText(HomeActivity.this, "Incorrect", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+        String answer = mAnswerField.getText().toString().toLowerCase();
+        if(answer.equals(mData.getAnswer(mQuestionNumber))) {
+            mRef.child(mFirebaseAuth.getCurrentUser().getUid()).child("score").
+                    setValue(mQuestionNumber);
+            mQuestionNumber++;
+            loadQuestion();
+        }
+        else {
+            Toast.makeText(HomeActivity.this, "Incorrect", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
