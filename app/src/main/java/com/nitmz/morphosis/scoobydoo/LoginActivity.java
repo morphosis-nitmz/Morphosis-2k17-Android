@@ -228,12 +228,8 @@ public class LoginActivity extends AppCompatActivity
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             showProgress(false);
-                            SharedPreferences m = mContext.getSharedPreferences("FirstLogin", 0);
-                            SharedPreferences.Editor editor = m.edit();
-                            editor.putBoolean("first", false);
                             status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
                             status.edit().putBoolean("in", true).apply();
-                            editor.commit();
 
                             createUserNode();
 
