@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "468372365102-f85qk7mnr86kea35t595nae3jr6lfrag.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nitmz.morphosis.scoobydoo",
+            "certificate_hash": "a8b1bf956cd65ff5bd89613d2f2914e51d7da1d0"
+          }
+        },
+        {
           "client_id": "468372365102-tn92sn8gieid877jqsn8lrhqsbo07t80.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
