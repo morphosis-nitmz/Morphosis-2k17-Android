@@ -25,4 +25,7 @@
     <string name="nav_developers_title">Developers</string>
     <string name="nav_logout_title">Logout</string>
     <string name="answer_field_hint">Enter your answer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -10,31 +10,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
-
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -54,11 +36,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.Manifest.permission.READ_CONTACTS;
-
 
 // Will Implement LoaderCallbacks<Cursor> if using Default activity code.
 public class LoginActivity extends AppCompatActivity
@@ -76,7 +53,8 @@ public class LoginActivity extends AppCompatActivity
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseDatabase mDB;
-    private DatabaseReference mRef;
+    private DatabaseReference mUsersRef;
+    private DatabaseReference mScoreRef;
     private View signInHide;
 
     private View mProgressView;
@@ -86,11 +64,13 @@ public class LoginActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // Set up the login form.
+
+        // Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
         checkPlayServices();
         mDB = FirebaseDatabase.getInstance();
-        mRef = mDB.getReference("users");
+        mUsersRef = mDB.getReference("users");
+        mScoreRef = mDB.getReference("score");
         checkLoginStatus();
 
         signInHide = findViewById(R.id.sign_in_hide);
@@ -248,6 +228,7 @@ public class LoginActivity extends AppCompatActivity
                             status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
                             status.edit().putBoolean("in", true).apply();
                             createUserNode();
+                            createScoreNode();
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish();
@@ -265,13 +246,18 @@ public class LoginActivity extends AppCompatActivity
     }
 
     private void createUserNode() {
-        String uid=mAuth.getCurrentUser().getUid();
-        String name=mAuth.getCurrentUser().getDisplayName();
-        String email=mAuth.getCurrentUser().getEmail();
-        String init_score="0";
-        mRef.child(uid).child("name").setValue(name);
-        mRef.child(uid).child("email").setValue(email);
-        mRef.child(uid).child("score").setValue(init_score);
+        String uid = mAuth.getCurrentUser().getUid();
+        String name = mAuth.getCurrentUser().getDisplayName();
+        String email = mAuth.getCurrentUser().getEmail();
+        String init_score = "0";
+        mUsersRef.child(uid).child("name").setValue(name);
+        mUsersRef.child(uid).child("email").setValue(email);
+        mUsersRef.child(uid).child("score").setValue(init_score);
+    }
+
+    private void createScoreNode() {
+        String uid = mAuth.getCurrentUser().getUid();
+        mScoreRef.child(uid).setValue("0");
     }
 
     /**

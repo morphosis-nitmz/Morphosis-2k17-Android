@@ -36,14 +36,16 @@ public class HomeActivity extends AppCompatActivity
 
     SharedPreferences status;
 
-    private FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private StorageReference mStorageReference;
-    private FirebaseDatabase mDatabase;
-    private DatabaseReference mRef;
-    private ValueEventListener mListener;
-    private EditText mAnswerField;
+    private FirebaseDatabase mDB;
+    private DatabaseReference mUsersRef;
+    private DatabaseReference mScoreRef;
 
+    private ValueEventListener mListener;
+
+    private EditText mAnswerField;
     NavigationView mNavigationView;
     TextView mTitle;
     ProgressDialog mDialog;
@@ -60,7 +62,7 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
 
         mDialog =new ProgressDialog(this);
-        mFirebaseAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -86,8 +88,9 @@ public class HomeActivity extends AppCompatActivity
         });
 
         // Initialize data for question loading
-        mDatabase = FirebaseDatabase.getInstance();
-        mRef = mDatabase.getReference("users");
+        mDB = FirebaseDatabase.getInstance();
+        mUsersRef = mDB.getReference("users");
+        mScoreRef = mDB.getReference("score");
         mData = new Data();
         mQuestionNumber = 1;
         loadQuestion();
@@ -130,11 +133,13 @@ public class HomeActivity extends AppCompatActivity
         String answer = mAnswerField.getText().toString().toLowerCase();
         if(answer.equals(mData.getAnswer(mQuestionNumber))) {
             if (mQuestionNumber < 10) {
-                mRef.child(mFirebaseAuth.getCurrentUser().getUid()).child("score").
+                mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
                         setValue("0" + mQuestionNumber);
+                mScoreRef.child(mAuth.getCurrentUser().getUid()).setValue("0" + mQuestionNumber);
             } else {
-                mRef.child(mFirebaseAuth.getCurrentUser().getUid()).child("score").
+                mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
                         setValue(mQuestionNumber);
+                mScoreRef.child(mAuth.getCurrentUser().getUid()).setValue(mQuestionNumber);
             }
             mQuestionNumber++;
             loadQuestion();
@@ -142,6 +147,7 @@ public class HomeActivity extends AppCompatActivity
         else {
             Toast.makeText(HomeActivity.this, "Incorrect", Toast.LENGTH_LONG).show();
         }
+        mAnswerField.setText("");
     }
 
     @Override
@@ -173,17 +179,19 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_profile) {
 
         } else if (id == R.id.nav_leaderboard) {
-
+            Intent intent = new Intent(HomeActivity.this, LeaderboardActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_developer) {
 
         } else if (id == R.id. nav_logout) {
             status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
             status.edit().putBoolean("in", false).apply();
-            mFirebaseAuth.signOut();
+            mAuth.signOut();
             Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
