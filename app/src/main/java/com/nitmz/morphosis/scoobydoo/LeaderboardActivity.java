@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,6 +22,12 @@ public class LeaderboardActivity extends AppCompatActivity {
     private DatabaseReference mScoreRef;
     private Query mTopScoreQuery;
 
+    private ArrayList<String> names;
+    private ArrayList<String> pURL;
+    private ArrayList<String> scores;
+
+    private ValueEventListener listener;
+
     ListView mLeaderboard;
 
     @Override
@@ -30,27 +37,22 @@ public class LeaderboardActivity extends AppCompatActivity {
 
         mLeaderboard = (ListView) findViewById(R.id.leaderboard_list);
 
+        names = new ArrayList<>();
+        pURL = new ArrayList<>();
+        scores = new ArrayList<>();
+
         mDB = FirebaseDatabase.getInstance();
-        mUsersRef = mDB.getReference("users");
         mScoreRef = mDB.getReference("score");
         mTopScoreQuery = mScoreRef.orderByValue();
 
         mTopScoreQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<String> scores = new ArrayList();
                 for (DataSnapshot child: dataSnapshot.getChildren()) {
                     String uid = child.getKey();
-
-                    String score = (String) child.getValue();
-                    scores.add(score);
+                    mUsersRef = mDB.getReference("users/" + uid);
+                    userDetails();
                 }
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                        LeaderboardActivity.this,
-                        android.R.layout.simple_list_item_1,
-                        scores);
-
-                mLeaderboard.setAdapter(adapter);
             }
 
             @Override
@@ -58,5 +60,36 @@ public class LeaderboardActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void userDetails() {
+        listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String userName = dataSnapshot.child("name").getValue(String.class);
+
+                ArrayList<String> temp = new ArrayList<>();
+                temp.add(userName);
+                temp.addAll(names);
+                names = temp;
+
+                //String photoURL = dataSnapshot.child("pURL").getValue(String.class);
+                //pURL.add(photoURL);
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                        LeaderboardActivity.this,
+                        android.R.layout.simple_list_item_1,
+                        names);
+                mLeaderboard.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        if(listener != null) {
+            mUsersRef.addValueEventListener(listener);
+        }
     }
 }

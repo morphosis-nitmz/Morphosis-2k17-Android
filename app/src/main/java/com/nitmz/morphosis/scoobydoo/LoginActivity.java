@@ -249,10 +249,12 @@ public class LoginActivity extends AppCompatActivity
         String uid = mAuth.getCurrentUser().getUid();
         String name = mAuth.getCurrentUser().getDisplayName();
         String email = mAuth.getCurrentUser().getEmail();
+        String pURL = mAuth.getCurrentUser().getPhotoUrl().toString();
         String init_score = "0";
         mUsersRef.child(uid).child("name").setValue(name);
         mUsersRef.child(uid).child("email").setValue(email);
         mUsersRef.child(uid).child("score").setValue(init_score);
+        mUsersRef.child(uid).child("pURL").setValue(pURL);
     }
 
     private void createScoreNode() {
