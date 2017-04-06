@@ -8,6 +8,22 @@
     tools:context="com.nitmz.morphosis.scoobydoo.HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frag_view_home"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/home_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/frag_view_home"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="126dp"
@@ -83,6 +99,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="11dp" />
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

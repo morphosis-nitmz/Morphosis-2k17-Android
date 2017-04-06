@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -49,6 +51,8 @@ public class HomeActivity extends AppCompatActivity
     NavigationView mNavigationView;
     TextView mTitle;
     ProgressDialog mDialog;
+    public View mFragView;
+    public View mHomeView;
 
     Data mData;
 
@@ -60,6 +64,10 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        // Initialize fragment views
+        mFragView =findViewById(R.id.frag_view_home);
+        mHomeView =findViewById(R.id.home_view);
 
         mDialog =new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
@@ -184,8 +192,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_profile) {
 
         } else if (id == R.id.nav_leaderboard) {
-            Intent intent = new Intent(HomeActivity.this, LeaderboardActivity.class);
-            startActivity(intent);
+            replaceFragments(LeaderboardFragment.class, false);
         } else if (id == R.id.nav_developer) {
 
         } else if (id == R.id. nav_logout) {
@@ -203,5 +210,42 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void replaceFragments(Class fragmentClass, Boolean addToBackStack) {
+        Fragment fragment = null;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+            // Check if Fragment Manager contains any existing fragment. If yes, remove it.
+            if(!getSupportFragmentManager().beginTransaction().isEmpty()) {
+                getSupportFragmentManager().beginTransaction().
+                        remove(getSupportFragmentManager().findFragmentById(R.id.frag_view_home)).
+                        commit();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        mHomeView.setVisibility(View.GONE);
+        mFragView.setVisibility(View.VISIBLE);
+
+        // Insert the fragment by replacing any existing fragment
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.popBackStackImmediate();
+
+        /*
+         * If addToBackStack is set to false, then by pressing the back button in a fragment other
+         * than Home, will redirect the view back to home view.
+         * Else, back button will trace the previously opened fragments.
+         */
+        if(addToBackStack) {
+            fragmentManager.beginTransaction().replace(R.id.frag_view_home, fragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
+        else {
+            fragmentManager.beginTransaction().replace(R.id.frag_view_home, fragment)
+                    .commit();
+        }
     }
 }
