@@ -20,7 +20,6 @@
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/frag_view_home"
-        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
 
