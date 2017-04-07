@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Tech Fest</string>
+    <string name="title_activity_scooby_doo_home">ScoobyDooHomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_techfest_home">Morphosis</string>
+
+    <!-- Strings for navigation drawer items -->
+    <string name="nav_home_title">Home</string>
+    <string name="nav_profile_title">Profile</string>
+    <string name="nav_leaderboard_title">Leaderboard</string>
+    <string name="nav_developers_title">Developers</string>
+    <string name="nav_logout_title">Logout</string>
+    <string name="answer_field_hint">Enter your answer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

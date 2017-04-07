@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/nav_home_title"
+            android:icon="@drawable/ic_home_black_48dp" />
+        <item
+            android:id="@+id/nav_profile"
+            android:title="@string/nav_profile_title"
+            android:icon="@drawable/ic_person_black_48dp" />
+        <item
+            android:id="@+id/nav_leaderboard"
+            android:title="@string/nav_leaderboard_title"
+            android:icon="@drawable/ic_leaderboard_black_100px" />
+        <item
+            android:id="@+id/nav_developer"
+            android:title="@string/nav_developers_title"
+            android:visible="true"
+            android:icon="@drawable/ic_developer_mode_black_48dp"/>
+        <item
+            android:id="@+id/nav_logout"
+            android:title="@string/nav_logout_title"
+            android:visible="true"
+            android:icon="@drawable/ic_logout_black_48dp" />
+        <item
+            android:id="@+id/nav_share"
+            android:title="Share"
+            android:icon="@drawable/ic_menu_share" />
+    </group>
+
+</menu>
