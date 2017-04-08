@@ -192,7 +192,7 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
             Intent intent = new Intent(this, ScoobyDooHomeActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_profile) {
-
+            replaceFragments(ProfileFragment.class, false);
         } else if (id == R.id.nav_leaderboard) {
             replaceFragments(LeaderboardFragment.class, false);
         } else if (id == R.id.nav_developer) {
@@ -202,7 +202,7 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
             status.edit().putBoolean("in", false).apply();
             mAuth.signOut();
             Intent intent = new Intent(ScoobyDooHomeActivity.this, LoginActivity.class);
-            intent.putExtra("launch",2);
+            intent.putExtra("launch", 2);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();

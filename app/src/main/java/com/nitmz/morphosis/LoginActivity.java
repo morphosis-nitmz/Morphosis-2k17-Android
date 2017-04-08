@@ -188,8 +188,7 @@ public class LoginActivity extends AppCompatActivity
                             createUserNode();
                             createScoreNode();
 
-                            if(launch == 1)
-                            {
+                            if(launch == 1) {
                                 Intent intent = new Intent(LoginActivity.this, TechfestHomeActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);

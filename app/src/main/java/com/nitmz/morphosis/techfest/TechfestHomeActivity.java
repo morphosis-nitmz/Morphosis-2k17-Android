@@ -95,7 +95,7 @@ public class TechfestHomeActivity extends AppCompatActivity
             status.edit().putBoolean("in", false).apply();
             mAuth.signOut();
             Intent intent = new Intent(TechfestHomeActivity.this, LoginActivity.class);
-            intent.putExtra("launch",1);
+            intent.putExtra("launch", 1);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
