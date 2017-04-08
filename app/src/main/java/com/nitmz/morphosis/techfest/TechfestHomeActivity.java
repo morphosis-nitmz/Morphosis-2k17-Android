@@ -1,9 +1,9 @@
 package com.nitmz.morphosis.techfest;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,10 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.nitmz.morphosis.LoginActivity;
 import com.nitmz.morphosis.R;
 
 public class TechfestHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    SharedPreferences status;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,8 @@ public class TechfestHomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_techfest_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mAuth = FirebaseAuth.getInstance();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -83,7 +90,15 @@ public class TechfestHomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_logout) {
+            status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
+            status.edit().putBoolean("in", false).apply();
+            mAuth.signOut();
+            Intent intent = new Intent(TechfestHomeActivity.this, LoginActivity.class);
+            intent.putExtra("launch",1);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
 
         }
 

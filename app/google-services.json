@@ -59,6 +59,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1039406650655-f9j1ti6uplm2sk8lqmt89e3v8sjv1l7p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nitmz.morphosis",
+            "certificate_hash": "a8b1bf956cd65ff5bd89613d2f2914e51d7da1d0"
+          }
+        },
+        {
           "client_id": "1039406650655-r9if3fbupkb6m496o6cqjrotv3kb1k8j.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
