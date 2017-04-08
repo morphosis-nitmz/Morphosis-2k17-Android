@@ -92,6 +92,12 @@ public class TechfestHomeActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             Intent intent = new Intent(this, TechfestHomeActivity.class);
             startActivity(intent);
+        } else if (id == R.id.nav_events) {
+
+        } else if (id == R.id.nav_winners) {
+
+        } else if (id == R.id.nav_schedule) {
+
         } else if (id == R.id.nav_developer) {
 
         } else if (id == R.id.nav_logout) {
