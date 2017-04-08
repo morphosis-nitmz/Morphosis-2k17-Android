@@ -197,11 +197,12 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
             replaceFragments(LeaderboardFragment.class, false);
         } else if (id == R.id.nav_developer) {
 
-        } else if (id == R.id. nav_logout) {
+        } else if (id == R.id.nav_logout) {
             status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
             status.edit().putBoolean("in", false).apply();
             mAuth.signOut();
             Intent intent = new Intent(ScoobyDooHomeActivity.this, LoginActivity.class);
+            intent.putExtra("launch",2);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
