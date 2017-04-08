@@ -47,7 +47,7 @@ public class ProfileFragment extends Fragment {
         mScore = (TextView) view.findViewById(R.id.score_text_view);
 
         Glide.with(this)
-                .load(mAuth.getCurrentUser().getPhotoUrl().toString())
+                .load(toTitleCase(mAuth.getCurrentUser().getPhotoUrl().toString().toLowerCase().trim()))
                 .fitCenter()
                 .dontAnimate()
                 .into(mProfileImage);
@@ -55,5 +55,23 @@ public class ProfileFragment extends Fragment {
         mUserName.setText(mAuth.getCurrentUser().getDisplayName());
         mUserName.setTextSize(45);
         mUserName.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+    }
+
+    // Converts a string into Title Case
+    public static String toTitleCase(String input) {
+        StringBuilder titleCase = new StringBuilder();
+        boolean nextTitleCase = true;
+
+        for (char c : input.toCharArray()) {
+            if (Character.isSpaceChar(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+        return titleCase.toString();
     }
 }
