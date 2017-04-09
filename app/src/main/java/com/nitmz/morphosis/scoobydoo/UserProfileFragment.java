@@ -22,19 +22,18 @@ import com.nitmz.morphosis.R;
 
 public class UserProfileFragment extends Fragment {
 
-
+    FirebaseAuth mAuth;
     private FirebaseDatabase mDB;
     private DatabaseReference mScoreRef;
-    CircleImageView user_image;
-    TextView user_score;
-    TextView user_name;
-    TextView user_rank;
-    FirebaseAuth mAuth;
+
+    CircleImageView mUserImage;
+    TextView mUserScore;
+    TextView mUserName;
+    TextView mUserRank;
 
     public UserProfileFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,18 +47,18 @@ public class UserProfileFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         mDB = FirebaseDatabase.getInstance();
-        mScoreRef = mDB.getReference("score/"+mAuth.getCurrentUser().getUid().toString());
+        mScoreRef = mDB.getReference("score/" + mAuth.getCurrentUser().getUid());
 
-        user_image = (CircleImageView)view.findViewById(R.id.user_image_leaderboard_details);
-        user_name = (TextView)view.findViewById(R.id.user_name_ip);
-        user_score = (TextView)view.findViewById(R.id.user_score_ip);
-        user_rank = (TextView)view.findViewById(R.id.user_rank_ip);
+        mUserImage = (CircleImageView)view.findViewById(R.id.user_image_leaderboard_details);
+        mUserName = (TextView)view.findViewById(R.id.user_name_ip);
+        mUserScore = (TextView)view.findViewById(R.id.user_score_ip);
+        mUserRank = (TextView)view.findViewById(R.id.user_rank_ip);
 
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String score = dataSnapshot.getValue().toString();
-                user_score.setText(score);
+                mUserScore.setText(score);
             }
 
             @Override
@@ -67,11 +66,7 @@ public class UserProfileFragment extends Fragment {
 
             }
         };
-
         mScoreRef.addValueEventListener(listener);
-
-
-
 
         Glide.with(getContext())
                 .load(mAuth.getCurrentUser().getPhotoUrl())
@@ -81,17 +76,9 @@ public class UserProfileFragment extends Fragment {
                 .error(R.drawable.ic_account_circle_white_48dp)
                 .placeholder(R.drawable.ic_account_circle_white_48dp)
                 .dontAnimate()
-                .into(user_image);
+                .into(mUserImage);
 
-        user_name.setText(toTitleCase(mAuth.getCurrentUser().getDisplayName().toLowerCase().trim()));
-
-
-
-
-
-
-
-
+        mUserName.setText(toTitleCase(mAuth.getCurrentUser().getDisplayName().toLowerCase().trim()));
     }
 
     // Converts a string into Title Case

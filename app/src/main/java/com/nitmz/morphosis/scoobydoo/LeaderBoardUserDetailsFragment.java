@@ -16,19 +16,14 @@ import com.nitmz.morphosis.R;
 
 public class LeaderBoardUserDetailsFragment extends Fragment {
 
-
-    CircleImageView user_image;
-    TextView user_score;
-    TextView user_name;
-    TextView user_rank;
-
-
-
+    CircleImageView mUserImage;
+    TextView mUserScore;
+    TextView mUserName;
+    TextView mUserRank;
 
     public LeaderBoardUserDetailsFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,12 +40,10 @@ public class LeaderBoardUserDetailsFragment extends Fragment {
         String score = getArguments().getString("score");
         String purl = getArguments().getString("purl");
 
-        user_image = (CircleImageView)view.findViewById(R.id.user_image_leaderboard_details);
-        user_name = (TextView)view.findViewById(R.id.user_name_ip);
-        user_score = (TextView)view.findViewById(R.id.user_score_ip);
-        user_rank = (TextView)view.findViewById(R.id.user_rank_ip);
-
-
+        mUserImage = (CircleImageView)view.findViewById(R.id.user_image_leaderboard_details);
+        mUserName = (TextView)view.findViewById(R.id.user_name_ip);
+        mUserScore = (TextView)view.findViewById(R.id.user_score_ip);
+        mUserRank = (TextView)view.findViewById(R.id.user_rank_ip);
 
         Glide.with(getContext())
                 .load(purl)
@@ -60,16 +53,9 @@ public class LeaderBoardUserDetailsFragment extends Fragment {
                 .error(R.drawable.ic_account_circle_white_48dp)
                 .placeholder(R.drawable.ic_account_circle_white_48dp)
                 .dontAnimate()
-                .into(user_image);
+                .into(mUserImage);
 
-        user_name.setText(name);
-        user_score.setText(score);
-
-
-
-
-
-
-
+        mUserName.setText(name);
+        mUserScore.setText(score);
     }
 }

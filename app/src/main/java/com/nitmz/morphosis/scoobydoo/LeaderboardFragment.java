@@ -29,18 +29,16 @@ public class LeaderboardFragment extends Fragment {
     private DatabaseReference mScoreRef;
     private Query mTopScoreQuery;
 
-    private ArrayList<LeaderBoardUserObject> userObjects;
+    private ArrayList<LeaderBoardUserObject> mUserObjects;
 
-
-    private ValueEventListener listener;
+    private ValueEventListener mListener;
 
     ListView mLeaderboard;
-    LeaderBoardListViewAdapter adapter;
+    LeaderBoardListViewAdapter mAdapter;
 
     public LeaderboardFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,12 +51,11 @@ public class LeaderboardFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        userObjects = new ArrayList<>();
+        mUserObjects = new ArrayList<>();
 
         mLeaderboard = (ListView) view.findViewById(R.id.leaderboard_list);
-        adapter = new LeaderBoardListViewAdapter(userObjects,getContext());
-        mLeaderboard.setAdapter(adapter);
-
+        mAdapter = new LeaderBoardListViewAdapter(mUserObjects,getContext());
+        mLeaderboard.setAdapter(mAdapter);
 
         mDB = FirebaseDatabase.getInstance();
         mScoreRef = mDB.getReference("score");
@@ -82,11 +79,9 @@ public class LeaderboardFragment extends Fragment {
     }
 
     private void userDetails() {
-        listener = new ValueEventListener() {
+        mListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-
                 String userName = dataSnapshot.child("name").getValue(String.class);
                 userName = toTitleCase(userName.toLowerCase().trim());
                 String photoURL = dataSnapshot.child("pURL").getValue(String.class);
@@ -99,14 +94,14 @@ public class LeaderboardFragment extends Fragment {
 
                 ArrayList<LeaderBoardUserObject> userObjects_temp = new ArrayList<>();
                 userObjects_temp.add(user);
-                userObjects_temp.addAll(userObjects);
-                userObjects = userObjects_temp;
+                userObjects_temp.addAll(mUserObjects);
+                mUserObjects = userObjects_temp;
 
-                adapter = new LeaderBoardListViewAdapter(userObjects,getContext());
+                mAdapter = new LeaderBoardListViewAdapter(mUserObjects,getContext());
                 AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        LeaderBoardUserObject userObject = userObjects.get(position);
+                        LeaderBoardUserObject userObject = mUserObjects.get(position);
                         HashMap<String,String> map = new HashMap<>();
                         map.put("name",userObject.getUsername());
                         map.put("score",userObject.getScore());
@@ -115,9 +110,7 @@ public class LeaderboardFragment extends Fragment {
                     }
                 };
                 mLeaderboard.setOnItemClickListener(listener);
-
-                mLeaderboard.setAdapter(adapter);
-
+                mLeaderboard.setAdapter(mAdapter);
             }
 
             @Override
@@ -125,8 +118,8 @@ public class LeaderboardFragment extends Fragment {
 
             }
         };
-        if(listener != null) {
-            mUsersRef.addValueEventListener(listener);
+        if(mListener != null) {
+            mUsersRef.addValueEventListener(mListener);
         }
     }
 

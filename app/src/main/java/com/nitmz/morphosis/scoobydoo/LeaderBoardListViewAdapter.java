@@ -14,14 +14,11 @@ import com.nitmz.morphosis.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by reddy on 7/4/17.
- */
 
 public class LeaderBoardListViewAdapter extends ArrayAdapter<LeaderBoardUserObject> {
 
-    ArrayList<LeaderBoardUserObject> dataset;
-    Context mContext;
+    private ArrayList<LeaderBoardUserObject> mDataset;
+    private Context mContext;
 
     private static class ViewHolder {
         TextView score;
@@ -31,9 +28,8 @@ public class LeaderBoardListViewAdapter extends ArrayAdapter<LeaderBoardUserObje
 
     public LeaderBoardListViewAdapter(ArrayList<LeaderBoardUserObject> data, Context context) {
         super(context, R.layout.leaderboard_listview_template, data);
-        this.dataset = data;
+        this.mDataset = data;
         this.mContext = context;
-
     }
 
     @Override
@@ -42,7 +38,6 @@ public class LeaderBoardListViewAdapter extends ArrayAdapter<LeaderBoardUserObje
         ViewHolder viewHolder;
 
         if (convertView == null) {
-
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.leaderboard_listview_template, parent, false);
@@ -63,7 +58,6 @@ public class LeaderBoardListViewAdapter extends ArrayAdapter<LeaderBoardUserObje
                 .placeholder(R.drawable.ic_account_circle_white_48dp)
                 .dontAnimate()
                 .into(viewHolder.userPhoto);
-
 
         return convertView;
     }

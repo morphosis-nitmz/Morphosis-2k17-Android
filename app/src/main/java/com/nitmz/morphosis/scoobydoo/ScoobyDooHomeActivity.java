@@ -196,7 +196,7 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
             Intent intent = new Intent(this, ScoobyDooHomeActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_profile) {
-            replaceFragments(UserProfileFragment.class,false);
+            replaceFragments(UserProfileFragment.class, false);
         } else if (id == R.id.nav_leaderboard) {
             replaceFragments(LeaderboardFragment.class, false);
         } else if (id == R.id.nav_developer) {
