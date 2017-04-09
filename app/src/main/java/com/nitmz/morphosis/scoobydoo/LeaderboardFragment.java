@@ -54,7 +54,7 @@ public class LeaderboardFragment extends Fragment {
         mUserObjects = new ArrayList<>();
 
         mLeaderboard = (ListView) view.findViewById(R.id.leaderboard_list);
-        mAdapter = new LeaderBoardListViewAdapter(mUserObjects,getContext());
+        mAdapter = new LeaderBoardListViewAdapter(mUserObjects, getContext());
         mLeaderboard.setAdapter(mAdapter);
 
         mDB = FirebaseDatabase.getInstance();
@@ -97,7 +97,7 @@ public class LeaderboardFragment extends Fragment {
                 userObjects_temp.addAll(mUserObjects);
                 mUserObjects = userObjects_temp;
 
-                mAdapter = new LeaderBoardListViewAdapter(mUserObjects,getContext());
+                mAdapter = new LeaderBoardListViewAdapter(mUserObjects, getContext());
                 AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -106,7 +106,8 @@ public class LeaderboardFragment extends Fragment {
                         map.put("name",userObject.getUsername());
                         map.put("score",userObject.getScore());
                         map.put("purl",userObject.getPurl());
-                        ((ScoobyDooHomeActivity)getActivity()).replaceFragments(LeaderBoardUserDetailsFragment.class,map);
+                        ((ScoobyDooHomeActivity)getActivity()).
+                                replaceFragments(LeaderBoardUserDetailsFragment.class,map);
                     }
                 };
                 mLeaderboard.setOnItemClickListener(listener);

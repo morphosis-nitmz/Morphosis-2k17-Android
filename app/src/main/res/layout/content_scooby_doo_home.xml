@@ -11,15 +11,15 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/frag_view_home"
+        android:id="@+id/frag_view_scooby_home"
         android:visibility="gone" />
 
     <RelativeLayout
-        android:id="@+id/home_view"
+        android:id="@+id/scooby_home_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/frag_view_home"
+        android:layout_toEndOf="@+id/frag_view_scooby_home"
         android:orientation="vertical">
 
 

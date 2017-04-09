@@ -20,14 +20,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.nitmz.morphosis.LoginActivity;
 import com.nitmz.morphosis.R;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 public class TechfestHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     SharedPreferences status;
     FirebaseAuth mAuth;
 
-    public View mFragView;
-    public View mHomeView;
+    private View mFragView;
+    private View mHomeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,27 +39,27 @@ public class TechfestHomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_techfest_home);
 
         // Initialize fragment views
-        mFragView =findViewById(R.id.frag_view_home);
-        mHomeView =findViewById(R.id.home_view);
+        mFragView =findViewById(R.id.frag_view_techfest_home);
+        mHomeView =findViewById(R.id.techfest_home_view);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_techfest);
         setSupportActionBar(toolbar);
 
         mAuth = FirebaseAuth.getInstance();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_techfest);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_techfest);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_techfest);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -72,14 +76,6 @@ public class TechfestHomeActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -89,18 +85,24 @@ public class TechfestHomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_home_techfest) {
             Intent intent = new Intent(this, TechfestHomeActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_events) {
+        } else if (id == R.id.nav_events_techfest) {
+            replaceFragments(EventListFragment.class, false);
+        } else if (id == R.id.nav_winners_techfest) {
 
-        } else if (id == R.id.nav_winners) {
+        } else if (id == R.id.nav_schedule_techfest) {
 
-        } else if (id == R.id.nav_schedule) {
+        } else if (id == R.id.nav_technical_society_techfest) {
 
-        } else if (id == R.id.nav_developer) {
+        } else if (id == R.id.nav_developer_techfest) {
 
-        } else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_morphosis_website_techfest) {
+
+        } else if (id == R.id.nav_about_morphosis_techfest) {
+
+        } else if (id == R.id.nav_logout_techfest) {
             status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
             status.edit().putBoolean("in", false).apply();
             mAuth.signOut();
@@ -109,7 +111,7 @@ public class TechfestHomeActivity extends AppCompatActivity
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share_techfest) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey checkout my app at https://play.com");
@@ -117,7 +119,7 @@ public class TechfestHomeActivity extends AppCompatActivity
             startActivity(sendIntent);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_techfest);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -129,7 +131,7 @@ public class TechfestHomeActivity extends AppCompatActivity
             // Check if Fragment Manager contains any existing fragment. If yes, remove it.
             if(!getSupportFragmentManager().beginTransaction().isEmpty()) {
                 getSupportFragmentManager().beginTransaction().
-                        remove(getSupportFragmentManager().findFragmentById(R.id.frag_view_home)).
+                        remove(getSupportFragmentManager().findFragmentById(R.id.frag_view_scooby_home)).
                         commit();
             }
         } catch (Exception e) {
@@ -149,13 +151,37 @@ public class TechfestHomeActivity extends AppCompatActivity
          * Else, back button will trace the previously opened fragments.
          */
         if(addToBackStack) {
-            fragmentManager.beginTransaction().replace(R.id.frag_view_home, fragment)
+            fragmentManager.beginTransaction().replace(R.id.frag_view_techfest_home, fragment)
                     .addToBackStack(null)
                     .commit();
         }
         else {
-            fragmentManager.beginTransaction().replace(R.id.frag_view_home, fragment)
+            fragmentManager.beginTransaction().replace(R.id.frag_view_techfest_home, fragment)
                     .commit();
         }
+    }
+
+    public void replaceFragments(Class fragmentClass, HashMap<String,String> map) {
+        Fragment fragment = null;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Bundle bundle = new Bundle();
+
+        if(map!=null) {
+            Set<Map.Entry<String, String>> set = map.entrySet();
+            for(Map.Entry<String, String> data : set) {
+                bundle.putString(data.getKey(),data.getValue());
+            }
+            fragment.setArguments(bundle);
+        }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.frag_view_techfest_home, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

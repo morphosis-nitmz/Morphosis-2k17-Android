@@ -57,8 +57,8 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
     NavigationView mNavigationView;
     TextView mTitle;
     ProgressDialog mDialog;
-    public View mFragView;
-    public View mHomeView;
+    private View mFragView;
+    private View mHomeView;
 
     Data mData;
 
@@ -72,25 +72,25 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_scooby_doo_home);
 
         // Initialize fragment views
-        mFragView =findViewById(R.id.frag_view_home);
-        mHomeView =findViewById(R.id.home_view);
+        mFragView =findViewById(R.id.frag_view_scooby_home);
+        mHomeView =findViewById(R.id.scooby_home_view);
 
         mDialog =new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
         status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_scooby);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_scooby);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view_scooby);
         mNavigationView.setNavigationItemSelectedListener(this);
-        mNavigationView.setCheckedItem(R.id.nav_home);
+        mNavigationView.setCheckedItem(R.id.nav_home_scooby);
         mAnswerField = (EditText) findViewById(R.id.answer_text);
         mTitle = (TextView) findViewById(R.id.title_view);
         mAnswerButton = (Button) findViewById(R.id.answer_button);
@@ -166,7 +166,7 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_scooby);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -192,16 +192,16 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_home_scooby) {
             Intent intent = new Intent(this, ScoobyDooHomeActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_profile) {
+        } else if (id == R.id.nav_profile_scooby) {
             replaceFragments(UserProfileFragment.class, false);
-        } else if (id == R.id.nav_leaderboard) {
+        } else if (id == R.id.nav_leaderboard_scooby) {
             replaceFragments(LeaderboardFragment.class, false);
-        } else if (id == R.id.nav_developer) {
+        } else if (id == R.id.nav_developer_scooby) {
 
-        } else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_logout_scooby) {
             status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
             status.edit().putBoolean("in", false).apply();
             mAuth.signOut();
@@ -210,7 +210,7 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share_scooby) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey checkout my app at https://play.com");
@@ -218,7 +218,7 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
             startActivity(sendIntent);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_scooby);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -230,7 +230,7 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
             // Check if Fragment Manager contains any existing fragment. If yes, remove it.
             if(!getSupportFragmentManager().beginTransaction().isEmpty()) {
                 getSupportFragmentManager().beginTransaction().
-                        remove(getSupportFragmentManager().findFragmentById(R.id.frag_view_home)).
+                        remove(getSupportFragmentManager().findFragmentById(R.id.frag_view_scooby_home)).
                         commit();
             }
         } catch (Exception e) {
@@ -250,18 +250,17 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
          * Else, back button will trace the previously opened fragments.
          */
         if(addToBackStack) {
-            fragmentManager.beginTransaction().replace(R.id.frag_view_home, fragment)
+            fragmentManager.beginTransaction().replace(R.id.frag_view_scooby_home, fragment)
                     .addToBackStack(null)
                     .commit();
         }
         else {
-            fragmentManager.beginTransaction().replace(R.id.frag_view_home, fragment)
+            fragmentManager.beginTransaction().replace(R.id.frag_view_scooby_home, fragment)
                     .commit();
         }
     }
 
-    public void replaceFragments(Class fragmentClass, HashMap<String,String> map)
-    {
+    public void replaceFragments(Class fragmentClass, HashMap<String,String> map) {
         Fragment fragment = null;
         try {
             fragment = (Fragment) fragmentClass.newInstance();
@@ -271,21 +270,17 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
 
         Bundle bundle = new Bundle();
 
-        if(map!=null)
-        {
+        if(map!=null) {
             Set<Map.Entry<String, String>> set = map.entrySet();
-            for(Map.Entry<String, String> data : set){
+            for(Map.Entry<String, String> data : set) {
                 bundle.putString(data.getKey(),data.getValue());
             }
             fragment.setArguments(bundle);
         }
 
-
-
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.frag_view_home, fragment)
+        fragmentManager.beginTransaction().replace(R.id.frag_view_scooby_home, fragment)
                 .addToBackStack(null)
                 .commit();
-
     }
 }

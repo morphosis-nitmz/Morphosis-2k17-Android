@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nitmz.morphosis.scoobydoo.LeaderboardFragment">
+    tools:context="com.nitmz.morphosis.techfest.EventListFragment">
 
     <ListView
-        android:id="@+id/leaderboard_list"
+        android:id="@+id/events_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="8dp"

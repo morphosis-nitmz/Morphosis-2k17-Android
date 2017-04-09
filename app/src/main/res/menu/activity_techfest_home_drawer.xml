@@ -3,46 +3,48 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_home_techfest"
             android:title="@string/nav_home_title"
             android:icon="@drawable/ic_home_black_48dp" />
         <item
-            android:id="@+id/nav_events"
+            android:id="@+id/nav_events_techfest"
             android:title="@string/nav_events_title"
             android:icon="@drawable/ic_event_black_48dp" />
         <item
-            android:id="@+id/nav_winners"
+            android:id="@+id/nav_winners_techfest"
             android:title="@string/nav_winners_title"
             android:icon="@drawable/ic_leaderboard_black_100px" />
         <item
-            android:id="@+id/nav_schedule"
+            android:id="@+id/nav_schedule_techfest"
             android:title="@string/nav_schedule_title"
             android:icon="@drawable/ic_schedule_black_48dp" />
         <item
-            android:id="@+id/nav_technical_society"
+            android:id="@+id/nav_technical_society_techfest"
             android:title="@string/nav_technical_society_title"
             android:icon="@drawable/ic_group_black_48dp" />
         <item
-            android:id="@+id/nav_developer"
+            android:id="@+id/nav_developer_techfest"
             android:title="@string/nav_developers_title"
             android:visible="true"
             android:icon="@drawable/ic_developer_mode_black_48dp"/>
         <item
-            android:id="@+id/nav_morphosis_website"
+            android:id="@+id/nav_morphosis_website_techfest"
             android:title="@string/nav_morphosis_website_title"
+            android:visible="true"
             android:icon="@drawable/ic_public_black_48dp" />
         <item
-            android:id="@+id/nav_about_morphosis"
+            android:id="@+id/nav_about_morphosis_techfest"
             android:title="@string/nav_about_morphosis_title"
             android:icon="@drawable/ic_info_black_48dp" />
         <item
-            android:id="@+id/nav_logout"
+            android:id="@+id/nav_logout_techfest"
             android:title="@string/nav_logout_title"
             android:visible="true"
             android:icon="@drawable/ic_logout_black_48dp" />
         <item
-            android:id="@+id/nav_share"
+            android:id="@+id/nav_share_techfest"
             android:title="@string/nav_share_title"
+            android:visible="true"
             android:icon="@drawable/ic_menu_share" />
     </group>
 

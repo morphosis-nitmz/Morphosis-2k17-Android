@@ -3,29 +3,29 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_home_scooby"
             android:title="@string/nav_home_title"
             android:icon="@drawable/ic_home_black_48dp" />
         <item
-            android:id="@+id/nav_profile"
+            android:id="@+id/nav_profile_scooby"
             android:title="@string/nav_profile_title"
             android:icon="@drawable/ic_person_black_48dp" />
         <item
-            android:id="@+id/nav_leaderboard"
+            android:id="@+id/nav_leaderboard_scooby"
             android:title="@string/nav_leaderboard_title"
             android:icon="@drawable/ic_leaderboard_black_100px" />
         <item
-            android:id="@+id/nav_developer"
+            android:id="@+id/nav_developer_scooby"
             android:title="@string/nav_developers_title"
             android:visible="true"
             android:icon="@drawable/ic_developer_mode_black_48dp"/>
         <item
-            android:id="@+id/nav_logout"
+            android:id="@+id/nav_logout_scooby"
             android:title="@string/nav_logout_title"
             android:visible="true"
             android:icon="@drawable/ic_logout_black_48dp" />
         <item
-            android:id="@+id/nav_share"
+            android:id="@+id/nav_share_scooby"
             android:title="@string/nav_share_title"
             android:icon="@drawable/ic_menu_share" />
     </group>
