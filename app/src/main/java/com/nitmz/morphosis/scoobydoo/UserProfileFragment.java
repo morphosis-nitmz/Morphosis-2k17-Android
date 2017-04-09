@@ -83,7 +83,7 @@ public class UserProfileFragment extends Fragment {
                 .dontAnimate()
                 .into(user_image);
 
-        user_name.setText(mAuth.getCurrentUser().getDisplayName());
+        user_name.setText(toTitleCase(mAuth.getCurrentUser().getDisplayName().toLowerCase().trim()));
 
 
 
@@ -94,6 +94,22 @@ public class UserProfileFragment extends Fragment {
 
     }
 
+    // Converts a string into Title Case
+    public static String toTitleCase(String input) {
+        StringBuilder titleCase = new StringBuilder();
+        boolean nextTitleCase = true;
 
+        for (char c : input.toCharArray()) {
+            if (Character.isSpaceChar(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+        return titleCase.toString();
+    }
 
 }
