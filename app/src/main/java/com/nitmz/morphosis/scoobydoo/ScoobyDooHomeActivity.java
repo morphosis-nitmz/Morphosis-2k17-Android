@@ -33,6 +33,10 @@ import com.google.firebase.storage.StorageReference;
 import com.nitmz.morphosis.LoginActivity;
 import com.nitmz.morphosis.R;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 public class ScoobyDooHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -192,7 +196,7 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
             Intent intent = new Intent(this, ScoobyDooHomeActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_profile) {
-            replaceFragments(ProfileFragment.class, false);
+            replaceFragments(UserProfileFragment.class,false);
         } else if (id == R.id.nav_leaderboard) {
             replaceFragments(LeaderboardFragment.class, false);
         } else if (id == R.id.nav_developer) {
@@ -254,5 +258,34 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
             fragmentManager.beginTransaction().replace(R.id.frag_view_home, fragment)
                     .commit();
         }
+    }
+
+    public void replaceFragments(Class fragmentClass, HashMap<String,String> map)
+    {
+        Fragment fragment = null;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Bundle bundle = new Bundle();
+
+        if(map!=null)
+        {
+            Set<Map.Entry<String, String>> set = map.entrySet();
+            for(Map.Entry<String, String> data : set){
+                bundle.putString(data.getKey(),data.getValue());
+            }
+            fragment.setArguments(bundle);
+        }
+
+
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.frag_view_home, fragment)
+                .addToBackStack(null)
+                .commit();
+
     }
 }

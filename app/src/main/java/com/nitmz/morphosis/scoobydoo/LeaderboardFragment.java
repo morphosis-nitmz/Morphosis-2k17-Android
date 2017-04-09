@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.nitmz.morphosis.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class LeaderboardFragment extends Fragment {
@@ -28,13 +29,13 @@ public class LeaderboardFragment extends Fragment {
     private DatabaseReference mScoreRef;
     private Query mTopScoreQuery;
 
-    private ArrayList<String> names;
-    private ArrayList<String> pURL;
-    private ArrayList<String> scores;
+    private ArrayList<LeaderBoardUserObject> userObjects;
+
 
     private ValueEventListener listener;
 
     ListView mLeaderboard;
+    LeaderBoardListViewAdapter adapter;
 
     public LeaderboardFragment() {
         // Required empty public constructor
@@ -52,11 +53,12 @@ public class LeaderboardFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mLeaderboard = (ListView) view.findViewById(R.id.leaderboard_list);
+        userObjects = new ArrayList<>();
 
-        names = new ArrayList<>();
-        pURL = new ArrayList<>();
-        scores = new ArrayList<>();
+        mLeaderboard = (ListView) view.findViewById(R.id.leaderboard_list);
+        adapter = new LeaderBoardListViewAdapter(userObjects,getContext());
+        mLeaderboard.setAdapter(adapter);
+
 
         mDB = FirebaseDatabase.getInstance();
         mScoreRef = mDB.getReference("score");
@@ -83,22 +85,39 @@ public class LeaderboardFragment extends Fragment {
         listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+
                 String userName = dataSnapshot.child("name").getValue(String.class);
                 userName = toTitleCase(userName.toLowerCase().trim());
+                String photoURL = dataSnapshot.child("pURL").getValue(String.class);
+                String userScore =  dataSnapshot.child("score").getValue(String.class);
 
-                ArrayList<String> temp = new ArrayList<>();
-                temp.add(userName);
-                temp.addAll(names);
-                names = temp;
+                LeaderBoardUserObject user = new LeaderBoardUserObject();
+                user.setUsername(userName);
+                user.setScore(userScore);
+                user.setPurl(photoURL);
 
-                //String photoURL = dataSnapshot.child("pURL").getValue(String.class);
-                //pURL.add(photoURL);
+                ArrayList<LeaderBoardUserObject> userObjects_temp = new ArrayList<>();
+                userObjects_temp.add(user);
+                userObjects_temp.addAll(userObjects);
+                userObjects = userObjects_temp;
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                        getContext(),
-                        android.R.layout.simple_list_item_1,
-                        names);
+                adapter = new LeaderBoardListViewAdapter(userObjects,getContext());
+                AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        LeaderBoardUserObject userObject = userObjects.get(position);
+                        HashMap<String,String> map = new HashMap<>();
+                        map.put("name",userObject.getUsername());
+                        map.put("score",userObject.getScore());
+                        map.put("purl",userObject.getPurl());
+                        ((ScoobyDooHomeActivity)getActivity()).replaceFragments(LeaderBoardUserDetailsFragment.class,map);
+                    }
+                };
+                mLeaderboard.setOnItemClickListener(listener);
+
                 mLeaderboard.setAdapter(adapter);
+
             }
 
             @Override
