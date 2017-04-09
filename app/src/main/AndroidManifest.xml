@@ -44,6 +44,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".techfest.EventDetailsActivity"
+            android:label="@string/title_activity_event_details"></activity>
     </application>
 
 </manifest>

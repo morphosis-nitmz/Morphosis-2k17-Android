@@ -25,4 +25,7 @@
     <string name="nav_technical_society_title">Technical Society</string>
     <string name="nav_morphosis_website_title">Morphosis Website</string>
     <string name="nav_about_morphosis_title">About Morphosis</string>
+    <string name="nav_notifications_title">Notifications</string>
+    <string name="title_activity_event_details">EventDetailsActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
