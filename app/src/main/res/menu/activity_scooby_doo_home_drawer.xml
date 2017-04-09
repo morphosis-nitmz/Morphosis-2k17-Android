@@ -26,7 +26,7 @@
             android:icon="@drawable/ic_logout_black_48dp" />
         <item
             android:id="@+id/nav_share"
-            android:title="Share"
+            android:title="@string/nav_share_title"
             android:icon="@drawable/ic_menu_share" />
     </group>
 
