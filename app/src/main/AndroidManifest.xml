@@ -36,6 +36,7 @@
         <activity
             android:name=".scoobydoo.ScoobyDooSplashScreenActivity"
             android:label="Scooby Doo"
+            android:icon="@mipmap/ic_launche"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,5 +49,6 @@
             android:name=".techfest.EventDetailsActivity"
             android:label="@string/title_activity_event_details"></activity>
     </application>
+
 
 </manifest>
