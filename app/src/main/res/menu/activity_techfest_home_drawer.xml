@@ -3,35 +3,47 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_home"
+            android:title="@string/nav_home_title"
+            android:icon="@drawable/ic_home_black_48dp" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_events"
+            android:title="@string/nav_events_title"
+            android:icon="@drawable/ic_event_black_48dp" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_winners"
+            android:title="@string/nav_winners_title"
+            android:icon="@drawable/ic_leaderboard_black_100px" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_schedule"
+            android:title="@string/nav_schedule_title"
+            android:icon="@drawable/ic_schedule_black_48dp" />
+        <item
+            android:id="@+id/nav_technical_society"
+            android:title="@string/nav_technical_society_title"
+            android:icon="@drawable/ic_group_black_48dp" />
+        <item
+            android:id="@+id/nav_developer"
+            android:title="@string/nav_developers_title"
+            android:visible="true"
+            android:icon="@drawable/ic_developer_mode_black_48dp"/>
+        <item
+            android:id="@+id/nav_morphosis_website"
+            android:title="@string/nav_morphosis_website_title"
+            android:icon="@drawable/ic_public_black_48dp" />
+        <item
+            android:id="@+id/nav_about_morphosis"
+            android:title="@string/nav_about_morphosis_title"
+            android:icon="@drawable/ic_info_black_48dp" />
         <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_logout_black_48dp"
-            android:title="Logout" />
+            android:title="@string/nav_logout_title"
+            android:visible="true"
+            android:icon="@drawable/ic_logout_black_48dp" />
+        <item
+            android:id="@+id/nav_share"
+            android:title="@string/nav_share_title"
+            android:icon="@drawable/ic_menu_share" />
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-
-        </menu>
-    </item>
 
 </menu>

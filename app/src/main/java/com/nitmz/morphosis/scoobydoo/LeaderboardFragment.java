@@ -86,7 +86,9 @@ public class LeaderboardFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
+
                 String userName = dataSnapshot.child("name").getValue(String.class);
+                userName = toTitleCase(userName.toLowerCase().trim());
                 String photoURL = dataSnapshot.child("pURL").getValue(String.class);
                 String userScore =  dataSnapshot.child("score").getValue(String.class);
 
@@ -126,5 +128,23 @@ public class LeaderboardFragment extends Fragment {
         if(listener != null) {
             mUsersRef.addValueEventListener(listener);
         }
+    }
+
+    // Converts a string into Title Case
+    public static String toTitleCase(String input) {
+        StringBuilder titleCase = new StringBuilder();
+        boolean nextTitleCase = true;
+
+        for (char c : input.toCharArray()) {
+            if (Character.isSpaceChar(c)) {
+                nextTitleCase = true;
+            } else if (nextTitleCase) {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+        return titleCase.toString();
     }
 }
