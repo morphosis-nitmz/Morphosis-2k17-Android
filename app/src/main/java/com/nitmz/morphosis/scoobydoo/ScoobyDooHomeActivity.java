@@ -145,7 +145,7 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
 
     private void checkAnswer() {
         String answer = mAnswerField.getText().toString().toLowerCase();
-        if(answer.equals(mData.getAnswer(mQuestionNumber))) {
+        if(mData.checkAnswer(answer, mQuestionNumber)) {
             if (mQuestionNumber < 10) {
                 mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
                         setValue("0" + mQuestionNumber);

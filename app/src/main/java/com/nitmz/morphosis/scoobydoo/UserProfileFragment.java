@@ -45,6 +45,8 @@ public class UserProfileFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // TODO: App crashes when profile is opened after opening my profile from leaderboard list.
+
         mAuth = FirebaseAuth.getInstance();
         mDB = FirebaseDatabase.getInstance();
         mScoreRef = mDB.getReference("score/" + mAuth.getCurrentUser().getUid());
