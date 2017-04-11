@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -25,6 +26,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -51,6 +54,8 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
     private DatabaseReference mUsersRef;
     private DatabaseReference mScoreRef;
 
+    DatabaseReference mStatusRef;
+
     private ValueEventListener mListener;
 
     private EditText mAnswerField;
@@ -71,13 +76,41 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scooby_doo_home);
 
+        status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
+        mDB = FirebaseDatabase.getInstance();
+        mStatusRef = mDB.getReference("gameStarted");
+
+        checkGameStatus();
+
+        if(!status.getBoolean("first",false))
+        {
+            introDisplay();
+            status.edit().putBoolean("first",true).apply();
+        }
+
         // Initialize fragment views
         mFragView =findViewById(R.id.frag_view_scooby_home);
         mHomeView =findViewById(R.id.scooby_home_view);
 
         mDialog =new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
-        status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                if(mAuth.getCurrentUser() == null){
+                    Intent intent = new Intent(ScoobyDooHomeActivity.this,LoginActivity.class);
+                    intent.putExtra("launch",2);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };
+
+        mAuth.addAuthStateListener(mAuthListener);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_scooby);
         setSupportActionBar(toolbar);
@@ -204,12 +237,18 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_logout_scooby) {
             status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
             status.edit().putBoolean("in", false).apply();
+            status.edit().putBoolean("first",false).apply();
+            mAuth.removeAuthStateListener(mAuthListener);
             mAuth.signOut();
             Intent intent = new Intent(ScoobyDooHomeActivity.this, LoginActivity.class);
             intent.putExtra("launch", 2);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             finish();
+            startActivity(intent);
+
+
+
         } else if (id == R.id.nav_share_scooby) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
@@ -222,6 +261,7 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
     public void replaceFragments(Class fragmentClass, Boolean addToBackStack) {
         Fragment fragment = null;
@@ -283,4 +323,33 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
                 .addToBackStack(null)
                 .commit();
     }
+
+
+    private void introDisplay() {
+        Intent intent = new Intent(ScoobyDooHomeActivity.this, IntroActivity.class);
+        startActivity(intent);
+    }
+
+    private void checkGameStatus(){
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String gameStarted = dataSnapshot.getValue().toString();
+                if(!gameStarted.equals("1"))
+                {
+                    Intent intent = new Intent(ScoobyDooHomeActivity.this, GameStatusActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        mStatusRef.addValueEventListener(listener);
+    }
+
 }

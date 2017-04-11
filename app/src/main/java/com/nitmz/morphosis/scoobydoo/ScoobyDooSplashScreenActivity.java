@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
@@ -19,7 +18,6 @@ import com.nitmz.morphosis.R;
 
 public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 100;
     FirebaseDatabase mDB;
     DatabaseReference mStatusRef;
 
@@ -39,27 +37,26 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                checkGameStatus();
-            }
-        }, SPLASH_TIME_OUT);
+        checkLoginStatus();
     }
 
     private void checkLoginStatus() {
+
         status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
         boolean  logIn = status.getBoolean("in", false);
         if (logIn) {
-            Intent intent = new Intent(ScoobyDooSplashScreenActivity.this, ScoobyDooHomeActivity.class);
-            startActivity(intent);
-            finish();
+
+            checkGameStatus();
+
+
         } else {
+
             Intent intent = new Intent(ScoobyDooSplashScreenActivity.this, LoginActivity.class);
             intent.putExtra("launch", 2);
             startActivity(intent);
+            finish();
         }
-        finish();
+
     }
 
     private void checkGameStatus(){
@@ -70,11 +67,16 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
                 String gameStarted = dataSnapshot.getValue().toString();
                 if(gameStarted.equals("1"))
                 {
-                    checkLoginStatus();
+                    Intent intent = new Intent(ScoobyDooSplashScreenActivity.this, ScoobyDooHomeActivity.class);
+                    startActivity(intent);
+                    finish();
+
                 }
                 else {
+
                     Intent intent = new Intent(ScoobyDooSplashScreenActivity.this, GameStatusActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }
 
@@ -83,9 +85,8 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
 
             }
         };
-
         mStatusRef.addValueEventListener(listener);
-
-
     }
+
+
 }

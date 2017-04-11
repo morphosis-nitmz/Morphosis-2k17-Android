@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.nitmz.morphosis.scoobydoo.CircleImageView
+            <com.nitmz.morphosis.CircleImageView
                 android:id="@+id/user_image_leaderboard_details"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
