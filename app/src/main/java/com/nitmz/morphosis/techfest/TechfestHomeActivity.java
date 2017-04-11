@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,10 +21,11 @@ import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
 import com.nitmz.morphosis.LoginActivity;
 import com.nitmz.morphosis.R;
+import com.rd.PageIndicatorView;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class TechfestHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,6 +35,14 @@ public class TechfestHomeActivity extends AppCompatActivity
 
     private View mFragView;
     private View mHomeView;
+
+    private ViewPager mViewPager;
+    private static int currentPage = 0;
+    private static int total_pages = 0;
+
+    private static final Integer[] images = {R.drawable.a, R.drawable.b,
+            R.drawable.c};
+    private ArrayList<Integer> ImagesArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +66,8 @@ public class TechfestHomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_techfest);
         navigationView.setNavigationItemSelectedListener(this);
+
+        init();
     }
 
     @Override
@@ -163,27 +176,37 @@ public class TechfestHomeActivity extends AppCompatActivity
         }
     }
 
-    public void replaceFragments(Class fragmentClass, HashMap<String,String> map) {
-        Fragment fragment = null;
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
+    private void init() {
+        for (int i = 0; i < images.length; i++) {
+            ImagesArray.add(images[i]);
         }
 
-        Bundle bundle = new Bundle();
+        mViewPager = (ViewPager) findViewById(R.id.home_viewpager);
+        mViewPager.setAdapter(new ViewPagerAdapter(TechfestHomeActivity.this, ImagesArray));
 
-        if(map!=null) {
-            Set<Map.Entry<String, String>> set = map.entrySet();
-            for(Map.Entry<String, String> data : set) {
-                bundle.putString(data.getKey(),data.getValue());
+        total_pages = images.length;
+
+        PageIndicatorView pageIndicatorView = (PageIndicatorView) findViewById(R.id.pageIndicatorView);
+        pageIndicatorView.setViewPager(mViewPager);
+        //pageIndicatorView.setSelectedColor(R.color.highlighted);
+        //pageIndicatorView.setUnselectedColor(R.color.nothighlighted);
+
+        // Auto start of viewpager
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == total_pages) {
+                    currentPage = 0;
+                }
+                mViewPager.setCurrentItem(currentPage++, true);
             }
-            fragment.setArguments(bundle);
-        }
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.frag_view_techfest_home, fragment)
-                .addToBackStack(null)
-                .commit();
+        };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, 2000, 3000);
     }
 }
