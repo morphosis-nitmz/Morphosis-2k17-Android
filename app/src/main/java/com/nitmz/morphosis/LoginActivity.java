@@ -182,23 +182,29 @@ public class LoginActivity extends AppCompatActivity
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            showProgress(false);
+
                             status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
                             status.edit().putBoolean("in", true).apply();
                             createUserNode();
                             createScoreNode();
 
                             if(launch == 1) {
+
                                 Intent intent = new Intent(LoginActivity.this, TechfestHomeActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
+                                showProgress(false);
                                 finish();
+                                startActivity(intent);
+
                             }
                             else {
+
                                 Intent intent = new Intent(LoginActivity.this, ScoobyDooHomeActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
+                                showProgress(false);
                                 finish();
+                                startActivity(intent);
+
                             }
                         }
                         // If sign in fails, display a message to the user. If sign in succeeds
