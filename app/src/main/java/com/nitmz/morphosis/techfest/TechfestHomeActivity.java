@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.nitmz.morphosis.LoginActivity;
@@ -35,6 +36,8 @@ public class TechfestHomeActivity extends AppCompatActivity
 
     private View mFragView;
     private View mHomeView;
+    private ImageView mScheduleImage;
+    private ImageView mEventsImage;
 
     private ViewPager mViewPager;
     private static int currentPage = 0;
@@ -68,6 +71,22 @@ public class TechfestHomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         init();
+
+        mScheduleImage = (ImageView) findViewById(R.id.schedule_icon_home);
+        mScheduleImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(ScheduleFragment.class, false);
+            }
+        });
+
+        mEventsImage = (ImageView) findViewById(R.id.events_icon_home);
+        mEventsImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(EventListFragment.class, false);
+            }
+        });
     }
 
     @Override
@@ -108,9 +127,9 @@ public class TechfestHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_winners_techfest) {
 
         } else if (id == R.id.nav_schedule_techfest) {
-
+            replaceFragments(ScheduleFragment.class, false);
         } else if (id == R.id.nav_technical_society_techfest) {
-
+            replaceFragments(TechnicalSocietyFragment.class, false);
         } else if (id == R.id.nav_developer_techfest) {
 
         } else if (id == R.id.nav_morphosis_website_techfest) {

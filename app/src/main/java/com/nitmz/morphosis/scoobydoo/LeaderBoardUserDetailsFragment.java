@@ -42,9 +42,9 @@ public class LeaderBoardUserDetailsFragment extends Fragment {
         String purl = getArguments().getString("purl");
 
         mUserImage = (CircleImageView)view.findViewById(R.id.user_image_leaderboard_details);
-        mUserName = (TextView)view.findViewById(R.id.user_name_ip);
-        mUserScore = (TextView)view.findViewById(R.id.user_score_ip);
-        mUserRank = (TextView)view.findViewById(R.id.user_rank_ip);
+        mUserName = (TextView)view.findViewById(R.id.user_name_input);
+        mUserScore = (TextView)view.findViewById(R.id.user_score_input);
+        mUserRank = (TextView)view.findViewById(R.id.user_rank_input);
 
         Glide.with(getContext())
                 .load(purl)

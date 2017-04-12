@@ -25,11 +25,10 @@
                 android:src="@drawable/ic_account_circle_white_48dp" />
 
             <TextView
-                android:id="@+id/user_name_ip"
+                android:id="@+id/user_name_input"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_margin="5dp"
-                android:text="Narayana Reddy"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -52,7 +51,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/user_rank_txt"
+                        android:id="@+id/user_rank_text"
                         android:layout_width="0dp"
                         android:layout_height="24dp"
                         android:layout_marginStart="5dp"
@@ -72,7 +71,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/user_rank_ip"
+                        android:id="@+id/user_rank_input"
                         android:layout_width="match_parent"
                         android:layout_height="33.5dp"
                         android:layout_margin="5dp"
@@ -97,7 +96,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/user_score_txt"
+                        android:id="@+id/user_score_text"
                         android:layout_width="0dp"
                         android:layout_height="24dp"
                         android:layout_marginStart="5dp"
@@ -117,7 +116,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/user_score_ip"
+                        android:id="@+id/user_score_input"
                         android:layout_width="match_parent"
                         android:layout_height="33.5dp"
                         android:layout_margin="5dp"
@@ -132,11 +131,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
-
-
-
-
 
     </LinearLayout>
 
