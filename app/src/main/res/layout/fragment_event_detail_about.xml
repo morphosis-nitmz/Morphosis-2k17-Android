@@ -4,9 +4,53 @@
     android:layout_height="match_parent"
     tools:context="com.nitmz.morphosis.techfest.EventDetailAboutFragment">
 
-    <WebView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/event_detail_about_web_view" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <WebView
+                android:id="@+id/event_detail_about_web_view_0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <WebView
+                android:id="@+id/event_detail_about_web_view_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <WebView
+                android:id="@+id/event_detail_about_web_view_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <WebView
+                android:id="@+id/event_detail_about_web_view_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <WebView
+                android:id="@+id/event_detail_about_web_view_4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <WebView
+                android:id="@+id/event_detail_about_web_view_5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
