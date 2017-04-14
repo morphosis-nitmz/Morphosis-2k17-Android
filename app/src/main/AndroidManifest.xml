@@ -52,6 +52,15 @@
         <activity
             android:name=".scoobydoo.IntroActivity"
             android:theme="@style/Theme.Intro" />
+        <activity
+            android:name=".techfest.AboutMorphosisActivity"
+            android:label="@string/title_activity_about_morphosis"
+            android:parentActivityName=".techfest.TechfestHomeActivity"
+            android:theme="@style/Dark">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.nitmz.morphosis.techfest.TechfestHomeActivity" />
+        </activity>
     </application>
 
 </manifest>

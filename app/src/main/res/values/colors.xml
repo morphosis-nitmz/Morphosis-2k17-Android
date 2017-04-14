@@ -10,4 +10,6 @@
     <color name="mred">#f44336</color>
     <color name="morange">#ffc107</color>
     <color name="mgrey">#212121</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>
