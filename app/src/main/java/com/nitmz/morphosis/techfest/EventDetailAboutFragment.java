@@ -6,13 +6,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.webkit.WebView;
 
 import com.nitmz.morphosis.R;
 
 public class EventDetailAboutFragment extends Fragment {
 
-    TextView mAboutText;
+    WebView mEventAboutWebView;
 
     private TechfestData techfestData;
 
@@ -20,14 +20,13 @@ public class EventDetailAboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_event_detail_about, container, false);
-        mAboutText = (TextView) rootView.findViewById(R.id.event_detail_about_text);
+        mEventAboutWebView = (WebView) rootView.findViewById(R.id.event_detail_about_web_view);
 
         techfestData = new TechfestData();
 
         Intent intent = getActivity().getIntent();
         Bundle bundle = intent.getExtras();
         int position = bundle.getInt("position");
-        mAboutText.setText(techfestData.getAboutEvent(position));
 
         return rootView;
     }

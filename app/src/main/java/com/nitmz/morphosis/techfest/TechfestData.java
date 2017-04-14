@@ -112,7 +112,15 @@ public class TechfestData {
                     "An instance of this event would requires you to sell a product to a number."
     };
 
+    int[] rulesPages = {
+            2, 2, 3, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0
+    };
+
     public String getAboutEvent(int position) {
         return aboutEvent[position];
+    }
+
+    public int getRulesPage(int position) {
+        return  rulesPages[position];
     }
 }

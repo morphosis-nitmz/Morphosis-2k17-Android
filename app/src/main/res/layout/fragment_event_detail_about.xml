@@ -4,9 +4,9 @@
     android:layout_height="match_parent"
     tools:context="com.nitmz.morphosis.techfest.EventDetailAboutFragment">
 
-    <TextView
+    <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/event_detail_about_text" />
+        android:id="@+id/event_detail_about_web_view" />
 
 </FrameLayout>
