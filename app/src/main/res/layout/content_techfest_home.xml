@@ -114,13 +114,17 @@
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/events" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0.50"
+                        android:background="@android:color/black" />
+
                     <TextView
                         android:id="@+id/events_text_home"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center|bottom"
-                        android:alpha="0.80"
-                        android:background="@android:color/black"
+                        android:layout_gravity="center"
                         android:padding="1dp"
                         android:text="Events"
                         android:textAlignment="center"
