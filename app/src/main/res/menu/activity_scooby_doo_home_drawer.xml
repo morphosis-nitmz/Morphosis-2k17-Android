@@ -15,11 +15,6 @@
             android:title="@string/nav_leaderboard_title"
             android:icon="@drawable/ic_leaderboard_black_100px" />
         <item
-            android:id="@+id/nav_developer_scooby"
-            android:title="@string/nav_developers_title"
-            android:visible="true"
-            android:icon="@drawable/ic_developer_mode_black_48dp"/>
-        <item
             android:id="@+id/nav_logout_scooby"
             android:title="@string/nav_logout_title"
             android:visible="true"

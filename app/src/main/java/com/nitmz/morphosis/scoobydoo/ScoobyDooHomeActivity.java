@@ -232,8 +232,6 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
             replaceFragments(UserProfileFragment.class, false);
         } else if (id == R.id.nav_leaderboard_scooby) {
             replaceFragments(LeaderboardFragment.class, false);
-        } else if (id == R.id.nav_developer_scooby) {
-
         } else if (id == R.id.nav_logout_scooby) {
             status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
             status.edit().putBoolean("in", false).apply();
