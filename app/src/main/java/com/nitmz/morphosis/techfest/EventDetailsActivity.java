@@ -18,10 +18,9 @@ public class EventDetailsActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
-    /**
-     * The ViewPager will host the section contents.
-     */
     private ViewPager mViewPager;
+
+    private int mEventPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,8 @@ public class EventDetailsActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs_event_detail_techfest);
         tabLayout.setupWithViewPager(mViewPager);
+
+        mEventPosition = getIntent().getExtras().getInt("position");
     }
 
 
@@ -78,9 +79,9 @@ public class EventDetailsActivity extends AppCompatActivity {
             //return PlaceholderFragment.newInstance(position + 1);
             switch (position) {
                 case 0:
-                    return new EventDetailAboutFragment();
+                    return getFragment(EventDetailAboutFragment.class, mEventPosition);
                 case 1:
-                    return new EventDetailRulesFragment();
+                    return getFragment(EventDetailRulesFragment.class, mEventPosition);
             }
             return null;
         }
@@ -101,5 +102,18 @@ public class EventDetailsActivity extends AppCompatActivity {
             }
             return null;
         }
+    }
+
+    public Fragment getFragment(Class fragmentClass, int position) {
+        Fragment fragment = null;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Bundle bundle = new Bundle();
+        bundle.putInt("position", position);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 }

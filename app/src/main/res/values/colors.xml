@@ -3,4 +3,13 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#ffc107</color>
+    <color name="home_background">#212121</color>
+    <color name="white">#ffffff</color>
+    <color name="swipe_refresh_blue">#03a9f4</color>
+    <color name="swipe_refresh_green">#4caf50</color>
+    <color name="swipe_refresh_red">#f44336</color>
+    <color name="swipe_refresh_orange">#ffc107</color>
+    <color name="swipe_refresh_grey">#212121</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

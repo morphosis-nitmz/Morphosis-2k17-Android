@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nitmz.morphosis.techfest.AboutMorphosisActivity">
+
+
+    <ImageView
+        android:id="@+id/about_morphosis_logo"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/logo_morphosis" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/about_morphosis_logo"
+        android:layout_marginStart="12dp"
+        android:text="Morphosis"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="36sp"
+        android:id="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="11dp"
+        android:text="The annual Technical Festival of  NIT Mizoram"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="22dp"
+        android:padding="5dp"
+        android:text="Morphosis is the annual technical festival organized by the Technical Society of NIT Mizoram. This festival is organized every year with a sincere motive to inculcate the technical and managerial skills in the very nature of the participants. We are here with a plethora of indulging and needless to say, super exulting events that not only provide an excellent system of support to the participants but also provide them a distinguished platform to carve out the niche in their field of interest. This year we are presenting a wide range of new and exciting events and that too at a very competitive level that is assured to send down a chill through your spines. So make your minds ready to experience the technical frenzy this year with Morphosis. Do join us and give us a chance to help you to excavate your hidden potential."
+        android:textAlignment="center"
+        android:textSize="16dp" />
+
+
+
+</RelativeLayout>

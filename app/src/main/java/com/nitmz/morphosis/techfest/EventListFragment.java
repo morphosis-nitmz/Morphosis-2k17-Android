@@ -39,6 +39,9 @@ public class EventListFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         mEvents = new ArrayList<>(Arrays.asList(
+                "Maze Solver",
+                "Robo Race",
+                "Robo War",
                 "Stock Bridge",
                 "Quiz",
                 "Arcadia",
@@ -50,9 +53,11 @@ public class EventListFragment extends Fragment {
                 "Cypher",
                 "Tech Talk",
                 "Science Expo",
-                "S-Marketing"));
+                "S-Marketing",
+                "Abhyudaya",
+                "Manthan"));
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 getContext(),
                 android.R.layout.simple_list_item_1,
                 mEvents
