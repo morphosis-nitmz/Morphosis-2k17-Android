@@ -61,6 +61,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nitmz.morphosis.techfest.TechfestHomeActivity" />
         </activity>
+        <activity android:name=".techfest.MorphosisWebsiteWebViewActivity"></activity>
     </application>
 
 </manifest>

@@ -133,7 +133,8 @@ public class TechfestHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_developer_techfest) {
 
         } else if (id == R.id.nav_morphosis_website_techfest) {
-
+            Intent intent = new Intent(TechfestHomeActivity.this, MorphosisWebsiteWebViewActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_about_morphosis_techfest) {
             Intent intent = new Intent(TechfestHomeActivity.this, AboutMorphosisActivity.class);
             startActivity(intent);

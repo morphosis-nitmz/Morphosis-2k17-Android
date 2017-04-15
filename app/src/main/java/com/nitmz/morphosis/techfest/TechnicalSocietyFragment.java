@@ -38,13 +38,13 @@ public class TechnicalSocietyFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mTechnicalSocietySwipeRefresh =(SwipeRefreshLayout)view.findViewById(R.id.technical_society_swipe_refresh);
+        mTechnicalSocietySwipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.technical_society_swipe_refresh);
         swipeRefresh();
-        pd=new ProgressDialog(getContext());
+        pd = new ProgressDialog(getContext());
         pd.setMessage("Loading...");
 
         //sr=(SwipeRefreshLayout)view.findViewById(R.id.srOngoingMatchList);
-        mTechnicalSocietyWebView =(WebView)view.findViewById(R.id.technical_society_web_view);
+        mTechnicalSocietyWebView = (WebView) view.findViewById(R.id.technical_society_web_view);
         mTechnicalSocietyWebView.loadUrl("http://morphosis2k17.com/people.php");
         mTechnicalSocietyWebView.getSettings().setUseWideViewPort(true);
         mTechnicalSocietyWebView.getSettings().setLoadWithOverviewMode(true);
@@ -81,17 +81,13 @@ public class TechnicalSocietyFragment extends Fragment {
                 pd.dismiss();
                 mTechnicalSocietySwipeRefresh.setRefreshing(false);
             }
-
-
-
         });
     }
 
-    void swipeRefresh()
-    {
+    void swipeRefresh() {
 
-        mTechnicalSocietySwipeRefresh.setColorSchemeResources(R.color.mgreen,
-                R.color.mblue, R.color.morange, R.color.mred);
+        mTechnicalSocietySwipeRefresh.setColorSchemeResources(R.color.swipe_refresh_green,
+                R.color.swipe_refresh_blue, R.color.swipe_refresh_orange, R.color.swipe_refresh_red);
         mTechnicalSocietySwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
