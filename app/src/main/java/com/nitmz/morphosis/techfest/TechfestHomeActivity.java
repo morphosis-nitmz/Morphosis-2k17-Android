@@ -122,6 +122,8 @@ public class TechfestHomeActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_events_techfest) {
             replaceFragments(EventListFragment.class, false);
+        } else if (id == R.id.nav_news_techfest) {
+            replaceFragments(NewsFragment.class, false);
         } else if (id == R.id.nav_prizes_techfest) {
             replaceFragments(PrizesFragment.class, false);
         } else if (id == R.id.nav_winners_techfest) {

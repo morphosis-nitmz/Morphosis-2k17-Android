@@ -11,6 +11,10 @@
             android:title="@string/nav_events_title"
             android:icon="@drawable/ic_event_black_48dp" />
         <item
+            android:id="@+id/nav_news_techfest"
+            android:title="@string/nav_news_title"
+            android:icon="@drawable/ic_newspaper_black_48dp" />
+        <item
             android:id="@+id/nav_prizes_techfest"
             android:title="@string/nav_prizes_title"
             android:icon="@drawable/ic_trophy_black_48dp" />
