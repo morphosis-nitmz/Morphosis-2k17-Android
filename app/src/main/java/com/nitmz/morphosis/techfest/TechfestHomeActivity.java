@@ -38,6 +38,8 @@ public class TechfestHomeActivity extends AppCompatActivity
     private View mHomeView;
     private ImageView mScheduleImage;
     private ImageView mEventsImage;
+    private ImageView mNewsImage;
+    private ImageView mDevelopersImage;
 
     private ViewPager mViewPager;
     private static int currentPage = 0;
@@ -72,6 +74,8 @@ public class TechfestHomeActivity extends AppCompatActivity
 
         init();
 
+
+        // Home tile listeners
         mScheduleImage = (ImageView) findViewById(R.id.schedule_icon_home);
         mScheduleImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +89,23 @@ public class TechfestHomeActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 replaceFragments(EventListFragment.class, false);
+            }
+        });
+
+        mDevelopersImage = (ImageView) findViewById(R.id.dev_icon_home);
+        mDevelopersImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, DevelopersActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mNewsImage = (ImageView) findViewById(R.id.news_icon_home);
+        mNewsImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(NewsFragment.class, false);
             }
         });
     }
@@ -127,13 +148,14 @@ public class TechfestHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_prizes_techfest) {
             replaceFragments(PrizesFragment.class, false);
         } else if (id == R.id.nav_winners_techfest) {
-
+            replaceFragments(WinnersFragment.class, false);
         } else if (id == R.id.nav_schedule_techfest) {
             replaceFragments(ScheduleFragment.class, false);
         } else if (id == R.id.nav_technical_society_techfest) {
             replaceFragments(TechnicalSocietyFragment.class, false);
         } else if (id == R.id.nav_developer_techfest) {
-
+            Intent intent = new Intent(TechfestHomeActivity.this, DevelopersActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_morphosis_website_techfest) {
             Intent intent = new Intent(TechfestHomeActivity.this, MorphosisWebsiteWebViewActivity.class);
             startActivity(intent);
