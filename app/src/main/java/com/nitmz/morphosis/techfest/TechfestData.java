@@ -4,6 +4,7 @@ package com.nitmz.morphosis.techfest;
 public class TechfestData {
 
     String[] aboutEvent = {
+            //
             "The share markets and their ruckus has a lot to do with our daily lives. " +
                     "The fluctuations there make or break our sleeps. " +
                     "Keeping in view the real thrill of the market monotony, " +
