@@ -25,6 +25,9 @@ import com.nitmz.morphosis.R;
 import com.rd.PageIndicatorView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -141,18 +144,25 @@ public class TechfestHomeActivity extends AppCompatActivity
         if (id == R.id.nav_home_techfest) {
             Intent intent = new Intent(this, TechfestHomeActivity.class);
             startActivity(intent);
+
         } else if (id == R.id.nav_events_techfest) {
             replaceFragments(EventListFragment.class, false);
+            setTitle("Events");
         } else if (id == R.id.nav_news_techfest) {
             replaceFragments(NewsFragment.class, false);
+            setTitle("News");
         } else if (id == R.id.nav_prizes_techfest) {
             replaceFragments(PrizesFragment.class, false);
+            setTitle("Prizes");
         } else if (id == R.id.nav_winners_techfest) {
             replaceFragments(WinnersFragment.class, false);
+            setTitle("Winners");
         } else if (id == R.id.nav_schedule_techfest) {
             replaceFragments(ScheduleFragment.class, false);
+            setTitle("Schedule");
         } else if (id == R.id.nav_technical_society_techfest) {
             replaceFragments(TechnicalSocietyFragment.class, false);
+            setTitle("Technical Society");
         } else if (id == R.id.nav_developer_techfest) {
             Intent intent = new Intent(TechfestHomeActivity.this, DevelopersActivity.class);
             startActivity(intent);
@@ -182,6 +192,30 @@ public class TechfestHomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_techfest);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void replaceFragments(Class fragmentClass, HashMap<String,String> map) {
+        Fragment fragment = null;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Bundle bundle = new Bundle();
+
+        if(map!=null) {
+            Set<Map.Entry<String, String>> set = map.entrySet();
+            for(Map.Entry<String, String> data : set) {
+                bundle.putString(data.getKey(),data.getValue());
+            }
+            fragment.setArguments(bundle);
+        }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.frag_view_techfest_home, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     public void replaceFragments(Class fragmentClass, Boolean addToBackStack) {
@@ -252,6 +286,6 @@ public class TechfestHomeActivity extends AppCompatActivity
             public void run() {
                 handler.post(Update);
             }
-        }, 2000, 3000);
+        }, 4000, 5000);
     }
 }
