@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.nitmz.morphosis.techfest.NewsDetailsFragment">
+
+    <TextView
+        android:id="@+id/news_title_details"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".15"
+        android:paddingTop="15dp"
+        android:text="Title"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/news_body_details"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="5dp"
+        android:layout_weight=".85"
+        android:text="Body"
+        android:textSize="18sp" />
+
+
+</LinearLayout>

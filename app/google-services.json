@@ -15,6 +15,10 @@
       },
       "oauth_client": [
         {
+          "client_id": "1039406650655-6lrcchbl21ro76b1n8d7mf05lgvk8l2u.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
           "client_id": "1039406650655-7c8can3n4th8310proeg1s84pjbinqtr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -40,7 +44,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "1039406650655-ishsqkanqhuqd2fddd5kerm5flcdo3du.apps.googleusercontent.com",
+              "client_id": "1039406650655-6lrcchbl21ro76b1n8d7mf05lgvk8l2u.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -58,6 +62,18 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "1039406650655-ec1lfl6ps0qn7pp6c0pbvhdb9eke1vca.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nitmz.morphosis",
+            "certificate_hash": "82ade96aea892bc93d47c88a801becfdd03012ff"
+          }
+        },
+        {
+          "client_id": "1039406650655-6lrcchbl21ro76b1n8d7mf05lgvk8l2u.apps.googleusercontent.com",
+          "client_type": 3
+        },
         {
           "client_id": "1039406650655-f9j1ti6uplm2sk8lqmt89e3v8sjv1l7p.apps.googleusercontent.com",
           "client_type": 1,
@@ -92,7 +108,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "1039406650655-ishsqkanqhuqd2fddd5kerm5flcdo3du.apps.googleusercontent.com",
+              "client_id": "1039406650655-6lrcchbl21ro76b1n8d7mf05lgvk8l2u.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
