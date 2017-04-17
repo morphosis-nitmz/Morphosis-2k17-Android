@@ -74,6 +74,7 @@ public class TechfestHomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_techfest);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_home_techfest);
 
         init();
 
@@ -119,6 +120,25 @@ public class TechfestHomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+
+            if(getSupportFragmentManager().getBackStackEntryCount()==0)
+            {
+                if(mHomeView.getVisibility()==View.GONE)
+                {
+
+                    mHomeView.setVisibility(View.VISIBLE);
+                    mFragView.setVisibility(View.GONE);
+                    setTitle("Morphosis");
+                    NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_techfest);
+                    navigationView.setCheckedItem(R.id.nav_home_techfest);
+                    getSupportFragmentManager().beginTransaction().
+                            remove(getSupportFragmentManager().
+                                    findFragmentById(R.id.frag_view_techfest_home)).commit();
+
+
+                    return;
+                }
+            }
             super.onBackPressed();
         }
     }
@@ -277,7 +297,10 @@ public class TechfestHomeActivity extends AppCompatActivity
                 if (currentPage == total_pages) {
                     currentPage = 0;
                 }
-                mViewPager.setCurrentItem(currentPage++, true);
+
+                if(mHomeView.getVisibility() == View.VISIBLE) {
+                    mViewPager.setCurrentItem(currentPage++, true);
+                }
             }
         };
         Timer swipeTimer = new Timer();
@@ -286,6 +309,11 @@ public class TechfestHomeActivity extends AppCompatActivity
             public void run() {
                 handler.post(Update);
             }
-        }, 4000, 5000);
+        }, 4000, 4000);
+
+
     }
+
+
+
 }
