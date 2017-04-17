@@ -49,7 +49,7 @@ public class WinnerDetailsFragment extends Fragment {
         win_details = (ListView) view.findViewById(R.id.win_details_list);
         String event = getArguments().getString("event");
         mDB = FirebaseDatabase.getInstance();
-        mRef=mDB.getReference("winners/"+event);
+        mRef = mDB.getReference("winners/"+event);
         Names = new ArrayList<>();
         //Body = new ArrayList<>();
         pd = new ProgressDialog(getContext());

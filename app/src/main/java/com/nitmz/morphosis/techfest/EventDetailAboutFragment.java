@@ -38,7 +38,7 @@ public class EventDetailAboutFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
-        for (int i = 0; i <= techfestData.getAboutEvent(mEventPosition); i++) {
+        for (int i = 0; i < techfestData.getAboutEvent(mEventPosition); i++) {
             String path = "file:///android_asset/events_about/" + mEventPosition + "/" + i + ".png";
 
             if (i == 0) {

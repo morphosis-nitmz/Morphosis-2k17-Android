@@ -57,12 +57,6 @@
                 android:layout_height="match_parent"
                 android:visibility="gone" />
 
-            <WebView
-                android:id="@+id/event_detail_rules_web_view_5"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone" />
-
 
         </LinearLayout>
     </ScrollView>

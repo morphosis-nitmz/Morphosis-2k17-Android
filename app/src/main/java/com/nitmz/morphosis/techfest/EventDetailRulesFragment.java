@@ -39,11 +39,11 @@ public class EventDetailRulesFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
-        if (mEventPosition == 7 || mEventPosition == 16) {
+        if (mEventPosition == 7 || mEventPosition == 14) {
             mRelativeLayout = (RelativeLayout) view.findViewById(R.id.no_rules_event_text);
             mRelativeLayout.setVisibility(View.VISIBLE);
         } else {
-            for (int i = 0; i <= techfestData.getRulesPage(mEventPosition); i++) {
+            for (int i = 0; i < techfestData.getRulesPage(mEventPosition); i++) {
                 String path = "file:///android_asset/events_rules/" + mEventPosition + "/" + i + ".png";
 
                 if (i == 0) {
@@ -80,14 +80,6 @@ public class EventDetailRulesFragment extends Fragment {
                     mEventRulesWebView[i].getSettings().setLoadWithOverviewMode(true);
                 } else if (i == 4) {
                     mEventRulesWebView[i] = (WebView) view.findViewById(R.id.event_detail_rules_web_view_4);
-                    mEventRulesWebView[i].setVisibility(View.VISIBLE);
-                    mEventRulesWebView[i].loadDataWithBaseURL(null, "<html><head><style>img " +
-                            "{margin-top:auto;margin-bottom:auto}</style></head><body><img src=\"" +
-                            path + "\"></body></html>", "html/css", "utf-8", null);
-                    mEventRulesWebView[i].getSettings().setUseWideViewPort(true);
-                    mEventRulesWebView[i].getSettings().setLoadWithOverviewMode(true);
-                } else if (i == 5) {
-                    mEventRulesWebView[i] = (WebView) view.findViewById(R.id.event_detail_rules_web_view_5);
                     mEventRulesWebView[i].setVisibility(View.VISIBLE);
                     mEventRulesWebView[i].loadDataWithBaseURL(null, "<html><head><style>img " +
                             "{margin-top:auto;margin-bottom:auto}</style></head><body><img src=\"" +

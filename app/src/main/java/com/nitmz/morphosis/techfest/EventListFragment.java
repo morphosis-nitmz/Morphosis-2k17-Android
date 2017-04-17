@@ -39,23 +39,21 @@ public class EventListFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         mEvents = new ArrayList<>(Arrays.asList(
-                "Maze Solver",
-                "Robo Race",
-                "Robo War",
-                "Stock Bridge",
-                "Quiz",
-                "Arcadia",
-                "Cube Fever",
-                "Scooby Dooby Doo",
-                "Virtual Placement Drive",
-                "Power of Speech",
-                "Code Warrior",
-                "Cypher",
-                "Tech Talk",
-                "Science Expo",
-                "S-Marketing",
-                "Abhyudaya",
-                "Manthan"));
+                "Maze Solver", // 0
+                "Robo Race", // 1
+                "Robo War", // 2
+                "Stock Bridge", // 3
+                "Quiz", // 4
+                "Arcadia", // 5
+                "Cube Fever", // 6
+                "Scooby Dooby Doo", // 7
+                "Power of Speech", // 8
+                "Code Warrior", // 9
+                "Cypher", // 10
+                "Tech Talk", // 11
+                "Science Expo", // 12
+                "Abhyudaya", // 13
+                "Manthan")); // 14
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 getContext(),

@@ -164,7 +164,6 @@ public class TechfestHomeActivity extends AppCompatActivity
         if (id == R.id.nav_home_techfest) {
             Intent intent = new Intent(this, TechfestHomeActivity.class);
             startActivity(intent);
-
         } else if (id == R.id.nav_events_techfest) {
             replaceFragments(EventListFragment.class, false);
             setTitle("Events");

@@ -1,5 +1,6 @@
 package com.nitmz.morphosis.scoobydoo;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,10 +24,17 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
 
     SharedPreferences status;
 
+    ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scooby_doo_splash_screen);
+
+        pd = new ProgressDialog(this);
+        pd.setMessage("Loading ...");
+        pd.setCanceledOnTouchOutside(false);
+        pd.setCancelable(false);
 
         mDB = FirebaseDatabase.getInstance();
         mStatusRef = mDB.getReference("gameStarted");
@@ -37,43 +45,35 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
 
+        pd.show();
         checkLoginStatus();
+        pd.cancel();
     }
 
     private void checkLoginStatus() {
-
         status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
         boolean  logIn = status.getBoolean("in", false);
         if (logIn) {
-
             checkGameStatus();
-
-
         } else {
-
             Intent intent = new Intent(ScoobyDooSplashScreenActivity.this, LoginActivity.class);
             intent.putExtra("launch", 2);
             startActivity(intent);
             finish();
         }
-
     }
 
-    private void checkGameStatus(){
-
+    private void checkGameStatus() {
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String gameStarted = dataSnapshot.getValue().toString();
-                if(gameStarted.equals("1"))
-                {
+                if(gameStarted.equals("1")) {
                     Intent intent = new Intent(ScoobyDooSplashScreenActivity.this, ScoobyDooHomeActivity.class);
                     startActivity(intent);
                     finish();
-
                 }
                 else {
-
                     Intent intent = new Intent(ScoobyDooSplashScreenActivity.this, GameStatusActivity.class);
                     startActivity(intent);
                     finish();
@@ -87,6 +87,4 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
         };
         mStatusRef.addValueEventListener(listener);
     }
-
-
 }
