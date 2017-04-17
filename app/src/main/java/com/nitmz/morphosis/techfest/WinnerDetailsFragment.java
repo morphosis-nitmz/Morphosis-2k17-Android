@@ -1,5 +1,6 @@
 package com.nitmz.morphosis.techfest;
 
+
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,40 +20,40 @@ import com.nitmz.morphosis.R;
 
 import java.util.ArrayList;
 
-public class NewsFragment extends Fragment {
 
-    ListView news_list;
+public class WinnerDetailsFragment extends Fragment {
+
+    ListView win_details;
     FirebaseDatabase mDB;
     DatabaseReference mRef;
-    ArrayList<String> Title;
-    //ArrayList<String> Body;
+    ArrayList<String> Names;
     ProgressDialog pd;
 
-    public NewsFragment() {
+
+    public WinnerDetailsFragment() {
         // Required empty public constructor
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_news, container, false);
+        return inflater.inflate(R.layout.fragment_winner_details, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        news_list = (ListView) view.findViewById(R.id.news_list_view);
+        super.onViewCreated(view, savedInstanceState);
+
+        win_details = (ListView) view.findViewById(R.id.win_details_list);
+        String event = getArguments().getString("event");
         mDB = FirebaseDatabase.getInstance();
-        mRef=mDB.getReference("news");
-        Title = new ArrayList<>();
+        mRef=mDB.getReference("winners/"+event);
+        Names = new ArrayList<>();
         //Body = new ArrayList<>();
         pd = new ProgressDialog(getContext());
-        pd.setMessage("Fetching Latest News ...");
+        pd.setMessage("Getting Winner(s) details ...");
         pd.setCanceledOnTouchOutside(false);
         pd.setCancelable(false);
         pd.show();
@@ -62,30 +63,14 @@ public class NewsFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot notification:dataSnapshot.getChildren())
                 {
-                    String title = notification.child("title").getValue().toString();
-                    String body = notification.child("body").getValue().toString();
-
-                   Title.add(title+"\n"+"\n"+body);
+                    String name = notification.getValue().toString();
+                    Names.add(name);
 
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                        (getContext(),android.R.layout.simple_list_item_1,Title);
-                news_list.setAdapter(adapter);
-
-                /*news_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                        HashMap<String,String> map = new HashMap<>();
-                        map.put("title",Names.get(position));
-                        map.put("body",Body.get(position));
-
-                        ((TechfestHomeActivity)getActivity()).
-                                replaceFragments(NewsDetailsFragment.class,map);
-
-                    }
-                });*/
+                        (getContext(),android.R.layout.simple_list_item_1, Names);
+                win_details.setAdapter(adapter);
                 pd.cancel();
             }
 
@@ -98,4 +83,9 @@ public class NewsFragment extends Fragment {
         mRef.addValueEventListener(listener);
 
     }
+
+
+
+
+
 }

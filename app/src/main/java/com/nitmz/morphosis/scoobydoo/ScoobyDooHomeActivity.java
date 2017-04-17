@@ -121,6 +121,7 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+
         mNavigationView = (NavigationView) findViewById(R.id.nav_view_scooby);
         mNavigationView.setNavigationItemSelectedListener(this);
         mNavigationView.setCheckedItem(R.id.nav_home_scooby);
