@@ -21,9 +21,6 @@ public class WinnersFragment extends Fragment {
 
     List<String> mEvents;
 
-    ListView mListView;
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,18 +58,6 @@ public class WinnersFragment extends Fragment {
                 android.R.layout.simple_list_item_1,
                 mEvents
         );
-
-        mListView = (ListView) view.findViewById(R.id.win_list);
-        mListView.setAdapter(arrayAdapter);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Bundle elementPosition = new Bundle();
-                HashMap<String,String> map = new HashMap<String, String>();
-                map.put("event", mEvents.get(position).toLowerCase().trim());
-                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
-            }
-        });
 
     }
 

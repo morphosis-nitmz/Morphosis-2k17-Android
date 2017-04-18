@@ -36,4 +36,20 @@
     <string name="nav_news_title">News</string>
 
     <string name="about">Morphosis is the annual technical festival organized by the Technical Society of NIT Mizoram. This festival is organized every year with a sincere motive to inculcate the technical and managerial skills in the very nature of the participants. We are here with a plethora of indulging and needless to say, super exulting events that not only provide an excellent system of support to the participants but also provide them a distinguished platform to carve out the niche in their field of interest. This year we are presenting a wide range of new and exciting events and that too at a very competitive level that is assured to send down a chill through your spines. So make your minds ready to experience the technical frenzy this year with Morphosis. Do join us and give us a chance to help you to excavate your hidden potential.</string>
+    <string name="robotics_banner_text">ROBOTICS</string>
+    <string name="stock_bridge_banner_text">Stock Bridge</string>
+    <string name="quiz_banner_text">Quiz</string>
+    <string name="arcadia_banner_text">Arcadia</string>
+    <string name="cube_fever_banner_text">Cube Fever</string>
+    <string name="scooby_dooby_doo_banner_text">Scooby Dooby Doo</string>
+    <string name="power_of_speech_banner_text">Power of Speech</string>
+    <string name="code_warrior_banner_text">Code Warrior</string>
+    <string name="cypher_banner_text">Cypher</string>
+    <string name="tech_talk_banner_text">Tech Talk</string>
+    <string name="science_expo_banner_text">Science Expo</string>
+    <string name="abhyudaya_banner_text">Abhyudaya</string>
+    <string name="manthan_banner_text">Manthan</string>
+    <string name="maze_solver_button_text">Maze Solver</string>
+    <string name="robo_race_button_text">Robo Race</string>
+    <string name="robo_war_button_text">Robo War</string>
 </resources>
