@@ -61,7 +61,7 @@ public class EventListFragment extends Fragment {
                 mEvents
         );
 
-        mListView = (ListView) view.findViewById(R.id.events_list);
+        /* mListView = (ListView) view.findViewById(R.id.events_list);
         mListView.setAdapter(arrayAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -72,6 +72,6 @@ public class EventListFragment extends Fragment {
                 intent.putExtras(elementPosition);
                 startActivity(intent);
             }
-        });
+        }); */
     }
 }
