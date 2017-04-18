@@ -14,8 +14,10 @@ import java.util.List;
 public class DevelopersActivity extends AppCompatActivity {
 
     List<String> mWebTeam;
+    List<String> mDevelopers;
 
     ListView mWebTeamList;
+    ListView mDevList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +34,23 @@ public class DevelopersActivity extends AppCompatActivity {
                 "Anki Reddy Narayana Reddy"
         ));
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+        mDevelopers = new ArrayList<>(Arrays.asList(
+                "Shantanu Acharya",
+                "Narayana Reddy"
+        ));
+
+        ArrayAdapter<String> webTeamAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 mWebTeam);
 
+        ArrayAdapter<String> devAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1,
+                mDevelopers);
+
+        mDevList = (ListView) findViewById(R.id.dev_list_view);
+        mDevList.setAdapter(devAdapter);
+
         mWebTeamList = (ListView) findViewById(R.id.web_team_list_view);
-        mWebTeamList.setAdapter(adapter);
+        mWebTeamList.setAdapter(webTeamAdapter);
     }
 }

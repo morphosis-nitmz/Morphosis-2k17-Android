@@ -28,41 +28,11 @@
         android:layout_weight="0.2"
         android:orientation="horizontal">
 
-        <com.nitmz.morphosis.CircleImageView
-            android:layout_width="0dp"
+        <ListView
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:src="@drawable/developer_shantanu"/>
-
-        <com.nitmz.morphosis.CircleImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:src="@drawable/developer_narayana"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:textSize="20sp"
-            android:text="@string/shantanu_acharya"
-            android:textAlignment="center"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:textSize="20sp"
-            android:text="@string/narayana_reddy"
-            android:textAlignment="center"/>
+            android:divider="@null"
+            android:id="@+id/dev_list_view"/>
 
     </LinearLayout>
 

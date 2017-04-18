@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FAFAFA"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.nitmz.morphosis.techfest.TechfestHomeActivity"
     tools:showIn="@layout/app_bar_techfest_home">
@@ -20,7 +21,6 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/bg"
         android:orientation="vertical">
 
         <LinearLayout
@@ -38,6 +38,7 @@
                     android:id="@+id/home_viewpager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:padding="5dp"
                     android:layout_margin="2dp">
 
                 </android.support.v4.view.ViewPager>
@@ -54,12 +55,13 @@
                     app:piv_padding="6dp"
                     app:piv_radius="5dp"
                     app:piv_selectedColor="@color/white"
-                    app:piv_unselectedColor="@color/home_background" />
+                    app:piv_unselectedColor="@color/page_indicator_background" />
 
             </FrameLayout>
 
         </LinearLayout>
 
+        <!--
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -131,6 +133,7 @@
             </LinearLayout>
 
         </HorizontalScrollView>
+        -->
 
         <TableLayout
             android:layout_width="match_parent"
@@ -145,9 +148,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardBackgroundColor="#424242"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -165,6 +166,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight=".35"
+                            android:textColor="#000000"
                             android:text="Events"
                             android:textAlignment="center"
                             android:textSize="16sp" />
@@ -178,8 +180,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -198,6 +199,7 @@
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="Schedule"
+                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -209,8 +211,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -222,13 +223,14 @@
                             android:layout_height="0dp"
                             android:layout_weight=".65"
                             android:padding="10dp"
-                            app:srcCompat="@drawable/trophy" />
+                            app:srcCompat="@drawable/ic_trophy_black_48dp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="Prizes"
+                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -244,8 +246,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -264,6 +265,7 @@
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="Website"
+                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
 
@@ -276,8 +278,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -296,6 +297,7 @@
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="News"
+                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -307,8 +309,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -327,6 +328,7 @@
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="Winners"
+                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -342,8 +344,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -362,6 +363,7 @@
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="About"
+                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
 
@@ -374,8 +376,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -394,6 +395,7 @@
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="People"
+                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -405,8 +407,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    app:cardBackgroundColor="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -425,6 +426,7 @@
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="Developers"
+                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -433,12 +435,9 @@
 
             </TableRow>
 
-
-
-
         </TableLayout>
 
-        <!-- Test
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -553,7 +552,7 @@
                         </FrameLayout>
                     </LinearLayout>
                 </LinearLayout>
-                -->
+
 
 
     </LinearLayout>
