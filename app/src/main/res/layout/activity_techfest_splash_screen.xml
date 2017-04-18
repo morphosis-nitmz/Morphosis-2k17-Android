@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/about_morphosis_logo_splash_screen"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         android:adjustViewBounds="false"
         android:cropToPadding="false"
         android:paddingTop="50dp"
