@@ -80,6 +80,7 @@ public class TechfestHomeActivity extends AppCompatActivity
 
 
         // Home tile listeners
+        /*
         mScheduleImage = (ImageView) findViewById(R.id.schedule_icon_home);
         mScheduleImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +113,7 @@ public class TechfestHomeActivity extends AppCompatActivity
                 replaceFragments(NewsFragment.class, false);
             }
         });
+        */
     }
 
     @Override
