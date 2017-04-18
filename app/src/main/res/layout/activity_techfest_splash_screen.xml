@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:adjustViewBounds="false"
-        android:paddingTop="50dp"
         android:cropToPadding="false"
+        android:paddingTop="50dp"
         android:scaleType="fitCenter"
         android:src="@drawable/logo_morphosis" />
 
