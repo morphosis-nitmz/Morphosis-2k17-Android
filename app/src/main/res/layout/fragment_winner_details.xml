@@ -2,11 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.nitmz.morphosis.techfest.WinnerDetailsFragment">
 
   <ListView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:id="@+id/win_details_list"></ListView>
+
+  <ImageView
+      android:id="@+id/empty_win"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="fitXY"
+      app:srcCompat="@drawable/empty_win" />
 
 </FrameLayout>
