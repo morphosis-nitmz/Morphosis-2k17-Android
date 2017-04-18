@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Tech Fest</string>
-    <string name="title_activity_scooby_doo_home">ScoobyDooHomeActivity</string>
+    <string name="app_name">Morphosis</string>
+    <string name="title_activity_scooby_dooby_doo_home">Scooby Dooby Doo</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -52,4 +52,6 @@
     <string name="maze_solver_button_text">Maze Solver</string>
     <string name="robo_race_button_text">Robo Race</string>
     <string name="robo_war_button_text">Robo War</string>
+    <string name="morphosis_title">Morphosis</string>
+    <string name="morphosis_sub_title">The annual Technical Festival of NIT Mizoram</string>
 </resources>

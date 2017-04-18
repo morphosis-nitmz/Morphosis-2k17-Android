@@ -14,7 +14,7 @@
         android:adjustViewBounds="false"
         android:cropToPadding="false"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/logo_comp" />
+        app:srcCompat="@drawable/logo_morphosis" />
 
     <TextView
         android:layout_width="match_parent"
@@ -22,20 +22,20 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/about_morphosis_logo"
         android:layout_marginStart="12dp"
-        android:text="Morphosis"
+        android:text="@string/morphosis_title"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="36sp"
-        android:id="@+id/textView" />
+        android:id="@+id/about_title" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/about_sub_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/about_title"
         android:layout_marginTop="11dp"
-        android:text="The annual Technical Festival of  NIT Mizoram"
+        android:text="@string/morphosis_sub_title"
         android:textAlignment="center" />
 
     <TextView
@@ -43,11 +43,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/about_sub_title"
         android:layout_marginTop="22dp"
         android:padding="5dp"
         android:textAlignment="center"
-        android:textSize="16dp" />
+        android:textSize="20sp" />
 
 
 

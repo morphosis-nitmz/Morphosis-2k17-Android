@@ -16,7 +16,7 @@
         android:theme="@style/Dark">
         <activity
             android:name=".scoobydoo.ScoobyDooHomeActivity"
-            android:label="@string/title_activity_scooby_doo_home"
+            android:label="@string/title_activity_scooby_dooby_doo_home"
             android:theme="@style/Dark.NoActionBar" />
         <activity
             android:name=".techfest.TechfestHomeActivity"

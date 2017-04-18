@@ -49,7 +49,7 @@ public class TechfestHomeActivity extends AppCompatActivity
     private static int total_pages = 0;
 
     private static final Integer[] images = {R.drawable.a, R.drawable.b,
-        R.drawable.c};
+        R.drawable.d, R.drawable.e};
     private ArrayList<Integer> ImagesArray = new ArrayList<>();
 
     @Override
