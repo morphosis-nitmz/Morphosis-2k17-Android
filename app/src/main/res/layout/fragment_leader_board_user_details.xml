@@ -132,6 +132,31 @@
 
         </LinearLayout>
 
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_marginTop="25dp"
+                android:id="@+id/logout_bnav"
+                android:visibility="gone"
+                android:text="Logout"
+                android:background="@drawable/obg_shape"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dp"
+                android:id="@+id/share_bnav"
+                android:visibility="gone"
+                android:text="Share"
+                android:background="@drawable/obg_shape"
+                android:layout_height="wrap_content" />
+
+
+
+
+
+
     </LinearLayout>
 
 </ScrollView>

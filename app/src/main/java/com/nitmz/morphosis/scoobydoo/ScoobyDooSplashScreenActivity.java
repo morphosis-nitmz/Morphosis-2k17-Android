@@ -1,6 +1,5 @@
 package com.nitmz.morphosis.scoobydoo;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,17 +23,11 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
 
     SharedPreferences status;
 
-    ProgressDialog pd;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scooby_doo_splash_screen);
 
-        pd = new ProgressDialog(this);
-        pd.setMessage("Loading ...");
-        pd.setCanceledOnTouchOutside(false);
-        pd.setCancelable(false);
 
         mDB = FirebaseDatabase.getInstance();
         mStatusRef = mDB.getReference("gameStarted");
@@ -45,9 +38,9 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
 
-        pd.show();
+
         checkLoginStatus();
-        pd.cancel();
+
     }
 
     private void checkLoginStatus() {
@@ -69,7 +62,7 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String gameStarted = dataSnapshot.getValue().toString();
                 if(gameStarted.equals("1")) {
-                    Intent intent = new Intent(ScoobyDooSplashScreenActivity.this, ScoobyDooHomeActivity.class);
+                    Intent intent = new Intent(ScoobyDooSplashScreenActivity.this,ScoobyDooBNavHome.class);
                     startActivity(intent);
                     finish();
                 }

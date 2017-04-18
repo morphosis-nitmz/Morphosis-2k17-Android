@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -31,6 +32,8 @@ public class UserProfileFragment extends Fragment {
     TextView mUserScore;
     TextView mUserName;
     TextView mUserRank;
+    Button Logout;
+    Button Share;
 
     public UserProfileFragment() {
         // Required empty public constructor
@@ -51,6 +54,24 @@ public class UserProfileFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         mDB = FirebaseDatabase.getInstance();
         mScoreRef = mDB.getReference("score/" + mAuth.getCurrentUser().getUid());
+        Logout = (Button) view.findViewById(R.id.logout_bnav);
+        Logout.setVisibility(View.VISIBLE);
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((ScoobyDooBNavHome) getActivity()).logout();
+            }
+        });
+        Share = (Button) view.findViewById(R.id.share_bnav);
+        Share.setVisibility(View.VISIBLE);
+        Share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ((ScoobyDooBNavHome) getActivity()).share();
+
+            }
+        });
 
         mUserImage = (CircleImageView)view.findViewById(R.id.user_image_leaderboard_details);
         mUserName = (TextView)view.findViewById(R.id.user_name_input);

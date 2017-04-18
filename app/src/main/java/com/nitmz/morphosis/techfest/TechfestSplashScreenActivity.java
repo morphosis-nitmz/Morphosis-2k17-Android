@@ -14,14 +14,14 @@ import com.nitmz.morphosis.R;
 
 public class TechfestSplashScreenActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 100;
+    private static int SPLASH_TIME_OUT = 500;
 
     SharedPreferences status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scooby_doo_splash_screen);
+        setContentView(R.layout.activity_techfest_splash_screen);
 
         if (Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();

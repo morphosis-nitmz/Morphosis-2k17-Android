@@ -36,4 +36,8 @@
     <string name="nav_news_title">News</string>
 
     <string name="about">Morphosis is the annual technical festival organized by the Technical Society of NIT Mizoram. This festival is organized every year with a sincere motive to inculcate the technical and managerial skills in the very nature of the participants. We are here with a plethora of indulging and needless to say, super exulting events that not only provide an excellent system of support to the participants but also provide them a distinguished platform to carve out the niche in their field of interest. This year we are presenting a wide range of new and exciting events and that too at a very competitive level that is assured to send down a chill through your spines. So make your minds ready to experience the technical frenzy this year with Morphosis. Do join us and give us a chance to help you to excavate your hidden potential.</string>
+    <string name="title_activity_scooby_doo_bnav_home">ScoobyDooBNavHome</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

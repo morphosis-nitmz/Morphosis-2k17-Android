@@ -40,4 +40,9 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
+    <style name="Scooby" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorAccent">@color/swipe_refresh_green</item>
+        <item name="colorPrimary">@color/swipe_refresh_green</item>
+    </style>
+
 </resources>

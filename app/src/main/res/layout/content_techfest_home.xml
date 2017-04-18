@@ -147,7 +147,6 @@
                     android:layout_margin="1dp"
                     android:layout_weight="1"
                     android:padding="3dp"
-                    app:cardBackgroundColor="#424242"
                     app:cardCornerRadius="5dp">
 
                     <LinearLayout

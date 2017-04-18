@@ -31,9 +31,12 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.nitmz.morphosis.scoobydoo.ScoobyDooHomeActivity;
+import com.google.firebase.database.ValueEventListener;
+import com.nitmz.morphosis.scoobydoo.ScoobyDooBNavHome;
 import com.nitmz.morphosis.techfest.TechfestHomeActivity;
 
 public class LoginActivity extends AppCompatActivity
@@ -108,7 +111,7 @@ public class LoginActivity extends AppCompatActivity
                 finish();
             }
             else {
-                Intent intent = new Intent(LoginActivity.this, ScoobyDooHomeActivity.class);
+                Intent intent = new Intent(LoginActivity.this, ScoobyDooBNavHome.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
@@ -185,27 +188,60 @@ public class LoginActivity extends AppCompatActivity
 
                             status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
                             status.edit().putBoolean("in", true).apply();
-                            createUserNode();
-                            createScoreNode();
 
-                            if(launch == 1) {
 
-                                Intent intent = new Intent(LoginActivity.this, TechfestHomeActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                showProgress(false);
-                                finish();
-                                startActivity(intent);
+                            DatabaseReference mNewUserRef = mDB.getReference("users");
 
-                            }
-                            else {
+                            ValueEventListener listener = new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
 
-                                Intent intent = new Intent(LoginActivity.this, ScoobyDooHomeActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                showProgress(false);
-                                finish();
-                                startActivity(intent);
+                                    Boolean key=false;
+                                    for(DataSnapshot child:dataSnapshot.getChildren())
+                                    {
+                                        if(child.getKey().toString().equals(mAuth.getCurrentUser().getUid()))
+                                        {
+                                            key=true;
+                                            break;
+                                        }
+                                    }
 
-                            }
+                                    if(!key)
+                                    {
+                                        createUserNode();
+                                        createScoreNode();
+
+                                    }
+
+                                    if(launch == 1) {
+
+                                        Intent intent = new Intent(LoginActivity.this, TechfestHomeActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        showProgress(false);
+                                        finish();
+                                        startActivity(intent);
+
+                                    }
+                                    else {
+
+                                        Intent intent = new Intent(LoginActivity.this, ScoobyDooBNavHome.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        showProgress(false);
+                                        finish();
+                                        startActivity(intent);
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            };
+
+                            mNewUserRef.addValueEventListener(listener);
+
+
                         }
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
@@ -229,6 +265,7 @@ public class LoginActivity extends AppCompatActivity
         mUsersRef.child(uid).child("email").setValue(email);
         mUsersRef.child(uid).child("score").setValue(init_score);
         mUsersRef.child(uid).child("pURL").setValue(pURL);
+        mUsersRef.child(uid).child("rank").setValue("0");
     }
 
     private void createScoreNode() {
