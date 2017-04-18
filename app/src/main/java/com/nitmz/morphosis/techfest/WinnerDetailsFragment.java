@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +29,7 @@ public class WinnerDetailsFragment extends Fragment {
     DatabaseReference mRef;
     ArrayList<String> Names;
     ProgressDialog pd;
+    ImageView empty;
 
 
     public WinnerDetailsFragment() {
@@ -48,6 +50,7 @@ public class WinnerDetailsFragment extends Fragment {
 
         win_details = (ListView) view.findViewById(R.id.win_details_list);
         String event = getArguments().getString("event");
+        empty = (ImageView) view.findViewById(R.id.empty_win);
         mDB = FirebaseDatabase.getInstance();
         mRef = mDB.getReference("winners/"+event);
         Names = new ArrayList<>();
@@ -71,6 +74,7 @@ public class WinnerDetailsFragment extends Fragment {
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>
                         (getContext(),android.R.layout.simple_list_item_1, Names);
                 win_details.setAdapter(adapter);
+                win_details.setEmptyView(empty);
                 pd.cancel();
             }
 
