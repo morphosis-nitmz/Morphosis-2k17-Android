@@ -82,8 +82,7 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
 
         checkGameStatus();
 
-        if(!status.getBoolean("first",false))
-        {
+        if(!status.getBoolean("first",false)) {
             introDisplay();
             status.edit().putBoolean("first",true).apply();
         }
@@ -101,7 +100,7 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
 
                 if(mAuth.getCurrentUser() == null){
                     Intent intent = new Intent(ScoobyDooHomeActivity.this,LoginActivity.class);
-                    intent.putExtra("launch",2);
+                    intent.putExtra("launch", 2);
                     intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                     startActivity(intent);
                     finish();
@@ -110,7 +109,6 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
         };
 
         mAuth.addAuthStateListener(mAuthListener);
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_scooby);
         setSupportActionBar(toolbar);
@@ -148,33 +146,15 @@ public class ScoobyDooHomeActivity extends AppCompatActivity
         mQuestionTitle = "Question" + mQuestionNumber;
         mTitle.setText(mQuestionTitle);
 
-        ImageView imageView1 = (ImageView) findViewById(R.id.imageView1);
-        ImageView imageView2 = (ImageView) findViewById(R.id.imageView2);
-        ImageView imageView3 = (ImageView) findViewById(R.id.imageView3);
-        ImageView imageView4 = (ImageView) findViewById(R.id.imageView4);
+        ImageView questionImageView = (ImageView) findViewById(R.id.question_image_view);
 
         mStorageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference pathReference1 = mStorageReference.child("Question" + mQuestionNumber + "/1.jpg");
-        StorageReference pathReference2 = mStorageReference.child("Question" + mQuestionNumber + "/2.jpg");
-        StorageReference pathReference3 = mStorageReference.child("Question" + mQuestionNumber + "/3.jpg");
-        StorageReference pathReference4 = mStorageReference.child("Question" + mQuestionNumber + "/5.jpg");
+        StorageReference pathReference = mStorageReference.child("Question" + mQuestionNumber + "/1.jpg");
 
         Glide.with(this)
                 .using(new FirebaseImageLoader())
-                .load(pathReference1)
-                .into(imageView1);
-        Glide.with(this)
-                .using(new FirebaseImageLoader())
-                .load(pathReference2)
-                .into(imageView2);
-        Glide.with(this)
-                .using(new FirebaseImageLoader())
-                .load(pathReference3)
-                .into(imageView3);
-        Glide.with(this)
-                .using(new FirebaseImageLoader())
-                .load(pathReference4)
-                .into(imageView4);
+                .load(pathReference)
+                .into(questionImageView);
     }
 
     private void checkAnswer() {

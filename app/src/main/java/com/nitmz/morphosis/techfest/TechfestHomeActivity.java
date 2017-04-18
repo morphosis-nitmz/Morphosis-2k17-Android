@@ -49,7 +49,7 @@ public class TechfestHomeActivity extends AppCompatActivity
     private static int total_pages = 0;
 
     private static final Integer[] images = {R.drawable.a, R.drawable.b,
-            R.drawable.c};
+        R.drawable.c};
     private ArrayList<Integer> ImagesArray = new ArrayList<>();
 
     @Override
@@ -136,8 +136,6 @@ public class TechfestHomeActivity extends AppCompatActivity
                     getSupportFragmentManager().beginTransaction().
                             remove(getSupportFragmentManager().
                                     findFragmentById(R.id.frag_view_techfest_home)).commit();
-
-
                     return;
                 }
             }
@@ -166,7 +164,6 @@ public class TechfestHomeActivity extends AppCompatActivity
         if (id == R.id.nav_home_techfest) {
             Intent intent = new Intent(this, TechfestHomeActivity.class);
             startActivity(intent);
-
         } else if (id == R.id.nav_events_techfest) {
             replaceFragments(EventListFragment.class, false);
             setTitle("Events");

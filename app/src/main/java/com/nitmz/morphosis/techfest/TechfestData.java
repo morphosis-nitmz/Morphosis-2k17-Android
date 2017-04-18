@@ -4,12 +4,12 @@ package com.nitmz.morphosis.techfest;
 public class TechfestData {
 
     int[] rulesPages = {
-            2, 2, 3, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0
+            2, 2, 3, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1
     };
 
 
     int[] aboutPage = {
-            0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
     };
 
     public int getAboutEvent(int position) {

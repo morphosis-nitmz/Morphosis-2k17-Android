@@ -48,13 +48,11 @@ public class WinnersFragment extends Fragment {
                 "Arcadia",
                 "Cube Fever",
                 "Scooby Dooby Doo",
-                "Virtual Placement Drive",
                 "Power of Speech",
                 "Code Warrior",
                 "Cypher",
                 "Tech Talk",
                 "Science Expo",
-                "S-Marketing",
                 "Abhyudaya",
                 "Manthan"));
 

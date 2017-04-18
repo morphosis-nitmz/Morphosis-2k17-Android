@@ -60,8 +60,7 @@ public class NewsFragment extends Fragment {
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot notification:dataSnapshot.getChildren())
-                {
+                for(DataSnapshot notification:dataSnapshot.getChildren()) {
                     String title = notification.child("title").getValue().toString();
                     String body = notification.child("body").getValue().toString();
 
@@ -69,8 +68,8 @@ public class NewsFragment extends Fragment {
 
                 }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                        (getContext(),android.R.layout.simple_list_item_1,Title);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>
+                        (getContext(),android.R.layout.simple_list_item_1, Title);
                 news_list.setAdapter(adapter);
 
                 /*news_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
