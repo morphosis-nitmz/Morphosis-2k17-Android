@@ -22,6 +22,8 @@ public class EventDetailsActivity extends AppCompatActivity {
 
     private int mEventPosition;
 
+    TechfestData techfestData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,10 @@ public class EventDetailsActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
 
         mEventPosition = getIntent().getExtras().getInt("position");
+
+        techfestData = new TechfestData();
+
+        setTitle(techfestData.getEventName(mEventPosition));
     }
 
 

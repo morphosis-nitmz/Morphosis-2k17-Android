@@ -24,6 +24,8 @@ public class MorphosisWebsiteWebViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_morphosis_website_web_view);
 
+        setTitle("Morphosis Website");
+
         mMorphosisWebsiteSwipeRefresh = (SwipeRefreshLayout) findViewById(R.id.morphosis_website_swipe_refresh);
         swipeRefresh();
 

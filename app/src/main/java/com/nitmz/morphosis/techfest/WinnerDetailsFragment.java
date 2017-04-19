@@ -47,6 +47,7 @@ public class WinnerDetailsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getActivity().setTitle("Winners");
 
         win_details = (ListView) view.findViewById(R.id.win_details_list);
         String event = getArguments().getString("event");

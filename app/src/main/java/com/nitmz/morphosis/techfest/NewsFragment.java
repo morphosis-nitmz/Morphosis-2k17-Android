@@ -46,6 +46,9 @@ public class NewsFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+        getActivity().setTitle("News");
+
         news_list = (ListView) view.findViewById(R.id.news_list_view);
         mDB = FirebaseDatabase.getInstance();
         mRef=mDB.getReference("news");

@@ -24,6 +24,8 @@ public class DevelopersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_developers);
 
+        setTitle("Developers");
+
         mWebTeam = new ArrayList<>(Arrays.asList(
                 "Akash Singh",
                 "Saurav Saha",

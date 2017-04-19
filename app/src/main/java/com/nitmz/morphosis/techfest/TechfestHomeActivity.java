@@ -65,6 +65,8 @@ public class TechfestHomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_techfest_home);
 
+        setTitle("Home");
+
         // Initialize fragment views
         mFragView =findViewById(R.id.frag_view_techfest_home);
         mHomeView =findViewById(R.id.techfest_home_view);

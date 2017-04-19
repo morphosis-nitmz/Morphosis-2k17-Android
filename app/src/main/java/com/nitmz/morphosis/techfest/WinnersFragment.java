@@ -54,6 +54,7 @@ public class WinnersFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("Winners");
 
         mEvents = new ArrayList<>(Arrays.asList(
                 "Maze Solver", // 0

@@ -53,6 +53,8 @@ public class EventListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
+        getActivity().setTitle("Events");
+
         mEvents = new ArrayList<>(Arrays.asList(
                 "Maze Solver", // 0
                 "Robo Race", // 1
