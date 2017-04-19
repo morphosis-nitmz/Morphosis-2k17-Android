@@ -32,6 +32,7 @@ public class UserProfileFragment extends Fragment {
     TextView mUserScore;
     TextView mUserName;
     TextView mUserRank;
+    TextView rank;
     Button Logout;
     Button Share;
 
@@ -49,7 +50,6 @@ public class UserProfileFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // TODO: App crashes when profile is opened after opening my profile from leaderboard list.
 
         mAuth = FirebaseAuth.getInstance();
         mDB = FirebaseDatabase.getInstance();
@@ -77,6 +77,9 @@ public class UserProfileFragment extends Fragment {
         mUserName = (TextView)view.findViewById(R.id.user_name_input);
         mUserScore = (TextView)view.findViewById(R.id.user_score_input);
         mUserRank = (TextView)view.findViewById(R.id.user_rank_input);
+        mUserRank.setVisibility(View.GONE);
+        rank = (TextView) view.findViewById(R.id.user_rank_text);
+        rank.setVisibility(View.GONE);
 
         ValueEventListener listener = new ValueEventListener() {
             @Override

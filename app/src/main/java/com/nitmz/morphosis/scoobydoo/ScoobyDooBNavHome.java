@@ -229,7 +229,6 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
                                 .using(new FirebaseImageLoader())
                                 .load(pathReference)
                                 .dontAnimate()
-                                .placeholder(R.drawable.lo)
                                 .into(questionImageView);
 
                         pd.cancel();
@@ -265,7 +264,7 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
 
 
     private void loadQuestion() {
-        mQuestionTitle = "Question" + mQuestionNumber;
+        mQuestionTitle = "Question : " + mQuestionNumber;
         mTitle.setText(mQuestionTitle);
 
         PhotoView questionImageView = (PhotoView) findViewById(R.id.question_image_view);
@@ -276,6 +275,7 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
         Glide.with(ScoobyDooBNavHome.this)
                 .using(new FirebaseImageLoader())
                 .load(pathReference)
+                .placeholder(R.drawable.ic_help_white_48dp)
                 .dontAnimate()
                 .into(questionImageView);
 
@@ -290,7 +290,7 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String hint = dataSnapshot.getValue().toString();
                 if(!hint.equals("0"))
-                mHint.setText(hint);
+                mHint.setText("Hint : "+hint);
                 else {
                     mHint.setText("");
                 }
@@ -320,6 +320,7 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+
 
         mSolutionRef = mDB.getReference("solutions/"+mQuestionNumber);
 

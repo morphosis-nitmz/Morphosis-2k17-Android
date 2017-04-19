@@ -59,8 +59,8 @@ public class LeaderboardFragment extends Fragment {
         pd = new ProgressDialog(getContext());
         pd.setMessage("Waiting for the Top Players ....");
         pd.show();
-        pd.setCancelable(false);
-        pd.setCanceledOnTouchOutside(false);
+        //pd.setCancelable(false);
+        //pd.setCanceledOnTouchOutside(false);
 
         mLeaderboard = (ListView) view.findViewById(R.id.leaderboard_list);
 
@@ -135,6 +135,7 @@ public class LeaderboardFragment extends Fragment {
                             map.put("name", userObject.getUsername());
                             map.put("score", Integer.toString(userObject.getScore()));
                             map.put("purl", userObject.getPurl());
+                            map.put("rank",Integer.toString(position+1));
                             ((ScoobyDooBNavHome) getActivity()).
                                     replaceFragments(LeaderBoardUserDetailsFragment.class, map);
                         }

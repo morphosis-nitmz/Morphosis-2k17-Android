@@ -40,6 +40,7 @@ public class LeaderBoardUserDetailsFragment extends Fragment {
         String name = getArguments().getString("name");
         String score = getArguments().getString("score");
         String purl = getArguments().getString("purl");
+        String rank = getArguments().getString("rank");
 
         mUserImage = (CircleImageView)view.findViewById(R.id.user_image_leaderboard_details);
         mUserName = (TextView)view.findViewById(R.id.user_name_input);
@@ -58,5 +59,6 @@ public class LeaderBoardUserDetailsFragment extends Fragment {
 
         mUserName.setText(name);
         mUserScore.setText(score);
+        mUserRank.setText(rank);
     }
 }
