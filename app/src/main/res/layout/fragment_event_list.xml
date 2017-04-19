@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <FrameLayout
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
                 android:padding="15dp"
-                android:text="ROBOTICS"
+                android:text="@string/robotics_banner_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -51,7 +51,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:background="@color/transparent"
-                    android:text="Maze Solver" />
+                    android:text="@string/maze_solver_button_text" />
 
                 <Button
                     android:id="@+id/button_robo_race"
@@ -59,8 +59,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:backgroundTint="@color/transparent"
-                    android:text="Robo Race" />
+                    android:background="@color/transparent"
+                    android:text="@string/robo_race_button_text" />
 
                 <Button
                     android:id="@+id/button_robo_war"
@@ -69,7 +69,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:background="@color/transparent"
-                    android:text="Robo War" />
+                    android:text="@string/robo_war_button_text" />
 
             </RelativeLayout>
 
@@ -99,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Stock Bridge"
+                android:text="@string/stock_bridge_banner_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -130,7 +130,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Quiz"
+                android:text="@string/quiz_banner_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -161,7 +161,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Arcadia"
+                android:text="@string/arcadia_banner_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -192,7 +192,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Cube Fever"
+                android:text="@string/cube_fever_banner_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -223,7 +223,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Scooby Dooby Doo"
+                android:text="@string/scooby_dooby_doo_banner_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -254,7 +254,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Power of Speech"
+                android:text="@string/power_of_speech_banner_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -285,7 +285,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Code Warrior"
+                android:text="@string/code_warrior_banner_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -316,7 +316,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Cypher"
+                android:text="@string/cypher_banner_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -347,7 +347,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Tech Talk"
+                android:text="@string/tech_talk_banner_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -378,7 +378,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Science Expo"
+                android:text="@string/science_expo_banner_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -409,7 +409,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Abhyudaya"
+                android:text="@string/abhyudaya_banner_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -440,7 +440,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Manthan"
+                android:text="@string/manthan_banner_text"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />

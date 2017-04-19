@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
+    android:id="@+id/techfest_splash_screen"
     tools:context="com.nitmz.morphosis.techfest.TechfestSplashScreenActivity">
 
+    <ImageView
+        android:id="@+id/about_morphosis_logo_splash_screen"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:paddingTop="50dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo_morphosis" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="40sp"
+        android:text="@string/morphosis_title"
+        android:id="@+id/about_title_splash_screen"
+        android:layout_below="@+id/about_morphosis_logo_splash_screen"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:id="@+id/about_sub_title_splash_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="17sp"
+        android:text="@string/morphosis_sub_title"
+        android:textAlignment="center"
+        android:layout_below="@+id/about_title_splash_screen"
+        android:layout_alignParentStart="true" />
+  
 </RelativeLayout>

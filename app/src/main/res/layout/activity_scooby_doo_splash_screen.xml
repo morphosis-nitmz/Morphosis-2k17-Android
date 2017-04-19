@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
+    android:id="@+id/scooby_splash_screen"
     tools:context="com.nitmz.morphosis.scoobydoo.ScoobyDooSplashScreenActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/scooby_logo_splash_screen"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:paddingTop="50dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo_scooby" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="40sp"
+        android:text="Scooby Dooby Doo"
+        android:id="@+id/scooby_title_splash_screen"
+        android:layout_below="@+id/scooby_logo_splash_screen"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:id="@+id/scooby_sub_title_splash_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="17sp"
+        android:text="Find the clue!"
+        android:textAlignment="center"
+        android:layout_below="@+id/scooby_title_splash_screen"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

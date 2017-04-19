@@ -15,10 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Dark">
         <activity
-            android:name=".techfest.TechfestHomeActivity"
-            android:label="@string/title_activity_techfest_home"
-            android:theme="@style/Dark.NoActionBar" />
-        <activity
             android:name=".techfest.TechfestSplashScreenActivity"
             android:label="Morphosis"
             android:launchMode="singleTask"
@@ -45,9 +41,6 @@
             android:name=".techfest.EventDetailsActivity"
             android:label="@string/title_activity_event_details" />
         <activity android:name=".scoobydoo.GameStatusActivity" />
-        <activity
-            android:name=".scoobydoo.ScoobyIntroActivity"
-            android:theme="@style/Theme.Intro" />
         <activity
             android:name=".techfest.AboutMorphosisActivity"
             android:label="@string/title_activity_about_morphosis"
