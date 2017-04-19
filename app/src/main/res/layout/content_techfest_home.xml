@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/bg"
+        android:background="#FAFAFA"
         android:orientation="vertical">
 
         <LinearLayout
@@ -73,7 +73,6 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:orientation="horizontal">
-
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
@@ -433,131 +432,8 @@
 
             </TableRow>
 
-
-
-
         </TableLayout>
-
-        <!-- Test
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".60"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="2dp"
-                            android:layout_weight="1">
-                            <ImageView
-                                android:id="@+id/schedule_icon_home"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:adjustViewBounds="false"
-                                android:cropToPadding="false"
-                                android:scaleType="fitXY"
-                                app:srcCompat="@drawable/schedule" />
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:alpha="0.50"
-                                android:background="@android:color/black" />
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:padding="1dp"
-                                android:text="Schedule"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/white"
-                                android:textSize="30sp" />
-                        </FrameLayout>
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="2dp"
-                            android:layout_weight="1">
-                            <ImageView
-                                android:id="@+id/events_icon_home"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/events" />
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:alpha="0.10"
-                                android:background="@android:color/black" />
-                            <TextView
-                                android:id="@+id/events_text_home"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:padding="1dp"
-                                android:text="Events"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/white"
-                                android:textSize="30sp" />
-                        </FrameLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="2dp"
-                            android:layout_weight="1">
-                            <ImageView
-                                android:id="@+id/news_icon_home"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:adjustViewBounds="false"
-                                android:cropToPadding="false"
-                                android:scaleType="fitXY"
-                                app:srcCompat="@drawable/news" />
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:alpha="0.50"
-                                android:background="@android:color/black" />
-                            <TextView
-                                android:id="@+id/news_text_home"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:padding="1dp"
-                                android:text="News"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/white"
-                                android:textSize="30sp" />
-                        </FrameLayout>
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="2dp"
-                            android:layout_weight="1">
-                            <ImageView
-                                android:id="@+id/dev_icon_home"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:scaleType="fitXY"
-                                app:srcCompat="@drawable/developers" />
-                        </FrameLayout>
-                    </LinearLayout>
-                </LinearLayout>
-                -->
-
 
     </LinearLayout>
 
 </RelativeLayout>
-
-

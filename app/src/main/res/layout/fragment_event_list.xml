@@ -51,7 +51,8 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:background="@color/transparent"
-                    android:text="Maze Solver" />
+                    android:text="Maze Solver"
+                    android:textColor="@color/white"/>
 
                 <Button
                     android:id="@+id/button_robo_race"
@@ -60,7 +61,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:backgroundTint="@color/transparent"
-                    android:text="Robo Race" />
+                    android:text="Robo Race"
+                    android:textColor="@color/white"/>
 
                 <Button
                     android:id="@+id/button_robo_war"
@@ -69,7 +71,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:background="@color/transparent"
-                    android:text="Robo War" />
+                    android:text="Robo War"
+                    android:textColor="@color/white"/>
 
             </RelativeLayout>
 
