@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="#FAFAFA"
+        android:background="#EEEEEE"
         android:orientation="vertical">
 
         <LinearLayout
@@ -157,8 +157,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -190,8 +189,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -222,8 +220,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -258,8 +255,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -291,8 +287,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -323,8 +318,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -359,8 +353,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -392,8 +385,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -411,7 +403,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight=".35"
-                            android:text="Technical Society"
+                            android:text="People"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -424,8 +416,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp"
-                    app:cardCornerRadius="5dp">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"

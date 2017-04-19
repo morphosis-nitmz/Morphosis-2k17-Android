@@ -7,40 +7,6 @@
             android:title="@string/nav_home_title"
             android:icon="@drawable/ic_home_black_48dp" />
         <item
-            android:id="@+id/nav_events_techfest"
-            android:title="@string/nav_events_title"
-            android:icon="@drawable/ic_event_black_48dp" />
-        <item
-            android:id="@+id/nav_news_techfest"
-            android:title="@string/nav_news_title"
-            android:icon="@drawable/ic_newspaper_black_48dp" />
-        <item
-            android:id="@+id/nav_prizes_techfest"
-            android:title="@string/nav_prizes_title"
-            android:icon="@drawable/ic_trophy_black_48dp" />
-        <item
-            android:id="@+id/nav_winners_techfest"
-            android:title="@string/nav_winners_title"
-            android:icon="@drawable/ic_leaderboard_black_100px" />
-        <item
-            android:id="@+id/nav_schedule_techfest"
-            android:title="@string/nav_schedule_title"
-            android:icon="@drawable/ic_schedule_black_48dp" />
-        <item
-            android:id="@+id/nav_technical_society_techfest"
-            android:title="@string/nav_technical_society_title"
-            android:icon="@drawable/ic_group_black_48dp" />
-        <item
-            android:id="@+id/nav_developer_techfest"
-            android:title="@string/nav_developers_title"
-            android:visible="true"
-            android:icon="@drawable/ic_developer_mode_black_48dp"/>
-        <item
-            android:id="@+id/nav_morphosis_website_techfest"
-            android:title="@string/nav_morphosis_website_title"
-            android:visible="true"
-            android:icon="@drawable/ic_public_black_48dp" />
-        <item
             android:id="@+id/nav_about_morphosis_techfest"
             android:title="@string/nav_about_morphosis_title"
             android:icon="@drawable/ic_info_black_48dp" />
