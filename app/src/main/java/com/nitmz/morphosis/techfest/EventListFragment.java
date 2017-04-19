@@ -70,12 +70,6 @@ public class EventListFragment extends Fragment {
                 "Abhyudaya", // 13
                 "Manthan")); // 14
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
-                getContext(),
-                android.R.layout.simple_list_item_1,
-                mEvents
-        );
-
         mMazeSolver = (Button) view.findViewById(R.id.button_maze_solver);
         mMazeSolver.setOnClickListener(new View.OnClickListener() {
             @Override

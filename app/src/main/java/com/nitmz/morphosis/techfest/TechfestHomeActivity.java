@@ -39,17 +39,13 @@ public class TechfestHomeActivity extends AppCompatActivity
 
     private View mFragView;
     private View mHomeView;
-    private ImageView mScheduleImage;
-    private ImageView mEventsImage;
-    private ImageView mNewsImage;
-    private ImageView mDevelopersImage;
 
     private ViewPager mViewPager;
     private static int currentPage = 0;
     private static int total_pages = 0;
 
-    private static final Integer[] images = {R.drawable.a, R.drawable.b,
-        R.drawable.d, R.drawable.d};
+    private static final Integer[] images = {R.drawable.a, R.drawable.b, R.drawable.c,
+        R.drawable.d, R.drawable.e};
     private ArrayList<Integer> ImagesArray = new ArrayList<>();
 
     @Override
@@ -78,42 +74,6 @@ public class TechfestHomeActivity extends AppCompatActivity
 
         init();
 
-
-        // Home tile listeners
-        /*
-        mScheduleImage = (ImageView) findViewById(R.id.schedule_icon_home);
-        mScheduleImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragments(ScheduleFragment.class, false);
-            }
-        });
-
-        mEventsImage = (ImageView) findViewById(R.id.events_icon_home);
-        mEventsImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragments(EventListFragment.class, false);
-            }
-        });
-
-        mDevelopersImage = (ImageView) findViewById(R.id.dev_icon_home);
-        mDevelopersImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TechfestHomeActivity.this, DevelopersActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mNewsImage = (ImageView) findViewById(R.id.news_icon_home);
-        mNewsImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragments(NewsFragment.class, false);
-            }
-        });
-        */
     }
 
     @Override

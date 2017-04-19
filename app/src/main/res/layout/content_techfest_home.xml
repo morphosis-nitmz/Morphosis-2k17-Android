@@ -38,8 +38,7 @@
                     android:id="@+id/home_viewpager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="2dp"
-                    android:padding="0dip">
+                    android:layout_margin="2dp">
 
                 </android.support.v4.view.ViewPager>
 
@@ -80,8 +79,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
+                    android:backgroundTint="#283593"
                     android:padding="10dp"
-                    android:text="Events" />
+                    android:text="Events"
+                    android:textColor="@color/white" />
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
@@ -89,8 +90,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
+                    android:backgroundTint="#283593"
                     android:padding="10dp"
-                    android:text="Winners" />
+                    android:text="Winners"
+                    android:textColor="@color/white"/>
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
@@ -98,8 +101,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
+                    android:backgroundTint="#283593"
                     android:padding="10dp"
-                    android:text="Prizes" />
+                    android:text="Prizes"
+                    android:textColor="@color/white" />
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
@@ -107,8 +112,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
+                    android:backgroundTint="#283593"
                     android:padding="10dp"
-                    android:text="Technical Society" />
+                    android:text="Technical Society"
+                    android:textColor="@color/white" />
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
@@ -116,8 +123,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
+                    android:backgroundTint="#283593"
                     android:padding="10dp"
-                    android:text="Morphosis Website" />
+                    android:text="Morphosis Website"
+                    android:textColor="@color/white" />
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
@@ -125,8 +134,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
+                    android:backgroundTint="#283593"
                     android:padding="10dp"
-                    android:text="About Morphosis" />
+                    android:text="About Morphosis"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
