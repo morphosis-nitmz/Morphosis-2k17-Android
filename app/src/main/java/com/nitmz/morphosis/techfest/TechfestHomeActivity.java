@@ -13,6 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,6 +42,17 @@ public class TechfestHomeActivity extends AppCompatActivity
     private View mHomeView;
 
     private ViewPager mViewPager;
+
+    CardView mEvents;
+    CardView mSchedule;
+    CardView mPrizes;
+    CardView mWebsite;
+    CardView mNews;
+    CardView mWinners;
+    CardView mAbout;
+    CardView mTechnicalSociety;
+    CardView mDevelopers;
+
     private static int currentPage = 0;
     private static int total_pages = 0;
 
@@ -73,6 +85,81 @@ public class TechfestHomeActivity extends AppCompatActivity
         navigationView.setCheckedItem(R.id.nav_home_techfest);
 
         init();
+
+        mEvents = (CardView) findViewById(R.id.card_view_event);
+        mEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(EventListFragment.class, false);
+            }
+        });
+
+        mSchedule = (CardView) findViewById(R.id.card_view_schedule);
+        mSchedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(ScheduleFragment.class, false);
+            }
+        });
+
+        mPrizes = (CardView) findViewById(R.id.card_view_prizes);
+        mPrizes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(PrizesFragment.class, false);
+            }
+        });
+
+        mWebsite = (CardView) findViewById(R.id.card_view_website);
+        mWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, MorphosisWebsiteWebViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mNews = (CardView) findViewById(R.id.card_view_news);
+        mNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(NewsFragment.class, false);
+            }
+        });
+
+        mWinners = (CardView) findViewById(R.id.card_view_winners);
+        mWinners.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(WinnersFragment.class, false);
+            }
+        });
+
+        mAbout = (CardView) findViewById(R.id.card_view_about);
+        mAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, AboutMorphosisActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mTechnicalSociety = (CardView) findViewById(R.id.card_view_technical_society);
+        mTechnicalSociety.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(TechnicalSocietyFragment.class, false);
+            }
+        });
+
+        mDevelopers = (CardView) findViewById(R.id.card_view_developers);
+        mDevelopers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, DevelopersActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

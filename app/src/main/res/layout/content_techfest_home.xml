@@ -152,6 +152,7 @@
             <TableRow android:layout_weight=".25">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_event"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
@@ -184,6 +185,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_schedule"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
@@ -215,6 +217,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_prizes"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
@@ -250,6 +253,7 @@
             <TableRow android:layout_weight=".25">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_website"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
@@ -282,6 +286,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_news"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
@@ -313,6 +318,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_winners"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
@@ -348,6 +354,7 @@
             <TableRow android:layout_weight=".25">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_about"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
@@ -380,6 +387,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_technical_society"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
@@ -403,7 +411,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight=".35"
-                            android:text="People"
+                            android:text="Technical Society"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -411,6 +419,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_developers"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
