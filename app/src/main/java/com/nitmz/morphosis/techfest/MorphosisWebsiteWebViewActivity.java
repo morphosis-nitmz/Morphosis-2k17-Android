@@ -83,6 +83,5 @@ public class MorphosisWebsiteWebViewActivity extends AppCompatActivity {
                 mMorphosisWebsiteWebView.reload();
             }
         });
-
     }
 }

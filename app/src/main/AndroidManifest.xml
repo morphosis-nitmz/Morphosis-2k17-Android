@@ -61,7 +61,8 @@
         <activity android:name=".techfest.DevelopersActivity" />
         <activity
             android:name=".scoobydoo.ScoobyDooBNavHome"
-            android:label="@string/title_activity_scooby_doo_bnav_home"/>
+            android:label="@string/title_activity_scooby_doo_bnav_home" />
+        <activity android:name=".techfest.ObgWebViewActivity"></activity>
     </application>
 
 </manifest>

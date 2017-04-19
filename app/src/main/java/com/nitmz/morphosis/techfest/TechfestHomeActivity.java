@@ -15,14 +15,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.nitmz.morphosis.LoginActivity;
 import com.nitmz.morphosis.R;
+import com.nitmz.morphosis.scoobydoo.ScoobyDooSplashScreenActivity;
 import com.rd.PageIndicatorView;
 
 import java.util.ArrayList;
@@ -52,6 +52,11 @@ public class TechfestHomeActivity extends AppCompatActivity
     CardView mAbout;
     CardView mTechnicalSociety;
     CardView mDevelopers;
+
+    Button mScoobyButton;
+    Button mStockBridgeButton;
+    Button mManthanResultsButton;
+    Button mCampusAmbassador;
 
     private static int currentPage = 0;
     private static int total_pages = 0;
@@ -87,6 +92,11 @@ public class TechfestHomeActivity extends AppCompatActivity
         navigationView.setCheckedItem(R.id.nav_home_techfest);
 
         init();
+
+
+
+
+        // CardView listeners
 
         mEvents = (CardView) findViewById(R.id.card_view_event);
         mEvents.setOnClickListener(new View.OnClickListener() {
@@ -159,6 +169,51 @@ public class TechfestHomeActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TechfestHomeActivity.this, DevelopersActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+        // obg listeners
+
+        mScoobyButton = (Button) findViewById(R.id.obg_scooby_dooby_doo);
+        mScoobyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, ScoobyDooSplashScreenActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        mStockBridgeButton = (Button) findViewById(R.id.obg_stock_bridge);
+        mStockBridgeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, ObgWebViewActivity.class);
+                intent.putExtra("url", "Stock Bridge");
+                startActivity(intent);
+            }
+        });
+
+        mCampusAmbassador = (Button) findViewById(R.id.obg_campus_ambassador);
+        mCampusAmbassador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, ObgWebViewActivity.class);
+                intent.putExtra("url", "Campus Ambassador");
+                startActivity(intent);
+            }
+        });
+
+        mManthanResultsButton = (Button) findViewById(R.id.obg_manthan_results);
+        mManthanResultsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, ObgWebViewActivity.class);
+                intent.putExtra("url", "Manthan Answer Keys");
                 startActivity(intent);
             }
         });

@@ -75,68 +75,46 @@
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
+                    android:id="@+id/obg_scooby_dooby_doo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
-                    android:backgroundTint="#283593"
                     android:padding="10dp"
-                    android:text="Events"
+                    android:text="Scooby Dooby Doo"
                     android:textColor="@color/white" />
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
+                    android:id="@+id/obg_stock_bridge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
-                    android:backgroundTint="#283593"
                     android:padding="10dp"
-                    android:text="Winners"
+                    android:text="Stock Bridge"
                     android:textColor="@color/white"/>
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
+                    android:id="@+id/obg_campus_ambassador"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
-                    android:backgroundTint="#283593"
                     android:padding="10dp"
-                    android:text="Prizes"
+                    android:text="Campus Ambassador"
                     android:textColor="@color/white" />
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
+                    android:id="@+id/obg_manthan_results"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
-                    android:backgroundTint="#283593"
                     android:padding="10dp"
-                    android:text="Technical Society"
-                    android:textColor="@color/white" />
-
-                <Button
-                    style="@style/Widget.AppCompat.Button.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/obg_shape"
-                    android:backgroundTint="#283593"
-                    android:padding="10dp"
-                    android:text="Morphosis Website"
-                    android:textColor="@color/white" />
-
-                <Button
-                    style="@style/Widget.AppCompat.Button.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/obg_shape"
-                    android:backgroundTint="#283593"
-                    android:padding="10dp"
-                    android:text="About Morphosis"
+                    android:text="Manthan Answer Keys"
                     android:textColor="@color/white" />
 
             </LinearLayout>
