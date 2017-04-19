@@ -90,6 +90,7 @@ public class LeaderboardFragment extends Fragment {
             }
         };
 
+        // test
         mScoreRef.addListenerForSingleValueEvent(mMainListener);
         //mTopScoreQuery.addListenerForSingleValueEvent(mMainListener);
     }
@@ -111,6 +112,8 @@ public class LeaderboardFragment extends Fragment {
                 user.setCrank(Integer.parseInt(crank));
 
                 mUserObjects.add(user);
+
+
 
 
                 Collections.sort(mUserObjects,new LeaderBoardUserObject());
