@@ -57,6 +57,8 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
     DatabaseReference mSolutionRef;
     DatabaseReference mSolvedRank;
     DatabaseReference mUserRankRef;
+    DatabaseReference mCalcScoreRef;
+    DatabaseReference mGetCRank;
 
 
 
@@ -69,6 +71,8 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
     private View mHomeView;
 
     int totalq = 25;
+
+    int crank = 99999;
 
 
     String mQuestionTitle;
@@ -138,7 +142,6 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
         pd = new ProgressDialog(this);
         pd.setMessage("Loading Puzzle ....");
         pd.show();
-        pd.setCancelable(false);
         pd.setCanceledOnTouchOutside(false);
 
 
@@ -226,6 +229,7 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
                                 .using(new FirebaseImageLoader())
                                 .load(pathReference)
                                 .dontAnimate()
+                                .placeholder(R.drawable.lo)
                                 .into(questionImageView);
 
                         pd.cancel();
@@ -306,6 +310,9 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
 
 
     private void checkAnswer() {
+
+        pd.show();
+
         final String answer = mAnswerField.getText().toString().trim().toLowerCase();
 
         View view = this.getCurrentFocus();
@@ -324,7 +331,7 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
 
                 if(answer.equals(canswer)){
 
-                    if (mQuestionNumber < 10) {
+                    /*if (mQuestionNumber < 10) {
                         mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
                                 setValue("0" + mQuestionNumber);
                         mScoreRef.child(mAuth.getCurrentUser().getUid()).setValue("0" + mQuestionNumber);
@@ -332,14 +339,16 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
                         mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
                                 setValue(mQuestionNumber);
                         mScoreRef.child(mAuth.getCurrentUser().getUid()).setValue(mQuestionNumber);
-                    }
+                    }*/
 
-                    mQuestionNumber++;
+                    /*mQuestionNumber++;
                     checkCurrentQuestion();
-                    mAnswerField.setText("");
+                    mAnswerField.setText("");*/
 
-                    //checkRank();
+                    checkRank();
+
                 } else {
+                    pd.cancel();
                     Toast.makeText(ScoobyDooBNavHome.this, "Incorrect, Try again :-)", Toast.LENGTH_LONG).show();
                 }
                 mAnswerField.setText("");
@@ -352,7 +361,7 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
             }
         };
 
-        mSolutionRef.addValueEventListener(listener);
+        mSolutionRef.addListenerForSingleValueEvent(listener);
 
 
     }
@@ -371,21 +380,11 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
 
                     int prank = Integer.parseInt(rank) + 1;
 
-                    if (mQuestionNumber < 10) {
-                        mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
-                                setValue("0" + mQuestionNumber);
-                        mScoreRef.child(mAuth.getCurrentUser().getUid()).setValue("0" + mQuestionNumber);
-                    } else {
-                        mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
-                                setValue(mQuestionNumber);
-                        mScoreRef.child(mAuth.getCurrentUser().getUid()).setValue(mQuestionNumber);
-                    }
+                    mSolvedRank.setValue(Integer.toString(prank));
 
-                    mUserRankRef.setValue(prank);
+                    mUserRankRef.setValue(Integer.toString(prank));
 
-                    mQuestionNumber++;
-                    checkCurrentQuestion();
-                    mAnswerField.setText("");
+                    calcCRank(0);
 
             }
 
@@ -395,9 +394,76 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
             }
         };
 
-        mSolvedRank.addValueEventListener(listener);
+        mSolvedRank.addListenerForSingleValueEvent(listener);
     }
 
+    public void getCRank()
+    {
+        mGetCRank = mDB.getReference("users/"+mAuth.getCurrentUser().getUid()+"/crank");
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String crank = dataSnapshot.getValue().toString();
+                calcCRank(Integer.parseInt(crank));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+
+        mGetCRank.addListenerForSingleValueEvent(listener);
+
+    }
+
+
+    public void calcCRank(int Crank)
+    {
+        mCalcScoreRef = mDB.getReference("users/"+mAuth.getCurrentUser().getUid()+"/rank");
+        crank = Crank;
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot child:dataSnapshot.getChildren())
+                {
+                    crank = crank + Integer.parseInt(child.getValue().toString());
+                }
+
+                mDB.getReference("users/"+mAuth.getCurrentUser().getUid()+"/crank").setValue(Integer.toString(crank));
+
+                crank=99999;
+
+                if (mQuestionNumber < 10) {
+                    mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
+                            setValue("0" + mQuestionNumber);
+                    mScoreRef.child(mAuth.getCurrentUser().getUid()).setValue("0" + mQuestionNumber);
+                } else {
+                    mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
+                            setValue(mQuestionNumber);
+                    mScoreRef.child(mAuth.getCurrentUser().getUid()).setValue(mQuestionNumber);
+                }
+
+
+                mQuestionNumber++;
+                checkCurrentQuestion();
+                mAnswerField.setText("");
+                pd.cancel();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+
+        mCalcScoreRef.addListenerForSingleValueEvent(listener);
+
+
+    }
 
 
 

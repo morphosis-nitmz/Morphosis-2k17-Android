@@ -265,7 +265,7 @@ public class LoginActivity extends AppCompatActivity
         mUsersRef.child(uid).child("email").setValue(email);
         mUsersRef.child(uid).child("score").setValue(init_score);
         mUsersRef.child(uid).child("pURL").setValue(pURL);
-        mUsersRef.child(uid).child("rank").setValue("0");
+        mUsersRef.child(uid).child("crank").setValue("99999");
     }
 
     private void createScoreNode() {

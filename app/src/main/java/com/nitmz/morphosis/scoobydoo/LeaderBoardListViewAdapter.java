@@ -49,7 +49,7 @@ public class LeaderBoardListViewAdapter extends ArrayAdapter<LeaderBoardUserObje
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.score.setText(entry.getScore());
+        viewHolder.score.setText(Integer.toString(entry.getScore()));
         viewHolder.username.setText(entry.getUsername());
         Glide.with(getContext())
                 .load(entry.getPurl())

@@ -15,11 +15,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.nitmz.morphosis.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 
@@ -28,11 +28,12 @@ public class LeaderboardFragment extends Fragment {
     private FirebaseDatabase mDB;
     private DatabaseReference mUsersRef;
     private DatabaseReference mScoreRef;
-    private Query mTopScoreQuery;
+
 
     private ArrayList<LeaderBoardUserObject> mUserObjects;
 
     private ValueEventListener mListener;
+    private ValueEventListener  mMainListener;
 
     ListView mLeaderboard;
     LeaderBoardListViewAdapter mAdapter;
@@ -62,29 +63,35 @@ public class LeaderboardFragment extends Fragment {
         pd.setCanceledOnTouchOutside(false);
 
         mLeaderboard = (ListView) view.findViewById(R.id.leaderboard_list);
+
         mAdapter = new LeaderBoardListViewAdapter(mUserObjects, getContext());
         mLeaderboard.setAdapter(mAdapter);
 
         mDB = FirebaseDatabase.getInstance();
         mScoreRef = mDB.getReference("score");
-        mTopScoreQuery = mScoreRef.orderByValue();
+        //mTopScoreQuery = mScoreRef.orderByValue();
 
-        mTopScoreQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+        mMainListener =new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+
                 for (DataSnapshot child: dataSnapshot.getChildren()) {
                     String uid = child.getKey();
                     mUsersRef = mDB.getReference("users/" + uid);
                     userDetails();
                 }
-                pd.cancel();
+
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        };
+
+        mScoreRef.addListenerForSingleValueEvent(mMainListener);
+        //mTopScoreQuery.addListenerForSingleValueEvent(mMainListener);
     }
 
     private void userDetails() {
@@ -95,16 +102,26 @@ public class LeaderboardFragment extends Fragment {
                 userName = toTitleCase(userName.toLowerCase().trim());
                 String photoURL = dataSnapshot.child("pURL").getValue(String.class);
                 String userScore = dataSnapshot.child("score").getValue(String.class);
+                String crank = dataSnapshot.child("crank").getValue(String.class);
 
                 LeaderBoardUserObject user = new LeaderBoardUserObject();
                 user.setUsername(userName);
-                user.setScore(userScore);
+                user.setScore(Integer.parseInt(userScore));
                 user.setPurl(photoURL);
+                user.setCrank(Integer.parseInt(crank));
 
-                ArrayList<LeaderBoardUserObject> userObjects_temp = new ArrayList<>();
+                mUserObjects.add(user);
+
+
+                Collections.sort(mUserObjects,new LeaderBoardUserObject());
+
+
+
+
+                /*ArrayList<LeaderBoardUserObject> userObjects_temp = new ArrayList<>();
                 userObjects_temp.add(user);
                 userObjects_temp.addAll(mUserObjects);
-                mUserObjects = userObjects_temp;
+                mUserObjects = userObjects_temp;*/
 
                 if (isAdded()) {
 
@@ -116,7 +133,7 @@ public class LeaderboardFragment extends Fragment {
                             LeaderBoardUserObject userObject = mUserObjects.get(position);
                             HashMap<String, String> map = new HashMap<>();
                             map.put("name", userObject.getUsername());
-                            map.put("score", userObject.getScore());
+                            map.put("score", Integer.toString(userObject.getScore()));
                             map.put("purl", userObject.getPurl());
                             ((ScoobyDooBNavHome) getActivity()).
                                     replaceFragments(LeaderBoardUserDetailsFragment.class, map);
@@ -124,6 +141,8 @@ public class LeaderboardFragment extends Fragment {
                     };
                     mLeaderboard.setOnItemClickListener(listener);
                     mLeaderboard.setAdapter(mAdapter);
+                    pd.cancel();
+
                 }
             }
 
@@ -134,8 +153,8 @@ public class LeaderboardFragment extends Fragment {
             }
         };
         if(mListener != null) {
-            mUserObjects.clear();
-            mUsersRef.addValueEventListener(mListener);
+            //mUserObjects.clear();
+            mUsersRef.addListenerForSingleValueEvent(mListener);
         }
     }
 
@@ -157,22 +176,16 @@ public class LeaderboardFragment extends Fragment {
         return titleCase.toString();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mUserObjects.clear();
-        if(mListener!=null) {
-            mUsersRef.addValueEventListener(mListener);
-        }
-    }
 
     @Override
     public void onPause() {
         super.onPause();
-        mUserObjects.clear();
+
         if(mListener!=null)
         {
             mUsersRef.removeEventListener(mListener);
+            mScoreRef.removeEventListener(mMainListener);
+
         }
     }
 

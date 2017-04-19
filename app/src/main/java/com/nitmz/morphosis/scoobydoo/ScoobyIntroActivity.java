@@ -21,7 +21,7 @@ public class ScoobyIntroActivity extends IntroActivity {
 
         addSlide(new SimpleSlide.Builder()
                 .title("hai")
-                .image(R.drawable.common_google_signin_btn_icon_dark)
+                .image(R.drawable.intro1)
                 .background(R.color.swipe_refresh_green)
                 .backgroundDark(R.color.cardview_dark_background)
                 .scrollable(false)
@@ -29,7 +29,7 @@ public class ScoobyIntroActivity extends IntroActivity {
 
         addSlide(new SimpleSlide.Builder()
                 .title("hai")
-                .image(R.drawable.common_google_signin_btn_icon_dark)
+                .image(R.drawable.intro2)
                 .backgroundDark(R.color.cardview_dark_background)
                 .background(R.color.swipe_refresh_green)
                 .scrollable(false)
