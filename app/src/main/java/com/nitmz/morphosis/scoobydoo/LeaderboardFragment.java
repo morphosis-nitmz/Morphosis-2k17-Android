@@ -1,6 +1,7 @@
 package com.nitmz.morphosis.scoobydoo;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -36,6 +37,8 @@ public class LeaderboardFragment extends Fragment {
     ListView mLeaderboard;
     LeaderBoardListViewAdapter mAdapter;
 
+    ProgressDialog pd;
+
     public LeaderboardFragment() {
         // Required empty public constructor
     }
@@ -52,6 +55,11 @@ public class LeaderboardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mUserObjects = new ArrayList<>();
+        pd = new ProgressDialog(getContext());
+        pd.setMessage("Waiting for the Top Players ....");
+        pd.show();
+        pd.setCancelable(false);
+        pd.setCanceledOnTouchOutside(false);
 
         mLeaderboard = (ListView) view.findViewById(R.id.leaderboard_list);
         mAdapter = new LeaderBoardListViewAdapter(mUserObjects, getContext());
@@ -69,6 +77,7 @@ public class LeaderboardFragment extends Fragment {
                     mUsersRef = mDB.getReference("users/" + uid);
                     userDetails();
                 }
+                pd.cancel();
             }
 
             @Override
@@ -85,7 +94,7 @@ public class LeaderboardFragment extends Fragment {
                 String userName = dataSnapshot.child("name").getValue(String.class);
                 userName = toTitleCase(userName.toLowerCase().trim());
                 String photoURL = dataSnapshot.child("pURL").getValue(String.class);
-                String userScore =  dataSnapshot.child("score").getValue(String.class);
+                String userScore = dataSnapshot.child("score").getValue(String.class);
 
                 LeaderBoardUserObject user = new LeaderBoardUserObject();
                 user.setUsername(userName);
@@ -97,22 +106,27 @@ public class LeaderboardFragment extends Fragment {
                 userObjects_temp.addAll(mUserObjects);
                 mUserObjects = userObjects_temp;
 
-                mAdapter = new LeaderBoardListViewAdapter(mUserObjects, getContext());
-                AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        LeaderBoardUserObject userObject = mUserObjects.get(position);
-                        HashMap<String,String> map = new HashMap<>();
-                        map.put("name",userObject.getUsername());
-                        map.put("score",userObject.getScore());
-                        map.put("purl",userObject.getPurl());
-                        ((ScoobyDooHomeActivity)getActivity()).
-                                replaceFragments(LeaderBoardUserDetailsFragment.class,map);
-                    }
-                };
-                mLeaderboard.setOnItemClickListener(listener);
-                mLeaderboard.setAdapter(mAdapter);
+                if (isAdded()) {
+
+
+                    mAdapter = new LeaderBoardListViewAdapter(mUserObjects, getContext());
+                    AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            LeaderBoardUserObject userObject = mUserObjects.get(position);
+                            HashMap<String, String> map = new HashMap<>();
+                            map.put("name", userObject.getUsername());
+                            map.put("score", userObject.getScore());
+                            map.put("purl", userObject.getPurl());
+                            ((ScoobyDooBNavHome) getActivity()).
+                                    replaceFragments(LeaderBoardUserDetailsFragment.class, map);
+                        }
+                    };
+                    mLeaderboard.setOnItemClickListener(listener);
+                    mLeaderboard.setAdapter(mAdapter);
+                }
             }
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -120,6 +134,7 @@ public class LeaderboardFragment extends Fragment {
             }
         };
         if(mListener != null) {
+            mUserObjects.clear();
             mUsersRef.addValueEventListener(mListener);
         }
     }
@@ -141,4 +156,24 @@ public class LeaderboardFragment extends Fragment {
 
         return titleCase.toString();
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mUserObjects.clear();
+        if(mListener!=null) {
+            mUsersRef.addValueEventListener(mListener);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mUserObjects.clear();
+        if(mListener!=null)
+        {
+            mUsersRef.removeEventListener(mListener);
+        }
+    }
+
 }

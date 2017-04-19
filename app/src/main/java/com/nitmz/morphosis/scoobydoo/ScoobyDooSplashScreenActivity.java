@@ -1,6 +1,5 @@
 package com.nitmz.morphosis.scoobydoo;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -30,7 +29,7 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
 
     TextView mScoobyTitle;
     TextView mScoobySubTitle;
-
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +43,7 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
             //window.setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
-
+      
         mScoobyTitle = (TextView) findViewById(R.id.scooby_title_splash_screen);
         mScoobySubTitle = (TextView) findViewById(R.id.scooby_sub_title_splash_screen);
 
@@ -75,7 +74,7 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String gameStarted = dataSnapshot.getValue().toString();
                 if(gameStarted.equals("1")) {
-                    Intent intent = new Intent(ScoobyDooSplashScreenActivity.this, ScoobyDooHomeActivity.class);
+                    Intent intent = new Intent(ScoobyDooSplashScreenActivity.this,ScoobyDooBNavHome.class);
                     startActivity(intent);
                     finish();
                 }
