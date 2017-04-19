@@ -343,7 +343,7 @@
                             android:layout_height="0dp"
                             android:layout_weight=".65"
                             android:padding="10dp"
-                            app:srcCompat="@drawable/ic_info_orange_500_48dp" />
+                            app:srcCompat="@drawable/ic_about" />
 
                         <TextView
                             android:layout_width="match_parent"

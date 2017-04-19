@@ -24,8 +24,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/robotics_banner_title"
@@ -94,7 +94,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
+                android:alpha="0.50"
                 android:background="@android:color/black" />
 
             <TextView
@@ -125,8 +125,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="#D32F2F" />
 
             <TextView
                 android:id="@+id/quiz_banner_title"
@@ -156,7 +156,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
+                android:alpha="0.50"
                 android:background="@android:color/black" />
 
             <TextView
@@ -187,8 +187,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="#0097A7" />
 
             <TextView
                 android:id="@+id/cube_fever_banner_title"
@@ -218,7 +218,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
+                android:alpha="0.50"
                 android:background="@android:color/black" />
 
             <TextView
@@ -249,8 +249,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/power_of_speech_banner_title"
@@ -280,7 +280,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
+                android:alpha="0.50"
                 android:background="@android:color/black" />
 
             <TextView
@@ -311,8 +311,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="#E53935" />
 
             <TextView
                 android:id="@+id/cypher_banner_title"
@@ -342,7 +342,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
+                android:alpha="0.50"
                 android:background="@android:color/black" />
 
             <TextView
@@ -373,8 +373,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="#2E7D32" />
 
             <TextView
                 android:id="@+id/science_expo_banner_title"
@@ -404,7 +404,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
+                android:alpha="0.50"
                 android:background="@android:color/black" />
 
             <TextView
@@ -435,8 +435,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/manthan_banner_title"
