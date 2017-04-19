@@ -62,8 +62,10 @@ public class LeaderboardFragment extends Fragment {
         pd.setCanceledOnTouchOutside(false);
 
         mLeaderboard = (ListView) view.findViewById(R.id.leaderboard_list);
+        //Something not right !!!!! -------------------------------------
         mAdapter = new LeaderBoardListViewAdapter(mUserObjects, getContext());
         mLeaderboard.setAdapter(mAdapter);
+        //---------------------------------------------------------------
 
         mDB = FirebaseDatabase.getInstance();
         mScoreRef = mDB.getReference("score");
@@ -72,6 +74,10 @@ public class LeaderboardFragment extends Fragment {
         mTopScoreQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                
+                // possible fix 
+                // mUserObjects.clear();
+                
                 for (DataSnapshot child: dataSnapshot.getChildren()) {
                     String uid = child.getKey();
                     mUsersRef = mDB.getReference("users/" + uid);
