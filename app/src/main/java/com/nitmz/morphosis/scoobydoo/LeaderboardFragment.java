@@ -71,13 +71,13 @@ public class LeaderboardFragment extends Fragment {
         mScoreRef = mDB.getReference("score");
         mTopScoreQuery = mScoreRef.orderByValue();
 
-        mTopScoreQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+        mMainListener =new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                
+              
                 // possible fix 
                 // mUserObjects.clear();
-                
+
                 for (DataSnapshot child: dataSnapshot.getChildren()) {
                     String uid = child.getKey();
                     mUsersRef = mDB.getReference("users/" + uid);
@@ -101,7 +101,7 @@ public class LeaderboardFragment extends Fragment {
                 userName = toTitleCase(userName.toLowerCase().trim());
                 String photoURL = dataSnapshot.child("pURL").getValue(String.class);
                 String userScore = dataSnapshot.child("score").getValue(String.class);
-
+                
                 LeaderBoardUserObject user = new LeaderBoardUserObject();
                 user.setUsername(userName);
                 user.setScore(userScore);
@@ -141,7 +141,7 @@ public class LeaderboardFragment extends Fragment {
         };
         if(mListener != null) {
             mUserObjects.clear();
-            mUsersRef.addValueEventListener(mListener);
+            mUsersRef.addListenerForSingleValueEvent(mListener);
         }
     }
 

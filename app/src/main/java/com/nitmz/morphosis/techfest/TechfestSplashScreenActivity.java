@@ -4,15 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Window;
 import android.widget.TextView;
 
 import com.nitmz.morphosis.LoginActivity;
 import com.nitmz.morphosis.R;
-
 
 public class TechfestSplashScreenActivity extends AppCompatActivity {
 

@@ -35,6 +35,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.nitmz.morphosis.scoobydoo.ScoobyDooBNavHome;
 import com.nitmz.morphosis.techfest.TechfestHomeActivity;
 
 public class LoginActivity extends AppCompatActivity
@@ -62,6 +64,7 @@ public class LoginActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setTitle("Login");
 
         Bundle bundle = getIntent().getExtras();
         launch = bundle.getInt("launch");
@@ -263,7 +266,7 @@ public class LoginActivity extends AppCompatActivity
         mUsersRef.child(uid).child("email").setValue(email);
         mUsersRef.child(uid).child("score").setValue(init_score);
         mUsersRef.child(uid).child("pURL").setValue(pURL);
-        mUsersRef.child(uid).child("rank").setValue("0");
+        mUsersRef.child(uid).child("crank").setValue("99999");
     }
 
     private void createScoreNode() {

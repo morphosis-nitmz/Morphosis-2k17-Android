@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.nitmz.morphosis.techfest.TechfestHomeActivity"
     tools:showIn="@layout/app_bar_techfest_home">
@@ -21,6 +20,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:background="#EEEEEE"
         android:orientation="vertical">
 
         <LinearLayout
@@ -38,7 +38,6 @@
                     android:id="@+id/home_viewpager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="5dp"
                     android:layout_margin="2dp">
 
                 </android.support.v4.view.ViewPager>
@@ -48,20 +47,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
-                    android:layout_marginBottom="14dp"
+                    android:layout_marginBottom="5dp"
                     app:piv_animationType="worm"
                     app:piv_dynamicCount="true"
                     app:piv_interactiveAnimation="true"
                     app:piv_padding="6dp"
                     app:piv_radius="5dp"
                     app:piv_selectedColor="@color/white"
-                    app:piv_unselectedColor="@color/page_indicator_background" />
+                    app:piv_unselectedColor="@color/home_background" />
 
             </FrameLayout>
 
         </LinearLayout>
 
-        <!--
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -75,65 +73,53 @@
                 android:layout_margin="10dp"
                 android:orientation="horizontal">
 
-
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
+                    android:id="@+id/obg_scooby_dooby_doo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
                     android:padding="10dp"
-                    android:text="Events" />
+                    android:text="Scooby Dooby Doo"
+                    android:textColor="@color/white" />
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
+                    android:id="@+id/obg_stock_bridge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
                     android:padding="10dp"
-                    android:text="Winners" />
+                    android:text="Stock Bridge"
+                    android:textColor="@color/white"/>
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
+                    android:id="@+id/obg_campus_ambassador"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
                     android:padding="10dp"
-                    android:text="Prizes" />
+                    android:text="Campus Ambassador"
+                    android:textColor="@color/white" />
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
+                    android:id="@+id/obg_manthan_results"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:background="@drawable/obg_shape"
                     android:padding="10dp"
-                    android:text="Technical Society" />
-
-                <Button
-                    style="@style/Widget.AppCompat.Button.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/obg_shape"
-                    android:padding="10dp"
-                    android:text="Morphosis Website" />
-
-                <Button
-                    style="@style/Widget.AppCompat.Button.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/obg_shape"
-                    android:padding="10dp"
-                    android:text="About Morphosis" />
+                    android:text="Manthan Answer Keys"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
         </HorizontalScrollView>
-        -->
 
         <TableLayout
             android:layout_width="match_parent"
@@ -144,11 +130,12 @@
             <TableRow android:layout_weight=".25">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_event"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -166,7 +153,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight=".35"
-                            android:textColor="#000000"
                             android:text="Events"
                             android:textAlignment="center"
                             android:textSize="16sp" />
@@ -176,11 +162,12 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_schedule"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -199,7 +186,6 @@
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="Schedule"
-                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -207,11 +193,12 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_prizes"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -223,14 +210,13 @@
                             android:layout_height="0dp"
                             android:layout_weight=".65"
                             android:padding="10dp"
-                            app:srcCompat="@drawable/ic_trophy_black_48dp" />
+                            app:srcCompat="@drawable/trophy" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="Prizes"
-                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -242,11 +228,12 @@
             <TableRow android:layout_weight=".25">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_website"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -265,7 +252,6 @@
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="Website"
-                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
 
@@ -274,11 +260,12 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_news"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -297,7 +284,6 @@
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="News"
-                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -305,11 +291,12 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_winners"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -328,7 +315,6 @@
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="Winners"
-                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -340,11 +326,12 @@
             <TableRow android:layout_weight=".25">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_about"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -356,14 +343,13 @@
                             android:layout_height="0dp"
                             android:layout_weight=".65"
                             android:padding="10dp"
-                            app:srcCompat="@drawable/ic_info_orange_500_48dp" />
+                            app:srcCompat="@drawable/ic_about" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="About"
-                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
 
@@ -372,11 +358,12 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_technical_society"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -395,7 +382,6 @@
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="People"
-                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -403,11 +389,12 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/card_view_developers"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/white">
+                    android:padding="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -426,7 +413,6 @@
                             android:layout_height="0dp"
                             android:layout_weight=".35"
                             android:text="Developers"
-                            android:textColor="#000000"
                             android:textAlignment="center"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -437,126 +423,6 @@
 
         </TableLayout>
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".60"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="2dp"
-                            android:layout_weight="1">
-                            <ImageView
-                                android:id="@+id/schedule_icon_home"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:adjustViewBounds="false"
-                                android:cropToPadding="false"
-                                android:scaleType="fitXY"
-                                app:srcCompat="@drawable/schedule" />
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:alpha="0.50"
-                                android:background="@android:color/black" />
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:padding="1dp"
-                                android:text="Schedule"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/white"
-                                android:textSize="30sp" />
-                        </FrameLayout>
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="2dp"
-                            android:layout_weight="1">
-                            <ImageView
-                                android:id="@+id/events_icon_home"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/events" />
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:alpha="0.10"
-                                android:background="@android:color/black" />
-                            <TextView
-                                android:id="@+id/events_text_home"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:padding="1dp"
-                                android:text="Events"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/white"
-                                android:textSize="30sp" />
-                        </FrameLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="2dp"
-                            android:layout_weight="1">
-                            <ImageView
-                                android:id="@+id/news_icon_home"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:adjustViewBounds="false"
-                                android:cropToPadding="false"
-                                android:scaleType="fitXY"
-                                app:srcCompat="@drawable/news" />
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:alpha="0.50"
-                                android:background="@android:color/black" />
-                            <TextView
-                                android:id="@+id/news_text_home"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:padding="1dp"
-                                android:text="News"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/white"
-                                android:textSize="30sp" />
-                        </FrameLayout>
-                        <FrameLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="2dp"
-                            android:layout_weight="1">
-                            <ImageView
-                                android:id="@+id/dev_icon_home"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:scaleType="fitXY"
-                                app:srcCompat="@drawable/developers" />
-                        </FrameLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-
-
     </LinearLayout>
 
 </RelativeLayout>
-
-

@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <FrameLayout
@@ -24,8 +24,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/robotics_banner_title"
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
                 android:padding="15dp"
-                android:text="@string/robotics_banner_text"
+                android:text="ROBOTICS"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -51,7 +51,8 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:background="@color/transparent"
-                    android:text="@string/maze_solver_button_text" />
+                    android:text="Maze Solver"
+                    android:textColor="@color/white"/>
 
                 <Button
                     android:id="@+id/button_robo_race"
@@ -59,8 +60,9 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:background="@color/transparent"
-                    android:text="@string/robo_race_button_text" />
+                    android:backgroundTint="@color/transparent"
+                    android:text="Robo Race"
+                    android:textColor="@color/white"/>
 
                 <Button
                     android:id="@+id/button_robo_war"
@@ -69,7 +71,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:background="@color/transparent"
-                    android:text="@string/robo_war_button_text" />
+                    android:text="Robo War"
+                    android:textColor="@color/white"/>
 
             </RelativeLayout>
 
@@ -91,7 +94,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
+                android:alpha="0.50"
                 android:background="@android:color/black" />
 
             <TextView
@@ -99,7 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/stock_bridge_banner_text"
+                android:text="Stock Bridge"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -122,15 +125,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="#D32F2F" />
 
             <TextView
                 android:id="@+id/quiz_banner_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/quiz_banner_text"
+                android:text="Quiz"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -153,7 +156,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
+                android:alpha="0.50"
                 android:background="@android:color/black" />
 
             <TextView
@@ -161,7 +164,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/arcadia_banner_text"
+                android:text="Arcadia"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -184,15 +187,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="#0097A7" />
 
             <TextView
                 android:id="@+id/cube_fever_banner_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/cube_fever_banner_text"
+                android:text="Cube Fever"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -215,7 +218,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
+                android:alpha="0.50"
                 android:background="@android:color/black" />
 
             <TextView
@@ -223,7 +226,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/scooby_dooby_doo_banner_text"
+                android:text="Scooby Dooby Doo"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -246,15 +249,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/power_of_speech_banner_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/power_of_speech_banner_text"
+                android:text="Power of Speech"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -277,7 +280,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
+                android:alpha="0.50"
                 android:background="@android:color/black" />
 
             <TextView
@@ -285,7 +288,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/code_warrior_banner_text"
+                android:text="Code Warrior"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -308,15 +311,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="#E53935" />
 
             <TextView
                 android:id="@+id/cypher_banner_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/cypher_banner_text"
+                android:text="Cypher"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -339,7 +342,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
+                android:alpha="0.50"
                 android:background="@android:color/black" />
 
             <TextView
@@ -347,7 +350,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/tech_talk_banner_text"
+                android:text="Tech Talk"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -370,15 +373,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="#2E7D32" />
 
             <TextView
                 android:id="@+id/science_expo_banner_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/science_expo_banner_text"
+                android:text="Science Expo"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -401,7 +404,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
+                android:alpha="0.50"
                 android:background="@android:color/black" />
 
             <TextView
@@ -409,7 +412,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/abhyudaya_banner_text"
+                android:text="Abhyudaya"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
@@ -432,15 +435,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="0.60"
-                android:background="@android:color/black" />
+                android:alpha="0.50"
+                android:background="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/manthan_banner_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/manthan_banner_text"
+                android:text="Manthan"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />

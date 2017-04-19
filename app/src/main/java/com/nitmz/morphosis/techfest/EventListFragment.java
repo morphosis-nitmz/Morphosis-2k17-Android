@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.nitmz.morphosis.R;
 
@@ -37,7 +39,6 @@ public class EventListFragment extends Fragment {
     ImageView mAbhyudaya;
     ImageView mManthan;
 
-
     public EventListFragment() {
         // Required empty public constructor
     }
@@ -51,6 +52,8 @@ public class EventListFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+        getActivity().setTitle("Events");
 
         mEvents = new ArrayList<>(Arrays.asList(
                 "Maze Solver", // 0

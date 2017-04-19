@@ -29,7 +29,7 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
 
     TextView mScoobyTitle;
     TextView mScoobySubTitle;
-  
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +43,7 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
             //window.setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
-      
+
         mScoobyTitle = (TextView) findViewById(R.id.scooby_title_splash_screen);
         mScoobySubTitle = (TextView) findViewById(R.id.scooby_sub_title_splash_screen);
 

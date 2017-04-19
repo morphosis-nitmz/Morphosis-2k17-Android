@@ -29,7 +29,9 @@ public class ScheduleFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        mSchedule = (WebView) view.findViewById(R.id.schedule);
+        getActivity().setTitle("Schedule");
+
+        mSchedule = (WebView) view.findViewById(R.id.schedule_morphosis);
         mSchedule.loadDataWithBaseURL(null, "<html><head><style>img " +
                 "{margin-top:auto;margin-bottom:auto}</style></head><body><img src=\"" +
                 "file:///android_asset/schedule.png" + "\"></body></html>", "html/css", "utf-8", null);

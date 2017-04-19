@@ -1,7 +1,7 @@
 package com.nitmz.morphosis.techfest;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -23,6 +23,8 @@ public class DevelopersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_developers);
+
+        setTitle("Developers");
 
         mWebTeam = new ArrayList<>(Arrays.asList(
                 "Akash Singh",

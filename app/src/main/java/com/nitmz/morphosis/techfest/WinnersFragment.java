@@ -1,19 +1,22 @@
 package com.nitmz.morphosis.techfest;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.nitmz.morphosis.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class WinnersFragment extends Fragment {
@@ -36,6 +39,7 @@ public class WinnersFragment extends Fragment {
     ImageView mAbhyudaya;
     ImageView mManthan;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,7 @@ public class WinnersFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("Winners");
 
         mEvents = new ArrayList<>(Arrays.asList(
                 "Maze Solver", // 0

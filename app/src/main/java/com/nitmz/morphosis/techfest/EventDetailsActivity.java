@@ -3,10 +3,10 @@ package com.nitmz.morphosis.techfest;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -21,6 +21,8 @@ public class EventDetailsActivity extends AppCompatActivity {
     private ViewPager mViewPager;
 
     private int mEventPosition;
+
+    TechfestData techfestData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,10 @@ public class EventDetailsActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
 
         mEventPosition = getIntent().getExtras().getInt("position");
+
+        techfestData = new TechfestData();
+
+        setTitle(techfestData.getEventName(mEventPosition));
     }
 
 

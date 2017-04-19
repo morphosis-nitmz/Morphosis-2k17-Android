@@ -47,6 +47,7 @@ public class WinnerDetailsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getActivity().setTitle("Winners");
 
         win_details = (ListView) view.findViewById(R.id.win_details_list);
         String event = getArguments().getString("event");
@@ -64,12 +65,14 @@ public class WinnerDetailsFragment extends Fragment {
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot notification:dataSnapshot.getChildren()) {
+                for(DataSnapshot notification:dataSnapshot.getChildren())
+                {
                     String name = notification.getValue().toString();
                     Names.add(name);
+
                 }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<>
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>
                         (getContext(),android.R.layout.simple_list_item_1, Names);
                 win_details.setAdapter(adapter);
                 win_details.setEmptyView(empty);
@@ -85,4 +88,9 @@ public class WinnerDetailsFragment extends Fragment {
         mRef.addValueEventListener(listener);
 
     }
+
+
+
+
+
 }
