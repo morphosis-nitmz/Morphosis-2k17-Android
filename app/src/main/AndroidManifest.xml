@@ -13,12 +13,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Dark">
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".techfest.TechfestHomeActivity"
+            android:label="@string/title_activity_techfest_home"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".techfest.TechfestSplashScreenActivity"
             android:label="Morphosis"
             android:launchMode="singleTask"
-            android:theme="@style/Dark.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +33,7 @@
             android:name=".scoobydoo.ScoobyDooSplashScreenActivity"
             android:label="Scooby Doo"
             android:launchMode="singleTask"
-            android:theme="@style/Dark.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,10 +46,13 @@
             android:label="@string/title_activity_event_details" />
         <activity android:name=".scoobydoo.GameStatusActivity" />
         <activity
+            android:name=".scoobydoo.ScoobyIntroActivity"
+            android:theme="@style/Theme.Intro" />
+        <activity
             android:name=".techfest.AboutMorphosisActivity"
             android:label="@string/title_activity_about_morphosis"
             android:parentActivityName=".techfest.TechfestHomeActivity"
-            android:theme="@style/Dark">
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nitmz.morphosis.techfest.TechfestHomeActivity" />
@@ -54,7 +61,7 @@
         <activity android:name=".techfest.DevelopersActivity" />
         <activity
             android:name=".scoobydoo.ScoobyDooBNavHome"
-            android:label="@string/title_activity_scooby_doo_bnav_home"></activity>
+            android:label="@string/title_activity_scooby_doo_bnav_home"/>
     </application>
 
 </manifest>

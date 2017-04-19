@@ -49,7 +49,7 @@ public class TechfestHomeActivity extends AppCompatActivity
     private static int total_pages = 0;
 
     private static final Integer[] images = {R.drawable.a, R.drawable.b,
-        R.drawable.d, R.drawable.e};
+        R.drawable.d, R.drawable.d};
     private ArrayList<Integer> ImagesArray = new ArrayList<>();
 
     @Override
@@ -141,6 +141,18 @@ public class TechfestHomeActivity extends AppCompatActivity
             }
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.techfest_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

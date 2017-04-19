@@ -33,6 +33,7 @@ public class LeaderboardFragment extends Fragment {
     private ArrayList<LeaderBoardUserObject> mUserObjects;
 
     private ValueEventListener mListener;
+    private ValueEventListener  mMainListener;
 
     ListView mLeaderboard;
     LeaderBoardListViewAdapter mAdapter;
@@ -62,29 +63,34 @@ public class LeaderboardFragment extends Fragment {
         pd.setCanceledOnTouchOutside(false);
 
         mLeaderboard = (ListView) view.findViewById(R.id.leaderboard_list);
-        mAdapter = new LeaderBoardListViewAdapter(mUserObjects, getContext());
-        mLeaderboard.setAdapter(mAdapter);
+
+        //mAdapter = new LeaderBoardListViewAdapter(mUserObjects, getContext());
+        //mLeaderboard.setAdapter(mAdapter);
 
         mDB = FirebaseDatabase.getInstance();
         mScoreRef = mDB.getReference("score");
         mTopScoreQuery = mScoreRef.orderByValue();
 
-        mTopScoreQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+        mMainListener =new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+
                 for (DataSnapshot child: dataSnapshot.getChildren()) {
                     String uid = child.getKey();
                     mUsersRef = mDB.getReference("users/" + uid);
                     userDetails();
                 }
-                pd.cancel();
+
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        };
+
+        mTopScoreQuery.addListenerForSingleValueEvent(mMainListener);
     }
 
     private void userDetails() {
@@ -95,16 +101,21 @@ public class LeaderboardFragment extends Fragment {
                 userName = toTitleCase(userName.toLowerCase().trim());
                 String photoURL = dataSnapshot.child("pURL").getValue(String.class);
                 String userScore = dataSnapshot.child("score").getValue(String.class);
+                String crank = dataSnapshot.child("crank").getValue(String.class);
 
                 LeaderBoardUserObject user = new LeaderBoardUserObject();
                 user.setUsername(userName);
                 user.setScore(userScore);
                 user.setPurl(photoURL);
+                user.setCrank(crank);
 
-                ArrayList<LeaderBoardUserObject> userObjects_temp = new ArrayList<>();
+                mUserObjects.add(user);
+
+
+                /*ArrayList<LeaderBoardUserObject> userObjects_temp = new ArrayList<>();
                 userObjects_temp.add(user);
                 userObjects_temp.addAll(mUserObjects);
-                mUserObjects = userObjects_temp;
+                mUserObjects = userObjects_temp;*/
 
                 if (isAdded()) {
 
@@ -124,6 +135,8 @@ public class LeaderboardFragment extends Fragment {
                     };
                     mLeaderboard.setOnItemClickListener(listener);
                     mLeaderboard.setAdapter(mAdapter);
+                    pd.cancel();
+
                 }
             }
 
@@ -134,8 +147,8 @@ public class LeaderboardFragment extends Fragment {
             }
         };
         if(mListener != null) {
-            mUserObjects.clear();
-            mUsersRef.addValueEventListener(mListener);
+            //mUserObjects.clear();
+            mUsersRef.addListenerForSingleValueEvent(mListener);
         }
     }
 
@@ -157,22 +170,16 @@ public class LeaderboardFragment extends Fragment {
         return titleCase.toString();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mUserObjects.clear();
-        if(mListener!=null) {
-            mUsersRef.addValueEventListener(mListener);
-        }
-    }
 
     @Override
     public void onPause() {
         super.onPause();
-        mUserObjects.clear();
+
         if(mListener!=null)
         {
             mUsersRef.removeEventListener(mListener);
+            mTopScoreQuery.removeEventListener(mMainListener);
+
         }
     }
 
