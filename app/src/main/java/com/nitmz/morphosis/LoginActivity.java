@@ -209,7 +209,7 @@ public class LoginActivity extends AppCompatActivity
                                     if(!key)
                                     {
                                         createUserNode();
-                                        createScoreNode();
+
 
                                     }
 
@@ -268,10 +268,6 @@ public class LoginActivity extends AppCompatActivity
         mUsersRef.child(uid).child("crank").setValue("99999");
     }
 
-    private void createScoreNode() {
-        String uid = mAuth.getCurrentUser().getUid();
-        mScoreRef.child(uid).setValue("0");
-    }
 
     /**
      * Shows the progress UI and hides the login form.

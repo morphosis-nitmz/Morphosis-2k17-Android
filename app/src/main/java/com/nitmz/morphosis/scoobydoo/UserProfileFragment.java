@@ -53,7 +53,7 @@ public class UserProfileFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         mDB = FirebaseDatabase.getInstance();
-        mScoreRef = mDB.getReference("score/" + mAuth.getCurrentUser().getUid());
+        mScoreRef = mDB.getReference("users/" + mAuth.getCurrentUser().getUid()+"/score");
         Logout = (Button) view.findViewById(R.id.logout_bnav);
         Logout.setVisibility(View.VISIBLE);
         Logout.setOnClickListener(new View.OnClickListener() {

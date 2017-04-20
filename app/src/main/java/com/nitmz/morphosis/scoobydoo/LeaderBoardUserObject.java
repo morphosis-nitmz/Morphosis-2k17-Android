@@ -1,29 +1,39 @@
 package com.nitmz.morphosis.scoobydoo;
 
+import android.support.annotation.NonNull;
+
 import java.util.Comparator;
 
-public class LeaderBoardUserObject implements Comparator<LeaderBoardUserObject> {
+public class LeaderBoardUserObject implements Comparable<LeaderBoardUserObject> {
     ;
     private String purl;
     private String username;
     private int score;
     private int crank;
 
+
     @Override
-    public int compare(LeaderBoardUserObject l, LeaderBoardUserObject r) {
-        if(l.getScore()>r.getScore())
-            return 1;
-        else if(l.getScore()<r.getScore())
-            return 0;
-        else
-        {
-            if(l.getCrank()>r.getCrank())
-                return 1;
-            else
-                return -1;
+    public int compareTo(@NonNull LeaderBoardUserObject o) {
+        return 0;
+    }
+
+    public static final Comparator<LeaderBoardUserObject> first = new Comparator<LeaderBoardUserObject>(){
+
+        @Override
+        public int compare(LeaderBoardUserObject o1, LeaderBoardUserObject o2) {
+            return o1.getScore()- o2.getScore();
         }
 
-    }
+    };
+
+    public static final Comparator<LeaderBoardUserObject> second = new Comparator<LeaderBoardUserObject>(){
+
+        @Override
+        public int compare(LeaderBoardUserObject o1, LeaderBoardUserObject o2) {
+            return o2.getCrank()- o1.getCrank();
+        }
+
+    };
 
 
     String getPurl() {

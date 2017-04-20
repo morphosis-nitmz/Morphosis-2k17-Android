@@ -1,13 +1,11 @@
 package com.nitmz.morphosis.techfest;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -59,7 +57,10 @@ public class EventListFragment extends Fragment {
                 getContext(),
                 android.R.layout.simple_list_item_1,
                 mEvents
+
+
         );
+
 
         /* mListView = (ListView) view.findViewById(R.id.events_list);
         mListView.setAdapter(arrayAdapter);

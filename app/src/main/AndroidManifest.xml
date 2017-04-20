@@ -44,7 +44,8 @@
         <activity
             android:name=".techfest.EventDetailsActivity"
             android:label="@string/title_activity_event_details" />
-        <activity android:name=".scoobydoo.GameStatusActivity" />
+        <activity android:name=".scoobydoo.GameStatusActivity"
+            android:theme="@style/Dark.NoActionBar"/>
         <activity
             android:name=".scoobydoo.ScoobyIntroActivity"
             android:theme="@style/Theme.Intro" />

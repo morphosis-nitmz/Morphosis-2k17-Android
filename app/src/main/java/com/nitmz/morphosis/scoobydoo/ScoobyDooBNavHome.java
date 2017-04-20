@@ -49,8 +49,6 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
     private StorageReference mStorageReference;
     private FirebaseDatabase mDB;
     private DatabaseReference mUsersRef;
-    private DatabaseReference mScoreRef;
-
     DatabaseReference mStatusRef;
     DatabaseReference mCurrentQuestionRef;
     DatabaseReference mHintRef;
@@ -197,7 +195,6 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
         // Initialize data for question loading
         mDB = FirebaseDatabase.getInstance();
         mUsersRef = mDB.getReference("users");
-        mScoreRef = mDB.getReference("score");
         mQuestionNumber = 1;
         checkCurrentQuestion();
 
@@ -440,11 +437,10 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
                 if (mQuestionNumber < 10) {
                     mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
                             setValue("0" + mQuestionNumber);
-                    mScoreRef.child(mAuth.getCurrentUser().getUid()).setValue("0" + mQuestionNumber);
+
                 } else {
                     mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
                             setValue(mQuestionNumber);
-                    mScoreRef.child(mAuth.getCurrentUser().getUid()).setValue(mQuestionNumber);
                 }
 
 

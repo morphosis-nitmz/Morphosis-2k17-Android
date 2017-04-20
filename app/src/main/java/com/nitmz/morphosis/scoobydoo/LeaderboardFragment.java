@@ -68,56 +68,62 @@ public class LeaderboardFragment extends Fragment {
         mLeaderboard.setAdapter(mAdapter);
 
         mDB = FirebaseDatabase.getInstance();
-        mScoreRef = mDB.getReference("score");
+        mUsersRef = mDB.getReference("users");
         //mTopScoreQuery = mScoreRef.orderByValue();
-
-        mMainListener =new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-
-                for (DataSnapshot child: dataSnapshot.getChildren()) {
-                    String uid = child.getKey();
-                    mUsersRef = mDB.getReference("users/" + uid);
-                    userDetails();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-
-        // test
-        mScoreRef.addListenerForSingleValueEvent(mMainListener);
-        //mTopScoreQuery.addListenerForSingleValueEvent(mMainListener);
+        userDetails();
     }
 
     private void userDetails() {
         mListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String userName = dataSnapshot.child("name").getValue(String.class);
-                userName = toTitleCase(userName.toLowerCase().trim());
-                String photoURL = dataSnapshot.child("pURL").getValue(String.class);
-                String userScore = dataSnapshot.child("score").getValue(String.class);
-                String crank = dataSnapshot.child("crank").getValue(String.class);
 
-                LeaderBoardUserObject user = new LeaderBoardUserObject();
-                user.setUsername(userName);
-                user.setScore(Integer.parseInt(userScore));
-                user.setPurl(photoURL);
-                user.setCrank(Integer.parseInt(crank));
+                mUserObjects.clear();
 
-                mUserObjects.add(user);
+                for (DataSnapshot child: dataSnapshot.getChildren()) {
+                    String userName = child.child("name").getValue(String.class);
+                    userName = toTitleCase(userName.toLowerCase().trim());
+                    String photoURL = child.child("pURL").getValue(String.class);
+                    String userScore = child.child("score").getValue(String.class);
+                    String crank = child.child("crank").getValue(String.class);
 
+                    LeaderBoardUserObject user = new LeaderBoardUserObject();
+                    user.setUsername(userName);
+                    user.setScore(Integer.parseInt(userScore));
+                    user.setPurl(photoURL);
+                    user.setCrank(Integer.parseInt(crank));
+                    mUserObjects.add(user);
 
+                }
 
+                System.out.print("out");
+                ArrayList<LeaderBoardUserObject> temp = new ArrayList<>();
+                ArrayList<LeaderBoardUserObject> ns = new ArrayList<>();
+                Collections.sort(mUserObjects,LeaderBoardUserObject.first);
+                int p1=0,p2=0;
+                int i=0;
+                for( i=0;i<mUserObjects.size()-1;i++)
+                {
+                    if(mUserObjects.get(i).getScore()==mUserObjects.get(i+1).getScore())
+                    {
+                        temp.add(mUserObjects.get(i));
+                    }
+                    else
+                    {
+                        temp.add(mUserObjects.get(i));
+                        Collections.sort(temp,LeaderBoardUserObject.second);
+                        for(int j=0;j<temp.size();j++)
+                            ns.add(temp.get(j));
+                        temp.clear();
+                    }
 
-                Collections.sort(mUserObjects,new LeaderBoardUserObject());
+                }
+                Collections.sort(temp,LeaderBoardUserObject.second);
+                for(int j=0;j<temp.size();j++)
+                    ns.add(temp.get(j));
 
+                mUserObjects.clear();
+                mUserObjects.addAll(ns);
 
 
 
@@ -126,8 +132,11 @@ public class LeaderboardFragment extends Fragment {
                 userObjects_temp.addAll(mUserObjects);
                 mUserObjects = userObjects_temp;*/
 
+
                 if (isAdded()) {
 
+
+                    Collections.reverse(mUserObjects);
 
                     mAdapter = new LeaderBoardListViewAdapter(mUserObjects, getContext());
                     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
@@ -156,8 +165,11 @@ public class LeaderboardFragment extends Fragment {
 
             }
         };
+
         if(mListener != null) {
             //mUserObjects.clear();
+
+
             mUsersRef.addListenerForSingleValueEvent(mListener);
         }
     }
@@ -181,14 +193,17 @@ public class LeaderboardFragment extends Fragment {
     }
 
 
+
     @Override
     public void onPause() {
         super.onPause();
+        if(pd.isShowing())
+            pd.cancel();
 
         if(mListener!=null)
         {
             mUsersRef.removeEventListener(mListener);
-            mScoreRef.removeEventListener(mMainListener);
+
 
         }
     }
