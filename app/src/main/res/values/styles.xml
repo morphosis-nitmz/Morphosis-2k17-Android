@@ -17,7 +17,8 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="Dark" parent="Theme.AppCompat.NoActionBar" />
+    <style name="Dark" parent="Theme.AppCompat.NoActionBar">
+    </style>
 
     <style name="Dark.NoActionBar">
         <item name="windowActionBar">false</item>
