@@ -282,7 +282,7 @@ public class TechfestHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_share_techfest) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey checkout my app at https://play.com");
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey! Checkout the official app for Technical Fest of NIT Mizoram:\n https://play.google.com/store/apps/details?id=com.nitmz.morphosis&hl=en");
             sendIntent.setType("text/plain");
             startActivity(sendIntent);
         }
