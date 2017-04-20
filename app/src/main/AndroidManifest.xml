@@ -31,7 +31,7 @@
         </activity>
         <activity
             android:name=".scoobydoo.ScoobyDooSplashScreenActivity"
-            android:label="Scooby Doo"
+            android:label="Scooby Dooby Doo"
             android:launchMode="singleTask"
             android:theme="@style/Dark.NoActionBar">
             <intent-filter>

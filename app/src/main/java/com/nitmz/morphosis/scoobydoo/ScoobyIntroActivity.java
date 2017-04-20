@@ -20,16 +20,16 @@ public class ScoobyIntroActivity extends IntroActivity {
         home = getIntent().getBooleanExtra("home",false);
 
         addSlide(new SimpleSlide.Builder()
-                .title("This game is a part of Morphosis, The Annual Technical fest of NIT Mizoram ")
-                .image(R.drawable.logo_morphosis)
+                .title("Welcome! Let's take you curiosity to solve puzzles to a whole new level.")
+                .image(R.drawable.logo_comp)
                 .backgroundDark(R.color.colorPrimaryDarkScooby)
                 .background(R.color.colorPrimaryScooby)
-                .scrollable(false)
+                .scrollable(true)
                 .build());
 
         addSlide(new SimpleSlide.Builder()
-                .title("You will be greeted with an image which contains all the clues. Just relate all of them and Boom!!" +
-                        " you got the answer.  "+" There will be 25 questions ,the one who cracks them first will be the winner")
+                .title("You will be greeted with an image which will contain all the clues. Just relate all of them and Boom!!" +
+                        " you got the answer.  "+" There will be 25 questions, the one who cracks them first will be the winner")
                 .image(R.drawable.find)
                 .background(R.color.colorPrimaryScooby)
                 .backgroundDark(R.color.colorPrimaryDarkScooby)
@@ -46,8 +46,8 @@ public class ScoobyIntroActivity extends IntroActivity {
                 .build());
 
         addSlide(new SimpleSlide.Builder()
-                .title("Top players are available on the 'Leaderboard', you can see their current ranks ,of course" +
-                        "yours too ...")
+                .title("Top players are available on the 'Leaderboard', you can see their current ranks and, of course" +
+                        "yours too...")
                 .image(R.drawable.ic_leaderboard_black_100px)
                 .backgroundDark(R.color.colorPrimaryDarkScooby)
                 .background(R.color.colorPrimaryScooby)
