@@ -15,6 +15,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -68,6 +69,16 @@ public class LoginActivity extends AppCompatActivity
 
         Bundle bundle = getIntent().getExtras();
         launch = bundle.getInt("launch");
+
+        if(!(launch==1))
+        {
+
+            if (Build.VERSION.SDK_INT >= 21) {
+                Window window = getWindow();
+                window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryScooby));
+
+            }
+        }
 
         // Firebase Authentication
         mAuth = FirebaseAuth.getInstance();

@@ -6,11 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import com.nitmz.morphosis.R;
 
@@ -78,6 +75,10 @@ public class WinnersFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(0));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
+
             }
         });
 
@@ -85,6 +86,11 @@ public class WinnersFragment extends Fragment {
         mRoboRace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(1));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
+
 
             }
         });
@@ -94,6 +100,10 @@ public class WinnersFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(2));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
+
             }
         });
 
@@ -101,6 +111,10 @@ public class WinnersFragment extends Fragment {
         mStockBridge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(3));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
 
             }
         });
@@ -110,6 +124,11 @@ public class WinnersFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(4));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
+
+
             }
         });
 
@@ -117,6 +136,10 @@ public class WinnersFragment extends Fragment {
         mArcadia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(5));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
 
             }
         });
@@ -126,6 +149,10 @@ public class WinnersFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(6));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
+
             }
         });
 
@@ -133,6 +160,11 @@ public class WinnersFragment extends Fragment {
         mScoobyDoobyDoo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(7));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
+
 
             }
         });
@@ -142,6 +174,10 @@ public class WinnersFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(8));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
+
             }
         });
 
@@ -149,6 +185,11 @@ public class WinnersFragment extends Fragment {
         mCodeWarrior.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(9));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
+
 
             }
         });
@@ -158,6 +199,10 @@ public class WinnersFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(10));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
+
             }
         });
 
@@ -165,6 +210,11 @@ public class WinnersFragment extends Fragment {
         mTechTalk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(11));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
+
 
             }
         });
@@ -174,6 +224,11 @@ public class WinnersFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(12));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
+
+
             }
         });
 
@@ -182,6 +237,11 @@ public class WinnersFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(13));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
+
+
             }
         });
 
@@ -189,6 +249,10 @@ public class WinnersFragment extends Fragment {
         mManthan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                HashMap<String,String> map = new HashMap<String, String>();
+                map.put("event",mEvents.get(14));
+                ((TechfestHomeActivity)getActivity()).replaceFragments(WinnerDetailsFragment.class,map);
 
             }
         });

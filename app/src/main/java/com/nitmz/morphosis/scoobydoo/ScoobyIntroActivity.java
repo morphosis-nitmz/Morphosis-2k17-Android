@@ -20,26 +20,39 @@ public class ScoobyIntroActivity extends IntroActivity {
         home = getIntent().getBooleanExtra("home",false);
 
         addSlide(new SimpleSlide.Builder()
-                .title("hai")
-                .image(R.drawable.intro1)
-                .background(R.color.swipe_refresh_green)
-                .backgroundDark(R.color.cardview_dark_background)
+                .title("This game is a part of Morphosis, The Annual Technical fest of NIT Mizoram ")
+                .image(R.drawable.logo_morphosis)
+                .backgroundDark(R.color.colorPrimaryDarkScooby)
+                .background(R.color.colorPrimaryScooby)
                 .scrollable(false)
                 .build());
 
         addSlide(new SimpleSlide.Builder()
-                .title("hai")
-                .image(R.drawable.intro2)
-                .backgroundDark(R.color.cardview_dark_background)
-                .background(R.color.swipe_refresh_green)
+                .title("You will be greeted with an image which contains all the clues. Just relate all of them and Boom!!" +
+                        " you got the answer.  "+" There will be 25 questions ,the one who cracks them first will be the winner")
+                .image(R.drawable.find)
+                .background(R.color.colorPrimaryScooby)
+                .backgroundDark(R.color.colorPrimaryDarkScooby)
                 .scrollable(false)
                 .build());
 
 
+        addSlide(new SimpleSlide.Builder()
+                .title("You Can Pinch the 'Question Image' to Zoom it ")
+                .image(R.drawable.pinch_zoom_in)
+                .backgroundDark(R.color.colorPrimaryDarkScooby)
+                .background(R.color.colorPrimaryScooby)
+                .scrollable(false)
+                .build());
 
-
-
-
+        addSlide(new SimpleSlide.Builder()
+                .title("Top players are available on the 'Leaderboard', you can see their current ranks ,of course" +
+                        "yours too ...")
+                .image(R.drawable.ic_leaderboard_black_100px)
+                .backgroundDark(R.color.colorPrimaryDarkScooby)
+                .background(R.color.colorPrimaryScooby)
+                .scrollable(false)
+                .build());
 
 
 
