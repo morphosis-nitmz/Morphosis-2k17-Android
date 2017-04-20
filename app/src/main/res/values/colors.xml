@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimaryScooby">#4ab367</color>
+    <color name="colorPrimaryDarkScooby">#ff38a06d</color>
+    <color name="colorAccentScooby">#ff009688</color>
     <color name="colorPrimary">#2196F3</color>
     <color name="colorPrimaryDark">#1A237E</color>
     <color name="colorAccent">#2196F3</color>
@@ -10,6 +13,5 @@
     <color name="swipe_refresh_red">#f44336</color>
     <color name="swipe_refresh_orange">#ffc107</color>
     <color name="swipe_refresh_grey">#212121</color>
-
     <color name="black_overlay">#66000000</color>
 </resources>
