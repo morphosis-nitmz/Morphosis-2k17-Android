@@ -50,7 +50,7 @@ public class WinnerDetailsFragment extends Fragment {
         getActivity().setTitle("Winners");
 
         win_details = (ListView) view.findViewById(R.id.win_details_list);
-        String event = getArguments().getString("event");
+        String event = getArguments().getString("event").toLowerCase().trim();
         empty = (ImageView) view.findViewById(R.id.empty_win);
         mDB = FirebaseDatabase.getInstance();
         mRef = mDB.getReference("winners/"+event);
@@ -71,7 +71,6 @@ public class WinnerDetailsFragment extends Fragment {
                     Names.add(name);
 
                 }
-
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>
                         (getContext(),android.R.layout.simple_list_item_1, Names);
                 win_details.setAdapter(adapter);

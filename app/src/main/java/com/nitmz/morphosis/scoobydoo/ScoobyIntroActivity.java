@@ -20,28 +20,36 @@ public class ScoobyIntroActivity extends IntroActivity {
         home = getIntent().getBooleanExtra("home",false);
 
         addSlide(new SimpleSlide.Builder()
-                .title("hai")
+                .title("")
                 .image(R.drawable.intro1)
-                .background(R.color.swipe_refresh_green)
-                .backgroundDark(R.color.cardview_dark_background)
+                .background(R.color.colorPrimaryScooby)
+                .backgroundDark(R.color.colorPrimaryDarkScooby)
                 .scrollable(false)
                 .build());
 
         addSlide(new SimpleSlide.Builder()
                 .title("hai")
                 .image(R.drawable.intro2)
-                .backgroundDark(R.color.cardview_dark_background)
-                .background(R.color.swipe_refresh_green)
+                .backgroundDark(R.color.colorPrimaryDarkScooby)
+                .background(R.color.colorPrimaryScooby)
                 .scrollable(false)
                 .build());
 
+        addSlide(new SimpleSlide.Builder()
+                .title("hai")
+                .image(R.drawable.intro2)
+                .backgroundDark(R.color.colorPrimaryDarkScooby)
+                .background(R.color.colorPrimaryScooby)
+                .scrollable(false)
+                .build());
 
-
-
-
-
-
-
+        addSlide(new SimpleSlide.Builder()
+                .title("hai")
+                .image(R.drawable.intro2)
+                .backgroundDark(R.color.colorPrimaryDarkScooby)
+                .background(R.color.colorPrimaryScooby)
+                .scrollable(false)
+                .build());
 
 
 
