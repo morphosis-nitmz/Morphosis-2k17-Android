@@ -6,13 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.nitmz.morphosis.R;
 
 public class ScheduleFragment extends Fragment {
 
-    TextView mTextView;
+    WebView mSchedule;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,13 @@ public class ScheduleFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("Schedule");
 
+        mSchedule = (WebView) view.findViewById(R.id.schedule_morphosis);
+        mSchedule.loadDataWithBaseURL(null, "<html><head><style>img " +
+                "{margin-top:auto;margin-bottom:auto}</style></head><body><img src=\"" +
+                "file:///android_asset/schedule.png" + "\"></body></html>", "html/css", "utf-8", null);
+        mSchedule.getSettings().setUseWideViewPort(true);
+        mSchedule.getSettings().setLoadWithOverviewMode(true);
     }
 }

@@ -32,6 +32,7 @@ public class NewsDetailsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getActivity().setTitle("News");
 
         title = (TextView) view.findViewById(R.id.news_title_details);
         body = (TextView) view.findViewById(R.id.news_body_details);

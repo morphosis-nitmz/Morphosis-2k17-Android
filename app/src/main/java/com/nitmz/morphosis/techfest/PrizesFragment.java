@@ -32,6 +32,8 @@ public class PrizesFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("Prizes");
+
         mAboutMorphosis = (WebView) view.findViewById(R.id.about_morphosis);
         mAboutMorphosis.loadDataWithBaseURL(null, "<html><head><style>img " +
                 "{margin-top:auto;margin-bottom:auto}</style></head><body><img src=\"" +

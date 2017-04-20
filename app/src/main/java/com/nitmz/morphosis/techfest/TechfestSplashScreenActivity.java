@@ -4,19 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Window;
+import android.widget.TextView;
 
 import com.nitmz.morphosis.LoginActivity;
 import com.nitmz.morphosis.R;
 
 public class TechfestSplashScreenActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 500;
+    private static int SPLASH_TIME_OUT = 1000;
 
     SharedPreferences status;
+
+    TextView mMorphosisTitle;
+    TextView mMorphosisSubTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,9 @@ public class TechfestSplashScreenActivity extends AppCompatActivity {
             //window.setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
             window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
         }
+
+        mMorphosisTitle = (TextView) findViewById(R.id.about_title_splash_screen);
+        mMorphosisSubTitle = (TextView) findViewById(R.id.about_sub_title_splash_screen);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -48,7 +55,7 @@ public class TechfestSplashScreenActivity extends AppCompatActivity {
             Intent intent = new Intent(TechfestSplashScreenActivity.this, LoginActivity.class);
             intent.putExtra("launch", 2);
             startActivity(intent);
+            finish();
         }
-        finish();
     }
 }

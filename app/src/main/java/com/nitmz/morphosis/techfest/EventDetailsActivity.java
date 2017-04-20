@@ -3,10 +3,10 @@ package com.nitmz.morphosis.techfest;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -21,6 +21,8 @@ public class EventDetailsActivity extends AppCompatActivity {
     private ViewPager mViewPager;
 
     private int mEventPosition;
+
+    TechfestData techfestData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,28 +43,10 @@ public class EventDetailsActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
 
         mEventPosition = getIntent().getExtras().getInt("position");
-    }
 
+        techfestData = new TechfestData();
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_event_details, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        setTitle(techfestData.getEventName(mEventPosition));
     }
 
 

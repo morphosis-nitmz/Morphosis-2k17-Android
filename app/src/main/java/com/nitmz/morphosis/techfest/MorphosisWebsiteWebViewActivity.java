@@ -3,9 +3,9 @@ package com.nitmz.morphosis.techfest;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -23,6 +23,8 @@ public class MorphosisWebsiteWebViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_morphosis_website_web_view);
+
+        setTitle("Morphosis Website");
 
         mMorphosisWebsiteSwipeRefresh = (SwipeRefreshLayout) findViewById(R.id.morphosis_website_swipe_refresh);
         swipeRefresh();
@@ -81,6 +83,5 @@ public class MorphosisWebsiteWebViewActivity extends AppCompatActivity {
                 mMorphosisWebsiteWebView.reload();
             }
         });
-
     }
 }

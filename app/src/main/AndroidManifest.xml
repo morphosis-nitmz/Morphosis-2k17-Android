@@ -43,7 +43,9 @@
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".techfest.EventDetailsActivity"
-            android:label="@string/title_activity_event_details" />
+            android:label="@string/title_activity_event_details"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".scoobydoo.GameStatusActivity"
             android:theme="@style/Dark.NoActionBar"/>
         <activity
@@ -64,6 +66,9 @@
             android:name=".scoobydoo.ScoobyDooBNavHome"
             android:label="@string/title_activity_scooby_doo_bnav_home"
             android:theme="@style/Dark"/>
+
+        <activity android:name=".techfest.ObgWebViewActivity"/>
+
     </application>
 
 </manifest>

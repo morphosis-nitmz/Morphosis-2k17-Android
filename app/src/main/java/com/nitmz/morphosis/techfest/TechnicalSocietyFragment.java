@@ -37,6 +37,7 @@ public class TechnicalSocietyFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getActivity().setTitle("People");
 
         mTechnicalSocietySwipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.technical_society_swipe_refresh);
         swipeRefresh();

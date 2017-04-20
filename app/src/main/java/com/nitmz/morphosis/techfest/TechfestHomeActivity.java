@@ -13,15 +13,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.nitmz.morphosis.LoginActivity;
 import com.nitmz.morphosis.R;
+import com.nitmz.morphosis.scoobydoo.ScoobyDooSplashScreenActivity;
 import com.rd.PageIndicatorView;
 
 import java.util.ArrayList;
@@ -39,23 +40,37 @@ public class TechfestHomeActivity extends AppCompatActivity
 
     private View mFragView;
     private View mHomeView;
-    private ImageView mScheduleImage;
-    private ImageView mEventsImage;
-    private ImageView mNewsImage;
-    private ImageView mDevelopersImage;
 
     private ViewPager mViewPager;
+
+    CardView mEvents;
+    CardView mSchedule;
+    CardView mPrizes;
+    CardView mWebsite;
+    CardView mNews;
+    CardView mWinners;
+    CardView mAbout;
+    CardView mTechnicalSociety;
+    CardView mDevelopers;
+
+    Button mScoobyButton;
+    Button mStockBridgeButton;
+    Button mManthanResultsButton;
+    Button mCampusAmbassador;
+
     private static int currentPage = 0;
     private static int total_pages = 0;
 
-    private static final Integer[] images = {R.drawable.a, R.drawable.b,
-        R.drawable.c};
+    private static final Integer[] images = {R.drawable.a, R.drawable.b, R.drawable.c,
+        R.drawable.d, R.drawable.e};
     private ArrayList<Integer> ImagesArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_techfest_home);
+
+        setTitle("Home");
 
         // Initialize fragment views
         mFragView =findViewById(R.id.frag_view_techfest_home);
@@ -79,26 +94,78 @@ public class TechfestHomeActivity extends AppCompatActivity
         init();
 
 
-        // Home tile listeners
-        /*
-        mScheduleImage = (ImageView) findViewById(R.id.schedule_icon_home);
-        mScheduleImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragments(ScheduleFragment.class, false);
-            }
-        });
 
-        mEventsImage = (ImageView) findViewById(R.id.events_icon_home);
-        mEventsImage.setOnClickListener(new View.OnClickListener() {
+
+        // CardView listeners
+
+        mEvents = (CardView) findViewById(R.id.card_view_event);
+        mEvents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragments(EventListFragment.class, false);
             }
         });
 
-        mDevelopersImage = (ImageView) findViewById(R.id.dev_icon_home);
-        mDevelopersImage.setOnClickListener(new View.OnClickListener() {
+        mSchedule = (CardView) findViewById(R.id.card_view_schedule);
+        mSchedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(ScheduleFragment.class, false);
+            }
+        });
+
+        mPrizes = (CardView) findViewById(R.id.card_view_prizes);
+        mPrizes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(PrizesFragment.class, false);
+            }
+        });
+
+        mWebsite = (CardView) findViewById(R.id.card_view_website);
+        mWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, MorphosisWebsiteWebViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mNews = (CardView) findViewById(R.id.card_view_news);
+        mNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(NewsFragment.class, false);
+            }
+        });
+
+        mWinners = (CardView) findViewById(R.id.card_view_winners);
+        mWinners.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(WinnersFragment.class, false);
+            }
+        });
+
+        mAbout = (CardView) findViewById(R.id.card_view_about);
+        mAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, AboutMorphosisActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mTechnicalSociety = (CardView) findViewById(R.id.card_view_technical_society);
+        mTechnicalSociety.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragments(TechnicalSocietyFragment.class, false);
+            }
+        });
+
+        mDevelopers = (CardView) findViewById(R.id.card_view_developers);
+        mDevelopers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TechfestHomeActivity.this, DevelopersActivity.class);
@@ -106,14 +173,51 @@ public class TechfestHomeActivity extends AppCompatActivity
             }
         });
 
-        mNewsImage = (ImageView) findViewById(R.id.news_icon_home);
-        mNewsImage.setOnClickListener(new View.OnClickListener() {
+
+
+
+        // obg listeners
+
+        mScoobyButton = (Button) findViewById(R.id.obg_scooby_dooby_doo);
+        mScoobyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragments(NewsFragment.class, false);
+                Intent intent = new Intent(TechfestHomeActivity.this, ScoobyDooSplashScreenActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
-        */
+
+        mStockBridgeButton = (Button) findViewById(R.id.obg_stock_bridge);
+        mStockBridgeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, ObgWebViewActivity.class);
+                intent.putExtra("url", "Stock Bridge");
+                startActivity(intent);
+            }
+        });
+
+        mCampusAmbassador = (Button) findViewById(R.id.obg_campus_ambassador);
+        mCampusAmbassador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, ObgWebViewActivity.class);
+                intent.putExtra("url", "Campus Ambassador");
+                startActivity(intent);
+            }
+        });
+
+        mManthanResultsButton = (Button) findViewById(R.id.obg_manthan_results);
+        mManthanResultsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, ObgWebViewActivity.class);
+                intent.putExtra("url", "Manthan Answer Keys");
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -143,18 +247,6 @@ public class TechfestHomeActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.techfest_home, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -163,30 +255,6 @@ public class TechfestHomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_home_techfest) {
             Intent intent = new Intent(this, TechfestHomeActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_events_techfest) {
-            replaceFragments(EventListFragment.class, false);
-            setTitle("Events");
-        } else if (id == R.id.nav_news_techfest) {
-            replaceFragments(NewsFragment.class, false);
-            setTitle("News");
-        } else if (id == R.id.nav_prizes_techfest) {
-            replaceFragments(PrizesFragment.class, false);
-            setTitle("Prizes");
-        } else if (id == R.id.nav_winners_techfest) {
-            replaceFragments(WinnersFragment.class, false);
-            setTitle("Winners");
-        } else if (id == R.id.nav_schedule_techfest) {
-            replaceFragments(ScheduleFragment.class, false);
-            setTitle("Schedule");
-        } else if (id == R.id.nav_technical_society_techfest) {
-            replaceFragments(TechnicalSocietyFragment.class, false);
-            setTitle("Technical Society");
-        } else if (id == R.id.nav_developer_techfest) {
-            Intent intent = new Intent(TechfestHomeActivity.this, DevelopersActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_morphosis_website_techfest) {
-            Intent intent = new Intent(TechfestHomeActivity.this, MorphosisWebsiteWebViewActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_about_morphosis_techfest) {
             Intent intent = new Intent(TechfestHomeActivity.this, AboutMorphosisActivity.class);

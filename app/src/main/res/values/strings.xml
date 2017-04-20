@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Tech Fest</string>
-    <string name="title_activity_scooby_doo_home">ScoobyDooHomeActivity</string>
+    <string name="app_name">Morphosis</string>
+    <string name="title_activity_scooby_dooby_doo_home">Scooby Dooby Doo</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -16,8 +16,6 @@
     <string name="nav_logout_title">Logout</string>
     <string name="answer_field_hint">Enter your answer</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nav_share_title">Share</string>
     <string name="nav_events_title">Events</string>
     <string name="nav_winners_title">Winners</string>
@@ -40,4 +38,26 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="robotics_banner_text">ROBOTICS</string>
+    <string name="stock_bridge_banner_text">Stock Bridge</string>
+    <string name="quiz_banner_text">Quiz</string>
+    <string name="arcadia_banner_text">Arcadia</string>
+    <string name="cube_fever_banner_text">Cube Fever</string>
+    <string name="scooby_dooby_doo_banner_text">Scooby Dooby Doo</string>
+    <string name="power_of_speech_banner_text">Power of Speech</string>
+    <string name="code_warrior_banner_text">Code Warrior</string>
+    <string name="cypher_banner_text">Cypher</string>
+    <string name="tech_talk_banner_text">Tech Talk</string>
+    <string name="science_expo_banner_text">Science Expo</string>
+    <string name="abhyudaya_banner_text">Abhyudaya</string>
+    <string name="manthan_banner_text">Manthan</string>
+    <string name="maze_solver_button_text">Maze Solver</string>
+    <string name="robo_race_button_text">Robo Race</string>
+    <string name="robo_war_button_text">Robo War</string>
+    <string name="morphosis_title">Morphosis</string>
+    <string name="morphosis_sub_title">The annual Technical Festival of NIT Mizoram</string>
+    <string name="shantanu_acharya">Shantanu Acharya</string>
+    <string name="narayana_reddy">Narayana Reddy</string>
+    <string name="the_web_team">The Web Team</string>
+    <string name="developers">Developers</string>
 </resources>
