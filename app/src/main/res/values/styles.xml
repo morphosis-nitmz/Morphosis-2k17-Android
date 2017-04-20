@@ -18,7 +18,8 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Dark" parent="Theme.AppCompat.NoActionBar" >
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimaryScooby</item>
+
     </style>
 
     <style name="Dark.NoActionBar">

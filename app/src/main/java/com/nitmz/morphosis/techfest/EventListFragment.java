@@ -1,15 +1,14 @@
 package com.nitmz.morphosis.techfest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import com.nitmz.morphosis.R;
 
@@ -71,20 +70,6 @@ public class EventListFragment extends Fragment {
                 "Abhyudaya", // 13
                 "Manthan")); // 14
 
-<<<<<<< HEAD
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
-                getContext(),
-                android.R.layout.simple_list_item_1,
-                mEvents
-
-
-        );
-
-
-        /* mListView = (ListView) view.findViewById(R.id.events_list);
-        mListView.setAdapter(arrayAdapter);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-=======
         mMazeSolver = (Button) view.findViewById(R.id.button_maze_solver);
         mMazeSolver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +106,7 @@ public class EventListFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
                 intent.putExtra("position", 3);
-                getActivity().startActivity(intent);
+                startActivity(intent);
             }
         });
 
@@ -227,7 +212,6 @@ public class EventListFragment extends Fragment {
 
         mManthan = (ImageView) view.findViewById(R.id.banner_manthan);
         mManthan.setOnClickListener(new View.OnClickListener() {
->>>>>>> 8e886b7faaa2b0747e796c2b6c78c132402810cc
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
