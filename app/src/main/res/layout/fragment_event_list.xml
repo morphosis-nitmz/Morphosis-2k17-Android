@@ -277,12 +277,6 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/code_warrior" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alpha="0.50"
-                android:background="@android:color/black" />
-
             <TextView
                 android:id="@+id/code_warrior_banner_title"
                 android:layout_width="match_parent"

@@ -60,13 +60,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.nitmz.morphosis.techfest.TechfestHomeActivity" />
         </activity>
-        <activity android:name=".techfest.MorphosisWebsiteWebViewActivity" />
-        <activity android:name=".techfest.DevelopersActivity" />
+        <activity android:name=".techfest.MorphosisWebsiteWebViewActivity"
+            android:parentActivityName=".techfest.TechfestHomeActivity"/>
+        <activity android:name=".techfest.DevelopersActivity"
+            android:parentActivityName=".techfest.TechfestHomeActivity"/>
         <activity
             android:name=".scoobydoo.ScoobyDooBNavHome"
             android:label="@string/title_activity_scooby_doo_bnav_home"
             android:theme="@style/Dark"/>
+
         <activity android:name=".techfest.ObgWebViewActivity"/>
+
     </application>
 
 </manifest>

@@ -108,7 +108,7 @@ public class EventListFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
                 intent.putExtra("position", 3);
-                getActivity().startActivity(intent);
+                startActivity(intent);
             }
         });
 
@@ -137,7 +137,7 @@ public class EventListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
-                intent.putExtra("position", 4);
+                intent.putExtra("position", 6);
                 startActivity(intent);
             }
         });
@@ -147,7 +147,7 @@ public class EventListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
-                intent.putExtra("position", 5);
+                intent.putExtra("position", 7);
                 startActivity(intent);
             }
         });
@@ -157,7 +157,7 @@ public class EventListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
-                intent.putExtra("position", 6);
+                intent.putExtra("position", 8);
                 startActivity(intent);
             }
         });
@@ -167,7 +167,7 @@ public class EventListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
-                intent.putExtra("position", 7);
+                intent.putExtra("position", 9);
                 startActivity(intent);
             }
         });
@@ -177,7 +177,7 @@ public class EventListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
-                intent.putExtra("position", 8);
+                intent.putExtra("position", 10);
                 startActivity(intent);
             }
         });
@@ -187,7 +187,7 @@ public class EventListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
-                intent.putExtra("position", 9);
+                intent.putExtra("position", 11);
                 startActivity(intent);
             }
         });
@@ -197,7 +197,7 @@ public class EventListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
-                intent.putExtra("position", 10);
+                intent.putExtra("position", 12);
                 startActivity(intent);
             }
         });
@@ -207,7 +207,7 @@ public class EventListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
-                intent.putExtra("position", 11);
+                intent.putExtra("position", 13);
                 startActivity(intent);
             }
         });
@@ -217,7 +217,7 @@ public class EventListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
-                intent.putExtra("position", 12);
+                intent.putExtra("position", 14);
                 startActivity(intent);
             }
         });
