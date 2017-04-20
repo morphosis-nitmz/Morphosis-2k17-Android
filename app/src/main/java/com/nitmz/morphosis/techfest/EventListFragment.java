@@ -78,7 +78,7 @@ public class EventListFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
                 intent.putExtra("position", 0);
-                startActivity(intent);
+                getActivity().startActivity(intent);
             }
         });
 
@@ -108,7 +108,7 @@ public class EventListFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), EventDetailsActivity.class);
                 intent.putExtra("position", 3);
-                startActivity(intent);
+                getActivity().startActivity(intent);
             }
         });
 

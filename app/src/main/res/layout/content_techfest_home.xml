@@ -21,12 +21,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="#EEEEEE"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".40"
+            android:layout_weight=".38"
             android:orientation="vertical">
 
             <FrameLayout
@@ -47,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="15dp"
                     app:piv_animationType="worm"
                     app:piv_dynamicCount="true"
                     app:piv_interactiveAnimation="true"
@@ -63,7 +64,7 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".12"
+            android:layout_weight=".14"
             android:fillViewport="false"
             android:scrollbars="none">
 
@@ -124,7 +125,7 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".43"
+            android:layout_weight=".48"
             android:padding="5dp">
 
             <TableRow android:layout_weight=".25">
@@ -135,6 +136,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
+                    android:alpha=".90"
                     android:padding="3dp">
 
                     <LinearLayout
