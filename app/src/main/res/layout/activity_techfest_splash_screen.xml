@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_dark_background"
+    android:background="#EEEEEE"
     android:id="@+id/techfest_splash_screen"
     tools:context="com.nitmz.morphosis.techfest.TechfestSplashScreenActivity">
 
@@ -15,7 +15,7 @@
         android:cropToPadding="false"
         android:paddingTop="50dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/logo_comp" />
+        android:src="@drawable/logo_morphosis" />
 
     <TextView
         android:id="@+id/about_title_splash_screen"
@@ -27,7 +27,7 @@
         android:text="@string/morphosis_title"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/white"
+        android:textColor="@android:color/black"
         android:textSize="40sp" />
 
     <TextView
@@ -39,7 +39,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/morphosis_sub_title"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@android:color/black"
         android:textSize="17sp" />
 
 </RelativeLayout>

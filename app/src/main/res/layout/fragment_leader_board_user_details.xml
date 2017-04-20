@@ -140,7 +140,7 @@
                 android:id="@+id/logout_bnav"
                 android:visibility="gone"
                 android:text="Logout"
-                android:background="@drawable/obg_shape"
+                android:background="@drawable/obg_scooby"
                 android:layout_height="wrap_content" />
 
             <Button
@@ -149,7 +149,7 @@
                 android:id="@+id/share_bnav"
                 android:visibility="gone"
                 android:text="Share"
-                android:background="@drawable/obg_shape"
+                android:background="@drawable/obg_scooby"
                 android:layout_height="wrap_content" />
 
 
