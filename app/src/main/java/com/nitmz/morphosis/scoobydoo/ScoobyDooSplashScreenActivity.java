@@ -43,7 +43,7 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
             //window.setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
-            window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+            window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryScooby));
         }
 
 

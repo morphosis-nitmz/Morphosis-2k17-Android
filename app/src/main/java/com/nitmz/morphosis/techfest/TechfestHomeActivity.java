@@ -55,13 +55,14 @@ public class TechfestHomeActivity extends AppCompatActivity
 
     Button mScoobyButton;
     Button mStockBridgeButton;
+    Button mGetTickets;
     Button mManthanResultsButton;
     Button mCampusAmbassador;
 
     private static int currentPage = 0;
     private static int total_pages = 0;
 
-    private static final Integer[] images = {R.drawable.a, R.drawable.b, R.drawable.c,
+    private static final Integer[] images = {R.drawable.f, R.drawable.a, R.drawable.b, R.drawable.c,
         R.drawable.d, R.drawable.e};
     private ArrayList<Integer> ImagesArray = new ArrayList<>();
 
@@ -194,6 +195,16 @@ public class TechfestHomeActivity extends AppCompatActivity
             public void onClick(View v) {
                 Intent intent = new Intent(TechfestHomeActivity.this, ObgWebViewActivity.class);
                 intent.putExtra("url", "Stock Bridge");
+                startActivity(intent);
+            }
+        });
+
+        mGetTickets = (Button) findViewById(R.id.obg_get_tickets);
+        mGetTickets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, ObgWebViewActivity.class);
+                intent.putExtra("url", "Get Tickets");
                 startActivity(intent);
             }
         });

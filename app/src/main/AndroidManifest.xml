@@ -40,7 +40,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".techfest.EventDetailsActivity"
             android:label="@string/title_activity_event_details"
@@ -69,7 +70,8 @@
             android:label="@string/title_activity_scooby_doo_bnav_home"
             android:theme="@style/Dark"/>
 
-        <activity android:name=".techfest.ObgWebViewActivity"/>
+        <activity android:name=".techfest.ObgWebViewActivity"
+            android:parentActivityName=".techfest.TechfestHomeActivity"/>
 
     </application>
 

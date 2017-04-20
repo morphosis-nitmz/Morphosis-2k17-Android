@@ -85,7 +85,7 @@
                 android:layout_margin="5dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".20"
-                android:background="@drawable/obg_shape"
+                android:background="@drawable/obg_scooby"
                 android:text="Send" />
 
         </LinearLayout>

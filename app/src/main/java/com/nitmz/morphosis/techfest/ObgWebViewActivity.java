@@ -17,6 +17,7 @@ public class ObgWebViewActivity extends AppCompatActivity {
 
     String[] URLs = {
             "Stock Bridge",
+            "Get Tickets",
             "Campus Ambassador",
             "Manthan Answer Keys"
     };
@@ -37,6 +38,8 @@ public class ObgWebViewActivity extends AppCompatActivity {
 
         if (destination.equals("Stock Bridge")) {
             url += "events/stockbridge";
+        } else if (destination.equals("Get Tickets")) {
+            url = "https://www.thecollegefever.com/events/morphosis17";
         } else if (destination.equals("Campus Ambassador")) {
             url += "ca/register.php";
         } else if (destination.equals("Manthan Answer Keys")) {
