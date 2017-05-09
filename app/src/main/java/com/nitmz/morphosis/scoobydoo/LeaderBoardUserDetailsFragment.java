@@ -40,6 +40,7 @@ public class LeaderBoardUserDetailsFragment extends Fragment {
         String name = getArguments().getString("name");
         String score = getArguments().getString("score");
         String purl = getArguments().getString("purl");
+        purl = purl.replace("/s96-c/","/s400-c/");
         String rank = getArguments().getString("rank");
 
         mUserImage = (CircleImageView)view.findViewById(R.id.user_image_leaderboard_details);

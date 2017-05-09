@@ -11,6 +11,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -44,6 +45,8 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
 
     ProgressDialog pd;
 
+    boolean isAlive;
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private StorageReference mStorageReference;
@@ -57,6 +60,7 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
     DatabaseReference mUserRankRef;
     DatabaseReference mCalcScoreRef;
     DatabaseReference mGetCRank;
+    DatabaseReference mEnabledButtons;
 
 
 
@@ -65,8 +69,8 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
     TextView mHint;
     TextInputLayout mAnswer;
     ProgressDialog mDialog;
-    private View mFragView;
-    private View mHomeView;
+    View mFragView;
+    View mHomeView;
 
     int totalq = 25;
 
@@ -78,6 +82,87 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
     Button mAnswerButton;
     BottomNavigationView navigation;
 
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_scooby_doo_bnav_home);
+
+        isAlive= true;
+
+
+
+        status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
+        mDB = FirebaseDatabase.getInstance();
+        mStatusRef = mDB.getReference("gameStartedN");
+        mEnabledButtons = mDB.getReference("enabled");
+
+
+        pd = new ProgressDialog(this);
+        pd.setMessage("Loading Puzzle ....");
+        pd.show();
+        pd.setCanceledOnTouchOutside(false);
+
+        navigation = (BottomNavigationView) findViewById(R.id.bnavigation_home);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
+        enabledCheck();
+
+        checkGameStatus();
+
+        if(!status.getBoolean("first",false)) {
+            introDisplay();
+            status.edit().putBoolean("first",true).apply();
+        }
+
+        // Initialize fragment views
+        mFragView =findViewById(R.id.frag_view_scooby_home);
+        mHomeView =findViewById(R.id.scooby_home_view);
+
+        mAnswer = (TextInputLayout)findViewById(R.id.answer_in);
+
+        mDialog =new ProgressDialog(this);
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                if(mAuth.getCurrentUser() == null){
+                    Intent intent = new Intent(ScoobyDooBNavHome.this,LoginActivity.class);
+                    intent.putExtra("launch", 2);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };
+
+        mAuth.addAuthStateListener(mAuthListener);
+
+        mCurrentQuestionRef = mDB.getReference("users/"+mAuth.getCurrentUser().getUid()+"/score");
+
+        mAnswerField = (EditText) findViewById(R.id.answer_text);
+        mTitle = (TextView) findViewById(R.id.title_view);
+        mHint = (TextView) findViewById(R.id.hint_view);
+        mAnswerButton = (Button) findViewById(R.id.answer_button);
+        mAnswerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkAnswer();
+            }
+        });
+
+        // Initialize data for question loading
+        mDB = FirebaseDatabase.getInstance();
+        mUsersRef = mDB.getReference("users");
+        mQuestionNumber = 1;
+        checkCurrentQuestion();
+
+    }
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -112,95 +197,81 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
         status.edit().putBoolean("in", false).apply();
         status.edit().putBoolean("first",false).apply();
         mAuth.signOut();
+        finish();
         Intent intent = new Intent(ScoobyDooBNavHome.this, LoginActivity.class);
         intent.putExtra("launch", 2);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-        finish();
+
     }
 
     public void share(){
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey checkout my app at https://play.com");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey checkout Morphosis app & Scooby dooby doo game at https://play.google.com/store/apps/details?id=com.nitmz.morphosis&hl=en");
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scooby_doo_bnav_home);
 
-        status = getSharedPreferences("login_status", Context.MODE_PRIVATE);
-        mDB = FirebaseDatabase.getInstance();
-        mStatusRef = mDB.getReference("gameStarted");
+    private void enabledCheck(){
 
-
-        pd = new ProgressDialog(this);
-        pd.setMessage("Loading Puzzle ....");
-        pd.show();
-        pd.setCanceledOnTouchOutside(false);
-
-
-
-        checkGameStatus();
-
-        if(!status.getBoolean("first",false)) {
-            introDisplay();
-            status.edit().putBoolean("first",true).apply();
-        }
-
-        // Initialize fragment views
-        mFragView =findViewById(R.id.frag_view_scooby_home);
-        mHomeView =findViewById(R.id.scooby_home_view);
-
-        mAnswer = (TextInputLayout)findViewById(R.id.answer_in);
-
-        navigation = (BottomNavigationView) findViewById(R.id.bnavigation_home);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        mDialog =new ProgressDialog(this);
-        mAuth = FirebaseAuth.getInstance();
-
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+        ValueEventListener listener = new ValueEventListener() {
             @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if(mAuth.getCurrentUser() == null){
-                    Intent intent = new Intent(ScoobyDooBNavHome.this,LoginActivity.class);
-                    intent.putExtra("launch", 2);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                    startActivity(intent);
-                    finish();
+                if(isAlive) {
+                    String enabled = dataSnapshot.getValue().toString();
+
+                    if (enabled.charAt(0) == '1') {
+                        Menu menuNav=navigation.getMenu();
+                        MenuItem home = menuNav.findItem(R.id.navigation_home);
+                        home.setEnabled(true);
+
+                    } else {
+                        Menu menuNav=navigation.getMenu();
+                        MenuItem home = menuNav.findItem(R.id.navigation_home);
+                        home.setEnabled(false);
+                    }
+
+                    if (enabled.charAt(1) == '1') {
+                        Menu menuNav=navigation.getMenu();
+                        MenuItem dash = menuNav.findItem(R.id.navigation_dashboard);
+                        dash.setEnabled(true);
+                    } else {
+                        Menu menuNav=navigation.getMenu();
+                        MenuItem dash = menuNav.findItem(R.id.navigation_dashboard);
+                        dash.setEnabled(false);
+                    }
+
+                    if (enabled.charAt(1) == '1') {
+                        Menu menuNav=navigation.getMenu();
+                        MenuItem lb = menuNav.findItem(R.id.navigation_leaderboard);
+                        lb.setEnabled(true);
+                    } else {
+                        Menu menuNav=navigation.getMenu();
+                        MenuItem lb = menuNav.findItem(R.id.navigation_leaderboard);
+                        lb.setEnabled(false);
+                    }
+
                 }
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         };
 
-        mAuth.addAuthStateListener(mAuthListener);
-
-        mCurrentQuestionRef = mDB.getReference("users/"+mAuth.getCurrentUser().getUid()+"/score");
-
-        mAnswerField = (EditText) findViewById(R.id.answer_text);
-        mTitle = (TextView) findViewById(R.id.title_view);
-        mHint = (TextView) findViewById(R.id.hint_view);
-        mAnswerButton = (Button) findViewById(R.id.answer_button);
-        mAnswerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkAnswer();
-            }
-        });
-
-        // Initialize data for question loading
-        mDB = FirebaseDatabase.getInstance();
-        mUsersRef = mDB.getReference("users");
-        mQuestionNumber = 1;
-        checkCurrentQuestion();
-
+        mEnabledButtons.addValueEventListener(listener);
     }
 
+
     private void checkCurrentQuestion(){
+
+
 
         ValueEventListener listener = new ValueEventListener() {
             @Override
@@ -255,52 +326,64 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
             }
         };
 
-        mCurrentQuestionRef.addValueEventListener(listener);
+
+
+            mCurrentQuestionRef.addValueEventListener(listener);
+
+
+
 
     }
 
 
     private void loadQuestion() {
-        mQuestionTitle = "Question : " + mQuestionNumber;
+
+        if (isAlive){
+            mQuestionTitle = "Question : " + mQuestionNumber;
         mTitle.setText(mQuestionTitle);
 
         PhotoView questionImageView = (PhotoView) findViewById(R.id.question_image_view);
 
         mStorageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference pathReference = mStorageReference.child(mQuestionNumber+".jpg");
+        StorageReference pathReference = mStorageReference.child(mQuestionNumber + ".jpg");
 
         Glide.with(ScoobyDooBNavHome.this)
                 .using(new FirebaseImageLoader())
                 .load(pathReference)
-                .placeholder(R.drawable.ic_help_white_48dp)
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.error)
                 .dontAnimate()
                 .into(questionImageView);
 
         pd.cancel();
+        }
+
     }
 
     private void loadHint()
     {
-        mHintRef = mDB.getReference("hints/"+mQuestionNumber);
-        ValueEventListener listener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String hint = dataSnapshot.getValue().toString();
-                if(!hint.equals("0"))
-                mHint.setText("Hint : "+hint);
-                else {
-                    mHint.setText("");
+        if(isAlive) {
+            mHintRef = mDB.getReference("hints/" + mQuestionNumber);
+            ValueEventListener listener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String hint = dataSnapshot.getValue().toString();
+                    if (!hint.equals("0"))
+                        mHint.setText("Hint : " + hint);
+                    else {
+                        mHint.setText("");
+                    }
+
                 }
 
-            }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                }
+            };
 
-            }
-        };
-
-        mHintRef.addValueEventListener(listener);
+            mHintRef.addValueEventListener(listener);
+        }
 
 
     }
@@ -308,26 +391,28 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
 
     private void checkAnswer() {
 
-        pd.show();
+        if(isAlive) {
 
-        final String answer = mAnswerField.getText().toString().trim().toLowerCase();
+            pd.show();
 
-        View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
+            final String answer = mAnswerField.getText().toString().trim().toLowerCase();
+
+            View view = this.getCurrentFocus();
+            if (view != null) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
 
 
-        mSolutionRef = mDB.getReference("solutions/"+mQuestionNumber);
+            mSolutionRef = mDB.getReference("solutions/" + mQuestionNumber);
 
-        ValueEventListener listener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            ValueEventListener listener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String canswer = dataSnapshot.getValue().toString().trim().toLowerCase();
+                    String canswer = dataSnapshot.getValue().toString().trim().toLowerCase();
 
-                if(answer.equals(canswer)){
+                    if (answer.equals(canswer)) {
 
                     /*if (mQuestionNumber < 10) {
                         mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
@@ -343,38 +428,42 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
                     checkCurrentQuestion();
                     mAnswerField.setText("");*/
 
-                    checkRank();
+                        checkRank();
 
-                } else {
-                    pd.cancel();
-                    Toast.makeText(ScoobyDooBNavHome.this, "Incorrect, Try again :-)", Toast.LENGTH_LONG).show();
+                    } else {
+                        pd.cancel();
+                        Toast.makeText(ScoobyDooBNavHome.this, "Incorrect, Try again :-)", Toast.LENGTH_LONG).show();
+                    }
+                    mAnswerField.setText("");
+
                 }
-                mAnswerField.setText("");
 
-            }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                }
+            };
 
-            }
-        };
+            mSolutionRef.addListenerForSingleValueEvent(listener);
 
-        mSolutionRef.addListenerForSingleValueEvent(listener);
+        }
 
 
     }
 
     private void checkRank() {
 
-        mSolvedRank = mDB.getReference("solved/"+mQuestionNumber);
-        mUserRankRef = mDB.getReference("users/"+mAuth.getCurrentUser().getUid()+"/rank/"+mQuestionNumber);
+        if(isAlive) {
+
+            mSolvedRank = mDB.getReference("solved/" + mQuestionNumber);
+            mUserRankRef = mDB.getReference("users/" + mAuth.getCurrentUser().getUid() + "/rank/" + mQuestionNumber);
 
 
-        ValueEventListener listener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            ValueEventListener listener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String rank = dataSnapshot.getValue().toString();
+                    String rank = dataSnapshot.getValue().toString();
 
                     int prank = Integer.parseInt(rank) + 1;
 
@@ -384,15 +473,17 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
 
                     calcCRank(0);
 
-            }
+                }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            }
-        };
+                }
+            };
 
-        mSolvedRank.addListenerForSingleValueEvent(listener);
+            mSolvedRank.addListenerForSingleValueEvent(listener);
+
+        }
     }
 
     public void getCRank()
@@ -419,45 +510,48 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
 
     public void calcCRank(int Crank)
     {
-        mCalcScoreRef = mDB.getReference("users/"+mAuth.getCurrentUser().getUid()+"/rank");
-        crank = Crank;
 
-        ValueEventListener listener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot child:dataSnapshot.getChildren())
-                {
-                    crank = crank + Integer.parseInt(child.getValue().toString());
+        if(isAlive) {
+            mCalcScoreRef = mDB.getReference("users/" + mAuth.getCurrentUser().getUid() + "/rank");
+            crank = Crank;
+
+            ValueEventListener listener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+                        crank = crank + Integer.parseInt(child.getValue().toString());
+                    }
+
+                    mDB.getReference("users/" + mAuth.getCurrentUser().getUid() + "/crank").setValue(Integer.toString(crank));
+
+                    crank = 99999;
+
+                    if (mQuestionNumber < 10) {
+                        mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
+                                setValue("0" + mQuestionNumber);
+
+                    } else {
+                        mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
+                                setValue(mQuestionNumber + "");
+                    }
+
+
+                    mQuestionNumber++;
+                    checkCurrentQuestion();
+                    mAnswerField.setText("");
+                    pd.cancel();
+
                 }
 
-                mDB.getReference("users/"+mAuth.getCurrentUser().getUid()+"/crank").setValue(Integer.toString(crank));
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-                crank=99999;
-
-                if (mQuestionNumber < 10) {
-                    mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
-                            setValue("0" + mQuestionNumber);
-
-                } else {
-                    mUsersRef.child(mAuth.getCurrentUser().getUid()).child("score").
-                            setValue(mQuestionNumber);
                 }
+            };
 
+            mCalcScoreRef.addListenerForSingleValueEvent(listener);
 
-                mQuestionNumber++;
-                checkCurrentQuestion();
-                mAnswerField.setText("");
-                pd.cancel();
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-
-        mCalcScoreRef.addListenerForSingleValueEvent(listener);
+        }
 
 
     }
@@ -477,6 +571,7 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
 
                     mHomeView.setVisibility(View.VISIBLE);
                     mFragView.setVisibility(View.GONE);
+                    navigation.setSelectedItemId(R.id.navigation_home);
                     setTitle("Scooby Doo");
                     getSupportFragmentManager().beginTransaction().
                             remove(getSupportFragmentManager().
@@ -566,9 +661,11 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
                 String gameStarted = dataSnapshot.getValue().toString();
                 if(!gameStarted.equals("1"))
                 {
-                    Intent intent = new Intent(ScoobyDooBNavHome.this, GameStatusActivity.class);
-                    startActivity(intent);
-                    finish();
+                    if(isAlive) {
+                        Intent intent = new Intent(ScoobyDooBNavHome.this, GameStatusActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
             }
 
@@ -578,6 +675,23 @@ public class ScoobyDooBNavHome extends AppCompatActivity {
             }
         };
         mStatusRef.addValueEventListener(listener);
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isAlive = false;
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isAlive = true;
+        if(pd.isShowing())
+            pd.cancel();
+        checkCurrentQuestion();
     }
 
 

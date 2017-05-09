@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimaryScooby">#4ab367</color>
+    <color name="colorPrimaryScooby">#4ab367</color>#ff38a06d
     <color name="colorPrimaryDarkScooby">#ff38a06d</color>
     <color name="colorAccentScooby">#ff009688</color>
-    <color name="colorPrimary">#00796B</color>
-    <color name="colorPrimaryDark">#00695C</color>
-    <color name="colorAccent">#2196F3</color>
+    <color name="colorPrimary">#4ab367</color>
+    <color name="colorPrimaryDark">#ff38a06d</color>
+    <color name="colorAccent">#26a69a</color>
     <color name="home_background">#212121</color>
     <color name="white">#ffffff</color>
     <color name="swipe_refresh_blue">#03a9f4</color>

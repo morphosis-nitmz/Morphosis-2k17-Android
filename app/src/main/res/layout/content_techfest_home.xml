@@ -88,6 +88,18 @@
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Small"
+                    android:id="@+id/obg_sponsors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/obg_shape"
+                    android:padding="10dp"
+                    android:text="Our Sponsors"
+                    android:textColor="@color/white" />
+
+
+                <Button
+                    style="@style/Widget.AppCompat.Button.Small"
                     android:id="@+id/obg_stock_bridge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -149,7 +161,8 @@
                     android:layout_margin="1dp"
                     android:layout_weight="1"
                     android:alpha=".90"
-                    android:padding="3dp">
+                    android:padding="3dp"
+                    app:cardCornerRadius="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -181,7 +194,8 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp">
+                    android:padding="3dp"
+                    app:cardCornerRadius="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -212,7 +226,8 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp">
+                    android:padding="3dp"
+                    app:cardCornerRadius="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -247,7 +262,8 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp">
+                    android:padding="3dp"
+                    app:cardCornerRadius="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -279,7 +295,8 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp">
+                    android:padding="3dp"
+                    app:cardCornerRadius="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -310,7 +327,8 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp">
+                    android:padding="3dp"
+                    app:cardCornerRadius="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -345,7 +363,8 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp">
+                    android:padding="3dp"
+                    app:cardCornerRadius="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -377,7 +396,8 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp">
+                    android:padding="3dp"
+                    app:cardCornerRadius="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -408,7 +428,8 @@
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:padding="3dp">
+                    android:padding="3dp"
+                    app:cardCornerRadius="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"

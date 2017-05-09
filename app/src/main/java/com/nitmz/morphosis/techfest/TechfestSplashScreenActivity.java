@@ -15,7 +15,7 @@ import com.nitmz.morphosis.R;
 
 public class TechfestSplashScreenActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 1000;
+    private static int SPLASH_TIME_OUT = 500;
 
     SharedPreferences status;
 
@@ -49,11 +49,13 @@ public class TechfestSplashScreenActivity extends AppCompatActivity {
         boolean  logIn = status.getBoolean("in", false);
         if (logIn) {
             Intent intent = new Intent(TechfestSplashScreenActivity.this, TechfestHomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
         } else {
             Intent intent = new Intent(TechfestSplashScreenActivity.this, LoginActivity.class);
-            intent.putExtra("launch", 2);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("launch", 1);
             startActivity(intent);
             finish();
         }

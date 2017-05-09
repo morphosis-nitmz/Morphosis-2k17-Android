@@ -38,7 +38,8 @@ public class ScoobyIntroActivity extends IntroActivity {
 
 
         addSlide(new SimpleSlide.Builder()
-                .title("You Can Pinch the 'Question Image' to Zoom it ")
+                .title("You Can Pinch the 'Question Image' to Zoom it. Answers are 'not' case sensitive. If any space between" +
+                        "words is required you can use '_'. For example Scooby_dooby_doo ")
                 .image(R.drawable.pinch_zoom_in)
                 .backgroundDark(R.color.colorPrimaryDarkScooby)
                 .background(R.color.colorPrimaryScooby)

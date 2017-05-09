@@ -58,11 +58,12 @@ public class TechfestHomeActivity extends AppCompatActivity
     Button mGetTickets;
     Button mManthanResultsButton;
     Button mCampusAmbassador;
+    Button mSponsors;
 
     private static int currentPage = 0;
     private static int total_pages = 0;
 
-    private static final Integer[] images = {R.drawable.f, R.drawable.a, R.drawable.b, R.drawable.c,
+    private static final Integer[] images = {R.drawable.f,R.drawable.sponsor5, R.drawable.a, R.drawable.b, R.drawable.c,
         R.drawable.d, R.drawable.e};
     private ArrayList<Integer> ImagesArray = new ArrayList<>();
 
@@ -184,8 +185,19 @@ public class TechfestHomeActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TechfestHomeActivity.this, ScoobyDooSplashScreenActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        mSponsors = (Button) findViewById(R.id.obg_sponsors);
+        mSponsors.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TechfestHomeActivity.this, SponsorsActivity.class);
+                startActivity(intent);
+
             }
         });
 
@@ -387,11 +399,9 @@ public class TechfestHomeActivity extends AppCompatActivity
             public void run() {
                 handler.post(Update);
             }
-        }, 4000, 4000);
+        }, 4000, 6000);
 
 
     }
-
-
 
 }

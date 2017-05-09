@@ -1,5 +1,6 @@
 package com.nitmz.morphosis.scoobydoo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,8 +19,12 @@ public class GameStatusActivity extends AppCompatActivity {
     TextView mCenterText;
     TextView mBottomText;
 
+    boolean isAlive;
+    //public static Activity gsa;
+
     FirebaseDatabase mDB;
     DatabaseReference mStatusTextRef;
+    DatabaseReference mStatusRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,21 @@ public class GameStatusActivity extends AppCompatActivity {
 
         mDB = FirebaseDatabase.getInstance();
         mStatusTextRef = mDB.getReference("gameStatusText");
+        mStatusRef = mDB.getReference("gameStartedN");
+
+        // trick for finishing one activity from another activity
+        //  make a static ref of Activity class and assign context to it
+        // finish it when  necessary
+
+        //gsa = this;
+
+        // use this in the second activity to kill first one
+        /*int gsaAlive = getIntent().getIntExtra("string",0);
+        if((gsaAlive==1))
+            GameStatusActivity.gsa.finish();*/
+
+
+        checkGameStatus();
 
         mTopText = (TextView) findViewById(R.id.game_status_top_text);
         mCenterText = (TextView) findViewById(R.id.game_status_center_text);
@@ -65,6 +85,43 @@ public class GameStatusActivity extends AppCompatActivity {
 
             }
         };
-        mStatusTextRef.addValueEventListener(listener);
+        mStatusTextRef.addListenerForSingleValueEvent(listener);
+    }
+
+    private void checkGameStatus(){
+
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String gameStarted = dataSnapshot.getValue().toString();
+                if(!gameStarted.equals("0"))
+                {
+                    if(isAlive) {
+                        Intent intent = new Intent(GameStatusActivity.this, ScoobyDooBNavHome.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        mStatusRef.addValueEventListener(listener);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isAlive = false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isAlive = true;
+
     }
 }

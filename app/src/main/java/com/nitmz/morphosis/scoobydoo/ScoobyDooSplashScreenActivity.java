@@ -22,6 +22,7 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
     DatabaseReference mStatusRef;
 
     SharedPreferences status;
+    ValueEventListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
 
 
         mDB = FirebaseDatabase.getInstance();
-        mStatusRef = mDB.getReference("gameStarted");
+        mStatusRef = mDB.getReference("gameStartedN");
 
         if (Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
@@ -58,6 +59,7 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
             checkGameStatus();
         } else {
             Intent intent = new Intent(ScoobyDooSplashScreenActivity.this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra("launch", 2);
             startActivity(intent);
             finish();
@@ -65,17 +67,19 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
     }
 
     private void checkGameStatus() {
-        ValueEventListener listener = new ValueEventListener() {
+       listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String gameStarted = dataSnapshot.getValue().toString();
                 if(gameStarted.equals("1")) {
                     Intent intent = new Intent(ScoobyDooSplashScreenActivity.this,ScoobyDooBNavHome.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
                 }
                 else {
                     Intent intent = new Intent(ScoobyDooSplashScreenActivity.this, GameStatusActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
                 }
@@ -87,5 +91,20 @@ public class ScoobyDooSplashScreenActivity extends AppCompatActivity {
             }
         };
         mStatusRef.addValueEventListener(listener);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        try {
+            mStatusRef.removeEventListener(listener);
+        } catch (Exception e)
+        {
+
+        }
+
+
+
     }
 }

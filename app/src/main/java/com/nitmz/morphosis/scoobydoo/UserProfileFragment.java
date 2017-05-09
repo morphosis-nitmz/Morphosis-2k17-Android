@@ -1,6 +1,7 @@
 package com.nitmz.morphosis.scoobydoo;
 
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -95,17 +98,30 @@ public class UserProfileFragment extends Fragment {
         };
         mScoreRef.addValueEventListener(listener);
 
-        Glide.with(getContext())
-                .load(mAuth.getCurrentUser().getPhotoUrl())
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .skipMemoryCache(true)
-                .fitCenter()
-                .error(R.drawable.ic_account_circle_white_48dp)
-                .placeholder(R.drawable.ic_account_circle_white_48dp)
-                .dontAnimate()
-                .into(mUserImage);
+        try {
 
-        mUserName.setText(toTitleCase(mAuth.getCurrentUser().getDisplayName().toLowerCase().trim()));
+            String purl = mAuth.getCurrentUser().getPhotoUrl().toString();
+            purl = purl.replace("/s96-c/","/s400-c/");
+
+            Glide.with(getContext())
+                    .load(Uri.parse(purl))
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .skipMemoryCache(true)
+                    .fitCenter()
+                    .error(R.drawable.ic_account_circle_white_48dp)
+                    .placeholder(R.drawable.ic_account_circle_white_48dp)
+                    .dontAnimate()
+                    .into(mUserImage);
+
+            mUserName.setText(toTitleCase(mAuth.getCurrentUser().getDisplayName().toLowerCase().trim()));
+        } catch (Exception e)
+        {
+            FirebaseCrash.report(new Exception("user_profile_pic_fetch_error"+" ::: "+mAuth.getCurrentUser().getUid()+":::"+e.getMessage()));
+            Toast.makeText(getContext(), "Error Loading Profile pic, Please try after sometime", Toast.LENGTH_SHORT).show();
+
+        }
+
+
     }
 
     // Converts a string into Title Case
@@ -125,5 +141,6 @@ public class UserProfileFragment extends Fragment {
 
         return titleCase.toString();
     }
+
 
 }

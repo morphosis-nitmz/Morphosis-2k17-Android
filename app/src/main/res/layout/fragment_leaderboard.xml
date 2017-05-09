@@ -1,14 +1,25 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1.0"
     tools:context="com.nitmz.morphosis.scoobydoo.LeaderboardFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".10"
+        android:paddingTop="10dp"
+        android:text="Leader Board"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/leaderboard_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        android:layout_height="0dp"
+        android:layout_weight=".85" />
 
-</FrameLayout>
+</LinearLayout>

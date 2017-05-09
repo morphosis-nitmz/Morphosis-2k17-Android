@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:text="Game not Started"
+        android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:visibility="gone" />
@@ -25,12 +26,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_marginTop="20dp"
         android:text="Update"
+        android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textSize="24sp"
+        android:textStyle="bold"
         android:visibility="gone" />
 
     <TextView
@@ -40,10 +43,12 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:text="Update"
+        android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textSize="24sp"
+        android:textStyle="italic"
         android:visibility="gone" />
 </RelativeLayout>

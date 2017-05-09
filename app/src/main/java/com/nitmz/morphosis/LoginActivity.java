@@ -16,6 +16,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -45,6 +46,9 @@ public class LoginActivity extends AppCompatActivity
 
     SharedPreferences status;
     private int launch;
+    ValueEventListener listener;
+
+    LinearLayout lg_lin_lay;
 
     private static final int RC_SIGN_IN = 100;
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
@@ -56,6 +60,7 @@ public class LoginActivity extends AppCompatActivity
     private FirebaseDatabase mDB;
     private DatabaseReference mUsersRef;
     private DatabaseReference mScoreRef;
+    DatabaseReference mNewUserRef;
     private View signInHide;
 
     private View mProgressView;
@@ -66,6 +71,8 @@ public class LoginActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         setTitle("Login");
+
+        lg_lin_lay = (LinearLayout) findViewById(R.id.login_lin_lay);
 
         Bundle bundle = getIntent().getExtras();
         launch = bundle.getInt("launch");
@@ -204,7 +211,7 @@ public class LoginActivity extends AppCompatActivity
 
                             DatabaseReference mNewUserRef = mDB.getReference("users");
 
-                            ValueEventListener listener = new ValueEventListener() {
+                            listener = new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -251,7 +258,7 @@ public class LoginActivity extends AppCompatActivity
                                 }
                             };
 
-                            mNewUserRef.addValueEventListener(listener);
+                            mNewUserRef.addListenerForSingleValueEvent(listener);
 
 
                         }
@@ -295,6 +302,8 @@ public class LoginActivity extends AppCompatActivity
                 signInHide.setVisibility(show ? View.GONE : View.VISIBLE);
             }
         });
+
+        lg_lin_lay.setVisibility(show ? View.GONE : View.VISIBLE);
 
         mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
         mProgressView.animate().setDuration(shortAnimTime).alpha(
@@ -343,4 +352,20 @@ public class LoginActivity extends AppCompatActivity
         }
         return true;
     }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (listener != null) {
+            try {
+                mNewUserRef.removeEventListener(listener);
+            } catch (Exception e)
+            {
+
+            }
+        }
+    }
+
+
 }
